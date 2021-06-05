@@ -61,7 +61,7 @@ namespace Maciek_OS_Core
 								if ((TInput[1] == "-List" || TInput[1] == "-list") && nbt == 2)
 								{
 									Console.WriteLine("  ID  |  User Type  |  Login");
-									List<User> userbase = userController.ReturnUsers();
+									List<User> userbase = UserController.ReturnUsers();
 									foreach (User item in userbase)
 									{
 										if (item.Visible)
