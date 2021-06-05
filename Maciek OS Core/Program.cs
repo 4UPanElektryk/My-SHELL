@@ -33,6 +33,8 @@ namespace Maciek_OS_Core
 					int nbt = TInput.Length;
 					switch (TInput[0])
 					{
+
+						//Pomoc
 						case "Help":
 						case "help":
 						case "?":
@@ -53,7 +55,9 @@ namespace Maciek_OS_Core
 								Console.WriteLine("+-{You need to login fore more info}-+");
 							}
 							break;
+							//Koniec Pomocy
 
+							//Użytkownik
 						case "User":
 						case "user":
 							if (nbt > 1)
@@ -119,12 +123,18 @@ namespace Maciek_OS_Core
 							}
 							else
 							{
-								Console.WriteLine("You need to use -");
+								Console.WriteLine("You need to use - subaction");
 							}
 							break;
+							//Koniec Użytkownika
 
+							
 						case "Test":
 						case "test":
+                            if ((bool)Settings.Default["Experimental"])
+                            {
+
+                            }
 							UserController.Save();
 							break;
 						default:
@@ -138,8 +148,16 @@ namespace Maciek_OS_Core
 			}
 			catch
 			{
+				Console.ForegroundColor = ConsoleColor.Red;
 				Console.WriteLine("Something went wrong");
-				Console.ReadKey();
+                if (true)
+                {
+					Console.ForegroundColor = ConsoleColor.Yellow;
+					Console.Write("Do You want to Continue with code? Y|N");
+					Console.ReadKey();
+					LoggedMain(null);
+				}
+				Console.ForegroundColor = ConsoleColor.White;
 			}
 
 		}
