@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Maciek_OS_Core.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Experimental" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Version" Type="System.String" Scope="User">
+      <Value Profile="(Default)">4.2</Value>
+    </Setting>
+    <Setting Name="Compiled" Type="System.String" Scope="User">
+      <Value Profile="(Default)">15.05</Value>
+    </Setting>
+    <Setting Name="Administrator" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Maciej Cichocki</Value>
+    </Setting>
+    <Setting Name="year" Type="System.String" Scope="User">
+      <Value Profile="(Default)">2021</Value>
+    </Setting>
+    <Setting Name="Build" Type="System.String" Scope="User">
+      <Value Profile="(Default)">5012</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

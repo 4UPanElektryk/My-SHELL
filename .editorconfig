@@ -1,0 +1,16 @@
+﻿[*.cs]
+
+# IDE0059: Niepotrzebne przypisanie wartości
+dotnet_diagnostic.IDE0059.severity = none
+
+# IDE0044: Dodaj modyfikator tylko do odczytu
+dotnet_diagnostic.IDE0044.severity = none
+
+# IDE0060: Usuń nieużywany parametr
+dotnet_diagnostic.IDE0060.severity = none
+
+# IDE0054: Użyj przypisania złożonego
+dotnet_diagnostic.IDE0054.severity = none
+
+# IDE0017: Uprość inicjowanie obiektów
+dotnet_diagnostic.IDE0017.severity = none
