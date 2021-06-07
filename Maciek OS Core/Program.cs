@@ -101,24 +101,35 @@ namespace Maciek_OS_Core
 								{
 									Console.WriteLine("User");
 									Console.WriteLine("Id:");
-									int id = int.Parse(Console.ReadLine());
-									Console.WriteLine("Password:");
-									Console.ForegroundColor = ConsoleColor.Black;
-									string Password = Console.ReadLine();
-									Console.ForegroundColor = ConsoleColor.White;
-									loggedUser = UserController.FindUserById(id, Password);
-									if (loggedUser != null)
-									{
-										LoggedMain(loggedUser);
-									}
-									else
-									{
-										Console.Clear();
-										Watermark();
+									string text = Console.ReadLine();
+									int id;
+									if (int.TryParse(text,out id))
+                                    {
+										Console.WriteLine("Password:");
+										Console.ForegroundColor = ConsoleColor.Black;
+										string Password = Console.ReadLine();
+										Console.ForegroundColor = ConsoleColor.White;
+										loggedUser = UserController.FindUserById(id, Password);
+										if (loggedUser != null)
+										{
+											LoggedMain(loggedUser);
+										}
+										else
+										{
+											Console.Clear();
+											Watermark();
+											Console.ForegroundColor = ConsoleColor.Red;
+											Console.WriteLine("!--{Incorrect User or Password}--!");
+											Console.ForegroundColor = ConsoleColor.White;
+										}
+                                    }
+                                    else
+                                    {
 										Console.ForegroundColor = ConsoleColor.Red;
-										Console.WriteLine("!--{Incorrect User or Password}--!");
+                                        Console.WriteLine("sorry but this should be number");
 										Console.ForegroundColor = ConsoleColor.White;
 									}
+									
 								}
 							}
 							else
@@ -153,7 +164,7 @@ namespace Maciek_OS_Core
                 if (true)
                 {
 					Console.ForegroundColor = ConsoleColor.Yellow;
-					Console.Write("Do You want to Continue with code? Y|N");
+					Console.Write("Do You want to Continue with code? Y | N >>");
 					Console.ReadKey();
 					LoggedMain(null);
 				}
@@ -195,7 +206,23 @@ namespace Maciek_OS_Core
 				int nbt = TInput.Length;
 				switch (TInput[0])
 				{
+					//Logoff
+					case "Logoff":
+						Console.Write("Do You want to Logoff? Y | N >> ");
+						ConsoleKey Key = Console.ReadKey().Key;
+                        if (Key == ConsoleKey.Y)
+                        {
+							Console.WriteLine("");
+							loop = false;
+                        }
+                        else if (Key == ConsoleKey.N)
+                        {
+							Console.WriteLine("");
+						}
+						break;
+						//Koniec Logoff
 
+					//Koniec
 					default:
 						Console.ForegroundColor = ConsoleColor.Red;
 						Console.WriteLine("Incorect command '" + TInput[0] + "'");
@@ -205,6 +232,8 @@ namespace Maciek_OS_Core
 				}
 
 			} while (loop);
+			Console.Clear();
+            Console.WriteLine("You have been logged off");
 		}
 	}
 }
