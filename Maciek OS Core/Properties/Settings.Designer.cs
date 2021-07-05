@@ -12,7 +12,7 @@ namespace Maciek_OS_Core.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.10.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -37,7 +37,7 @@ namespace Maciek_OS_Core.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("4.2")]
+        [global::System.Configuration.DefaultSettingValueAttribute("4.3")]
         public string Version {
             get {
                 return ((string)(this["Version"]));
@@ -49,25 +49,13 @@ namespace Maciek_OS_Core.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("15.05")]
+        [global::System.Configuration.DefaultSettingValueAttribute("05.07")]
         public string Compiled {
             get {
                 return ((string)(this["Compiled"]));
             }
             set {
                 this["Compiled"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Maciej Cichocki")]
-        public string Administrator {
-            get {
-                return ((string)(this["Administrator"]));
-            }
-            set {
-                this["Administrator"] = value;
             }
         }
         
@@ -85,7 +73,7 @@ namespace Maciek_OS_Core.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("5012")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0024")]
         public string Build {
             get {
                 return ((string)(this["Build"]));
