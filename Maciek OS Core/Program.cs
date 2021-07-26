@@ -22,7 +22,6 @@ namespace Maciek_OS_Core
 			Console.Title = "Maciek OS Core " + Settings.Default["Version"].ToString();
 			try
 			{
-				
 				if ((bool)Settings.Default["Experimental"])
 				{
 					Console.Title = Console.Title + " Experimental";
@@ -30,19 +29,18 @@ namespace Maciek_OS_Core
 				Watermark();
 				do
 				{
-					string input = Console.ReadLine();
+					string input = Console.ReadLine().ToLower();
 					string[] TInput = input.Split(' ');
 					int nbt = TInput.Length;
 					switch (TInput[0])
 					{
 
 						//Pomoc
-						case "Help":
 						case "help":
 						case "?":
 							if (nbt > 1)
 							{
-								if (TInput[1] == "-User" || TInput[1] == "-user")
+								if (TInput[1] == "-user")
 								{
 									Console.WriteLine("User");
 									Console.WriteLine("-login for login");
@@ -60,11 +58,10 @@ namespace Maciek_OS_Core
 						//Koniec Pomocy
 
 							//Użytkownik
-						case "User":
 						case "user":
 							if (nbt > 1)
 							{
-								if ((TInput[1] == "-List" || TInput[1] == "-list") && nbt == 2)
+								if ((TInput[1] == "-list") && nbt == 2)
 								{
 									Console.WriteLine("  ID  |  User Type  |  Login");
 									List<User> userbase = UserController.ReturnUsers();
@@ -76,7 +73,7 @@ namespace Maciek_OS_Core
 										}
 									}
 								}
-								if ((TInput[1] == "-Login" || TInput[1] == "-login") && nbt == 2)
+								if ((TInput[1] == "-login") && nbt == 2)
 								{
 									Console.WriteLine("User");
 									Console.WriteLine("Login:");
@@ -99,7 +96,7 @@ namespace Maciek_OS_Core
 										Console.ForegroundColor = ConsoleColor.White;
 									}
 								}
-								if (((TInput[1] == "-Login" || TInput[1] == "-login") && nbt == 3) && (TInput[2] == "/Id" || TInput[2] == "/id"))
+								if ((TInput[1] == "-login" && nbt == 3) && TInput[2] == "/id")
 								{
 									Console.WriteLine("User");
 									Console.WriteLine("Id:");
@@ -140,16 +137,23 @@ namespace Maciek_OS_Core
 								Console.WriteLine("Use Help -User for subactions");
 							}
 							break;
-							//Koniec Użytkownika
+						//Koniec Użytkownika
 
-							
-						case "Test":
+						case "crash":
+							int n = 0;
+							int y = 5 / n;
+							break;
+
+
 						case "test":
 							if ((bool)Settings.Default["Experimental"])
 							{
-
-							}
-							UserController.Save();
+								UserController.Save();
+                            }
+                            else
+                            {
+								goto default;
+                            }
 							break;
 						case "":
 							break;
@@ -162,11 +166,12 @@ namespace Maciek_OS_Core
 					}
 				} while (true);
 			}
-			catch
+			catch(Exception ex)
 			{
 				Console.ForegroundColor = ConsoleColor.Red;
+				Console.WriteLine("Error: " + ex.GetHashCode());
 				Console.WriteLine("Something went wrong");
-				if (true)
+				if ((bool)Settings.Default["Experimental"])
 				{
 					Console.ForegroundColor = ConsoleColor.Yellow;
 					Console.Write("Do You want to Continue with code? Y | N >>");
@@ -181,6 +186,7 @@ namespace Maciek_OS_Core
 						Console.WriteLine("");
 					}
 				}
+				Console.ReadKey();
 				Console.ForegroundColor = ConsoleColor.White;
 			}
 
@@ -206,6 +212,14 @@ namespace Maciek_OS_Core
 			Console.WriteLine("+----------------------+");
 			Console.ForegroundColor = ConsoleColor.White;
 		}
+		static void Msg(string text, ConsoleColor Color, ConsoleColor ColorAfter = ConsoleColor.White, ConsoleColor BGColor = ConsoleColor.Black, ConsoleColor BGColorAfter = ConsoleColor.Black)
+        {
+			Console.BackgroundColor = BGColor;
+			Console.ForegroundColor = Color;
+            Console.WriteLine(text);
+			Console.ForegroundColor = ColorAfter;
+			Console.BackgroundColor = BGColorAfter;
+        }
 		static void LoggedMain(User user)
 		{
 			Console.Clear();
@@ -256,14 +270,12 @@ namespace Maciek_OS_Core
 										}
 										else
 										{
-											Console.ForegroundColor = ConsoleColor.Red;
-											Console.WriteLine("sorry but this value should be number");
-											Console.ForegroundColor = ConsoleColor.White;
+											Msg("sorry but this value should be number", ConsoleColor.Red);
 										}
 									}
 									else
 									{
-										Console.WriteLine("This Username is alredy taken");
+										Msg("This Username is alredy taken", ConsoleColor.Red);
 									}
 								}
 							}
@@ -314,9 +326,7 @@ namespace Maciek_OS_Core
 								}
 								else
 								{
-									Console.ForegroundColor = ConsoleColor.Red;
-									Console.WriteLine("sorry but this value should be number");
-									Console.ForegroundColor = ConsoleColor.White;
+									Msg("sorry but this value should be number",ConsoleColor.Red);
 								}
 							}
 						}
@@ -356,7 +366,7 @@ namespace Maciek_OS_Core
 			} while (loop);
 			Console.Clear();
 			Console.WriteLine("You have been logged off");
-			Thread.Sleep(5000);
+			Thread.Sleep(3000);
 			Console.Clear();
 			Watermark();
 		}
