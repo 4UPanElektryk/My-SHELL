@@ -22,11 +22,6 @@ namespace Maciek_OS_Core
 			{
 				string[] data = item.Split('=');
 				string args = data[1];
-				if (data[1].StartsWith("'"))
-				{
-					args = args.Trim("'".ToCharArray());
-					args = args.TrimEnd("'".ToCharArray());
-				}
 				switch (data[0])
 				{
 					case "User.Path":

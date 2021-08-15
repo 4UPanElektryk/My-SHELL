@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Maciek_OS_Core.Properties;
 using MOS_User_Menager_Integration;
+using Maciek_OS_Core;
 
 namespace Maciek_OS_Core
 {
@@ -16,9 +17,12 @@ namespace Maciek_OS_Core
 	{
 
 		static User loggedUser;
-		static UserController UserController = new UserController(); //nie usuwać
+		static UserController userController; //nie usuwać
 		static void Main(string[] args)
 		{
+			bool action = false;
+			Config.LoadConfig();
+			userController = new UserController(Config.UserPath, Config.UserPathOld);
 			Console.Title = "Maciek OS Core " + Settings.Default["Version"].ToString();
 			try
 			{
@@ -26,7 +30,7 @@ namespace Maciek_OS_Core
 				{
 					Console.Title = Console.Title + " Experimental";
 				}
-				Watermark();
+				Dual.Watermark();
 				do
 				{
 					string input = Console.ReadLine().ToLower();
@@ -42,6 +46,7 @@ namespace Maciek_OS_Core
 							{
 								if (TInput[1] == "-user")
 								{
+									action = true;
 									Console.WriteLine("User");
 									Console.WriteLine("-login for login");
 									Console.WriteLine("-list for list all user");
@@ -50,6 +55,7 @@ namespace Maciek_OS_Core
 							}
 							else
 							{
+								action = true;
 								Console.WriteLine("+-----------+{Help Guide}+-----------+");
 								Console.WriteLine("User - use Help -User for more info");
 								Console.WriteLine("+-{You need to login fore more info}-+");
@@ -63,6 +69,7 @@ namespace Maciek_OS_Core
 							{
 								if ((TInput[1] == "-list") && nbt == 2)
 								{
+									action = true;
 									Console.WriteLine("  ID  |  User Type  |  Login");
 									List<User> userbase = UserController.ReturnUsers();
 									foreach (User item in userbase)
@@ -75,6 +82,7 @@ namespace Maciek_OS_Core
 								}
 								if ((TInput[1] == "-login") && nbt == 2)
 								{
+									action = true;
 									Console.WriteLine("User");
 									Console.WriteLine("Login:");
 									string User = Console.ReadLine();
@@ -85,12 +93,12 @@ namespace Maciek_OS_Core
 									loggedUser = UserController.FindUser(User, Password);
 									if (loggedUser != null)
 									{
-										LoggedMain(loggedUser);
+										LoggedProgram.LoggedMain(loggedUser);
 									}
 									else
 									{
 										Console.Clear();
-										Watermark();
+										Dual.Watermark();
 										Console.ForegroundColor = ConsoleColor.Red;
 										Console.WriteLine("!--{Incorrect User or Password}--!");
 										Console.ForegroundColor = ConsoleColor.White;
@@ -98,6 +106,7 @@ namespace Maciek_OS_Core
 								}
 								if ((TInput[1] == "-login" && nbt == 3) && TInput[2] == "/id")
 								{
+									action = true;
 									Console.WriteLine("User");
 									Console.WriteLine("Id:");
 									string text = Console.ReadLine();
@@ -111,12 +120,12 @@ namespace Maciek_OS_Core
 										loggedUser = UserController.FindUserById(id, Password);
 										if (loggedUser != null)
 										{
-											LoggedMain(loggedUser);
+											LoggedProgram.LoggedMain(loggedUser);
 										}
 										else
 										{
 											Console.Clear();
-											Watermark();
+											Dual.Watermark();
 											Console.ForegroundColor = ConsoleColor.Red;
 											Console.WriteLine("!--{Incorrect User or Password}--!");
 											Console.ForegroundColor = ConsoleColor.White;
@@ -148,6 +157,7 @@ namespace Maciek_OS_Core
 						case "test":
 							if ((bool)Settings.Default["Experimental"])
 							{
+								action = true;
 								UserController.Save();
                             }
                             else
@@ -155,21 +165,38 @@ namespace Maciek_OS_Core
 								goto default;
                             }
 							break;
+						case "hmmmmm":
+							action = true;
+							Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("+--{Achivment Get}--+");
+                            Console.WriteLine("How Did We Get Here? ");
+							Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine("");
+							break;
 						case "":
+							action = true;
 							break;
 						default:
+							action = true;
 							Console.ForegroundColor = ConsoleColor.Red;
 							Console.WriteLine("Incorect command '" + TInput[0] + "'");
 							Console.WriteLine("Type 'Help' or '?' for help");
 							Console.ForegroundColor = ConsoleColor.White;
 							break;
 					}
+					if (!action)
+					{
+						Console.ForegroundColor = ConsoleColor.Red;
+						Console.WriteLine("Incorect command '" + input + "'");
+						Console.WriteLine("Type 'Help' or '?' for help");
+						Console.ForegroundColor = ConsoleColor.White;
+					}
 				} while (true);
 			}
 			catch(Exception ex)
 			{
 				Console.ForegroundColor = ConsoleColor.Red;
-				Console.WriteLine("Error: " + ex.GetHashCode());
+				Console.WriteLine("Error: " + ex.Message);
 				Console.WriteLine("Something went wrong");
 				if ((bool)Settings.Default["Experimental"])
 				{
@@ -178,7 +205,7 @@ namespace Maciek_OS_Core
 					ConsoleKey Key = Console.ReadKey().Key;
 					if (Key == ConsoleKey.Y)
 					{
-						LoggedMain(null);
+						LoggedProgram.LoggedMain(null);
 						Console.WriteLine("");
 					}
 					else
@@ -190,185 +217,6 @@ namespace Maciek_OS_Core
 				Console.ForegroundColor = ConsoleColor.White;
 			}
 
-		}
-		static void Watermark()
-		{
-			Console.OutputEncoding = Encoding.Unicode;
-			if ((bool)Settings.Default["Experimental"])
-			{
-				Console.ForegroundColor = ConsoleColor.Yellow;
-			}
-			else
-			{
-				Console.ForegroundColor = ConsoleColor.Green;
-			}
-			Console.WriteLine("+----------------------+");
-			Console.WriteLine("|  Maciek Basic ©" + Settings.Default["Year"].ToString() + "  |");
-			Console.WriteLine("|  Ver " + Settings.Default["Version"].ToString() + "   CL " + Settings.Default["Compiled"].ToString() + "  |");
-			if ((bool)Settings.Default["Experimental"])
-			{
-				Console.WriteLine("|  Experimental  " + Settings.Default["Build"].ToString() + "  |");
-			}
-			Console.WriteLine("+----------------------+");
-			Console.ForegroundColor = ConsoleColor.White;
-		}
-		static void Msg(string text, ConsoleColor Color, ConsoleColor ColorAfter = ConsoleColor.White, ConsoleColor BGColor = ConsoleColor.Black, ConsoleColor BGColorAfter = ConsoleColor.Black)
-        {
-			Console.BackgroundColor = BGColor;
-			Console.ForegroundColor = Color;
-            Console.WriteLine(text);
-			Console.ForegroundColor = ColorAfter;
-			Console.BackgroundColor = BGColorAfter;
-        }
-		static void LoggedMain(User user)
-		{
-			Console.Clear();
-			Watermark();
-			bool loop = true;
-			do
-			{
-				Console.Write(">>");
-				string input = Console.ReadLine().ToLower();
-				string[] TInput = input.Split(' ');
-				int nbt = TInput.Length;
-				switch (TInput[0])
-				{
-					//User
-					case "user":
-						if (nbt > 1)
-						{
-							if ((TInput[1] == "-add") && nbt == 2)
-							{
-								Console.WriteLine("!--{User creator wizard}--!");
-								Console.WriteLine("Login: Write '!Exit!' to Exit");
-								string login = Console.ReadLine();
-								if(login != "!Exit!")
-								{
-									if (UserController.IsItFree(login))
-									{
-										Console.WriteLine("Password:");
-										string password = Console.ReadLine();
-										Console.WriteLine("User Type: 0 - System Admin, 1 - Admin, 2 - User");
-										int type;
-										bool l = int.TryParse(Console.ReadLine(), out type);
-										if (l)
-										{
-											User.Type Utype = User.Type.User;
-											if (type == 0)
-											{
-												Utype = User.Type.SysAdmin;
-											}
-											else if (type == 1)
-											{
-												Utype = User.Type.Admin;
-											}
-                                            else
-                                            {
-											}
-											User user1 = new User(0,Guid.Empty, Utype, login, password);
-											UserController.AddUser(user1);
-										}
-										else
-										{
-											Msg("sorry but this value should be number", ConsoleColor.Red);
-										}
-									}
-									else
-									{
-										Msg("This Username is alredy taken", ConsoleColor.Red);
-									}
-								}
-							}
-							if ((TInput[1] == "-list") && nbt == 2)
-							{
-								Console.WriteLine("  ID  |  User Type  |  Login");
-								List<User> userbase = UserController.ReturnUsers();
-								foreach (User item in userbase)
-								{
-									if (item._Visible)
-									{
-										Console.WriteLine("  " + item._Id + "  |  " + item._State + "  |  " + item._Login);
-									}
-								}
-							}
-							if ((TInput[1] == "-delete" || TInput[1] == "-del") && nbt == 2)
-							{
-								Console.WriteLine("!--{User Delete wizard}--!");
-								Console.WriteLine("Id:");
-								int Id;
-								bool t = int.TryParse(Console.ReadLine(), out Id);
-								if (t)
-								{
-									Console.WriteLine("Password:");
-									Console.ForegroundColor = ConsoleColor.Black;
-									string Password = Console.ReadLine();
-									Console.ForegroundColor = ConsoleColor.White;
-									User DeleteUser;
-									DeleteUser = UserController.FindUserById(Id, Password);
-									if (DeleteUser != null)
-									{
-										Console.ForegroundColor = ConsoleColor.Yellow;
-										Console.Write("Are you sure you want to delete this User? Y | N >>");
-										ConsoleKey Key1 = Console.ReadKey().Key;
-										if (Key1 == ConsoleKey.Y)
-										{
-											UserController.DeleteUser(DeleteUser);
-											Console.WriteLine("");
-											Console.WriteLine("User has been deleted");
-										}
-										else
-										{
-											Console.WriteLine("");
-											Console.WriteLine("User deletion canceled");
-										}
-										Console.ForegroundColor = ConsoleColor.White;
-									}
-								}
-								else
-								{
-									Msg("sorry but this value should be number",ConsoleColor.Red);
-								}
-							}
-						}
-						else
-						{
-							Console.WriteLine("You need to use -subaction");
-							Console.WriteLine("Use Help -User for subactions");
-						}
-						break;
-					//Logoff
-					case "logoff":
-						Console.Write("Do You want to Logoff? Y | N >> ");
-						ConsoleKey Key = Console.ReadKey().Key;
-						if (Key == ConsoleKey.Y)
-						{
-							Console.WriteLine("");
-							loop = false;
-						}
-						else
-						{
-							Console.WriteLine("");
-						}
-						break;
-					//Koniec Logoff
-
-					//Koniec
-					case "":
-						break;
-					default:
-						Console.ForegroundColor = ConsoleColor.Red;
-						Console.WriteLine("Incorect command '" + TInput[0] + "'");
-						Console.WriteLine("Type 'Help' or '?' for help");
-						Console.ForegroundColor = ConsoleColor.White;
-						break;
-				}
-
-			} while (loop);
-			Console.Clear();
-			Console.WriteLine("You have been logged off");
-			Thread.Sleep(3000);
-			Console.Clear();
-			Watermark();
 		}
 	}
 }
