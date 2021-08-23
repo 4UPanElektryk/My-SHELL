@@ -51,6 +51,9 @@
     <ApplicationIcon>document-console-icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MOS Log Integration">
+      <HintPath>..\..\MOS Log Integration\MOS Log Integration\bin\Debug\netstandard2.0\MOS Log Integration.dll</HintPath>
+    </Reference>
     <Reference Include="MOS User Menager Integration">
       <HintPath>..\..\MOS User Menager Integration\MOS User Menager Integration\bin\Debug\netstandard2.0\MOS User Menager Integration.dll</HintPath>
     </Reference>

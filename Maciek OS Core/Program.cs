@@ -9,19 +9,27 @@ using System.Threading;
 using System.Threading.Tasks;
 using Maciek_OS_Core.Properties;
 using MOS_User_Menager_Integration;
-using Maciek_OS_Core;
+using MOS_Log_Integration;
 
 namespace Maciek_OS_Core
 {
 	class Program
 	{
-
 		static User loggedUser;
 		static UserController userController; //nie usuwać
+		static Log log;
 		static void Main(string[] args)
 		{
-			bool action = false;
-			Config.LoadConfig();
+			try
+			{
+				Config.LoadConfig();
+			}
+			catch (FileNotFoundException)
+			{
+				Config.CreateNewConfig();
+				Config.LoadConfig();
+			}
+			log = new Log(AppDomain.CurrentDomain.BaseDirectory, Config.DebugPath, Config.DebugEnabled);
 			userController = new UserController(Config.UserPath, Config.UserPathOld);
 			Console.Title = "Maciek OS Core " + Settings.Default["Version"].ToString();
 			try
@@ -33,9 +41,11 @@ namespace Maciek_OS_Core
 				Dual.Watermark();
 				do
 				{
+					bool action = false;
 					string input = Console.ReadLine().ToLower();
 					string[] TInput = input.Split(' ');
 					int nbt = TInput.Length;
+					Log.AddLogEvent(new LogEvent("User Action - Input", input,LogEvent.Type.Normal, DateTime.Now));
 					switch (TInput[0])
 					{
 
@@ -46,6 +56,7 @@ namespace Maciek_OS_Core
 							{
 								if (TInput[1] == "-user")
 								{
+									Log.AddLogEvent(new LogEvent("User Action - Help Opened", "Help Sub -user", LogEvent.Type.Normal, DateTime.Now));
 									action = true;
 									Console.WriteLine("User");
 									Console.WriteLine("-login for login");
@@ -62,6 +73,14 @@ namespace Maciek_OS_Core
 							}
 							break;
 						//Koniec Pomocy
+
+						case "edit":
+						case "note":
+						case "notepad":
+							action = true;
+							Log.AddLogEvent(new LogEvent("User Action", "Notepad oppening", LogEvent.Type.Normal, DateTime.Now));
+							Process.Start("note.exe");
+							break;
 
 							//Użytkownik
 						case "user":
@@ -159,19 +178,19 @@ namespace Maciek_OS_Core
 							{
 								action = true;
 								UserController.Save();
-                            }
-                            else
-                            {
+							}
+							else
+							{
 								goto default;
-                            }
+							}
 							break;
 						case "hmmmmm":
 							action = true;
 							Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("+--{Achivment Get}--+");
-                            Console.WriteLine("How Did We Get Here? ");
+							Console.WriteLine("+--{Achivment Get}--+");
+							Console.WriteLine("How Did We Get Here? ");
 							Console.ForegroundColor = ConsoleColor.White;
-                            Console.WriteLine("");
+							Console.WriteLine("");
 							break;
 						case "":
 							action = true;
@@ -195,6 +214,7 @@ namespace Maciek_OS_Core
 			}
 			catch(Exception ex)
 			{
+				Log.AddLogEvent(new LogEvent("Critical error", ex.Message, LogEvent.Type.Critical_Error, DateTime.Now));
 				Console.ForegroundColor = ConsoleColor.Red;
 				Console.WriteLine("Error: " + ex.Message);
 				Console.WriteLine("Something went wrong");

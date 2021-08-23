@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using MOS_User_Menager_Integration;
 using Maciek_OS_Core.Properties;
 using Maciek_OS_Core;
+using MOS_Log_Integration;
 
 namespace Maciek_OS_Core
 {
-    class LoggedProgram
-    {
+	class LoggedProgram
+	{
 		public static void LoggedMain(User user)
 		{
 			Console.Clear();
@@ -125,9 +127,9 @@ namespace Maciek_OS_Core
 								}
 							}
 							if (TInput[1] == "-info")
-                            {
-                                if (nbt == 2)
-                                {
+							{
+								if (nbt == 2)
+								{
 									action = true;
 									if (user != null)
 									{
@@ -140,9 +142,9 @@ namespace Maciek_OS_Core
 										Dual.Msg("Cannot show info if user is null", ConsoleColor.Red);
 									}
 								}
-                                if (nbt == 3)
-                                {
-                                    if (TInput[2] == "/full")
+								if (nbt == 3)
+								{
+									if (TInput[2] == "/full")
 									{
 										action = true;
 										if (user != null)
@@ -186,8 +188,8 @@ namespace Maciek_OS_Core
 										}
 									}
 								}
-                                if (nbt == 4)
-                                {
+								if (nbt == 4)
+								{
 									if ((TInput[2] == "/id") && (TInput[3] == "/full"))
 									{
 										action = true;
@@ -237,6 +239,13 @@ namespace Maciek_OS_Core
 						break;
 					//User
 
+					case "edit":
+					case "note":
+					case "notepad":
+						action = true;
+						Log.AddLogEvent(new LogEvent("User Action", "Notepad oppening", LogEvent.Type.Normal, DateTime.Now));
+						Process.Start("note.exe");
+						break;
 
 					case "hmmmmm":
 						action = true;

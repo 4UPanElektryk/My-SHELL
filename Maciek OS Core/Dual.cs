@@ -9,6 +9,27 @@ namespace Maciek_OS_Core
 {
 	public class Dual
 	{
+		public static void EditorWatermark()
+		{
+			Console.OutputEncoding = Encoding.Unicode;
+			if ((bool)Settings.Default["Experimental"])
+			{
+				Console.ForegroundColor = ConsoleColor.Yellow;
+			}
+			else
+			{
+				Console.ForegroundColor = ConsoleColor.Green;
+			}
+			Console.WriteLine("+-----------------------+");
+			Console.WriteLine("|  Maciek Editor ©" + Settings.Default["Year"].ToString() + "  |");
+			Console.WriteLine("|  Ver " + Settings.Default["Version"].ToString() + "   CL  " + Settings.Default["Compiled"].ToString() + "  |");
+			if ((bool)Settings.Default["Experimental"])
+			{
+				Console.WriteLine("|  Experimental  " + Settings.Default["Build"].ToString() + "   |");
+			}
+			Console.WriteLine("+-----------------------+");
+			Console.ForegroundColor = ConsoleColor.White;
+		}
 		public static void Watermark()
 		{
 			Console.OutputEncoding = Encoding.Unicode;
