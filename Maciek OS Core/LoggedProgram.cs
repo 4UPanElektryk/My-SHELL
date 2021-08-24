@@ -26,6 +26,7 @@ namespace Maciek_OS_Core
 				string input = Console.ReadLine().ToLower();
 				string[] TInput = input.Split(' ');
 				int nbt = TInput.Length;
+				Log.AddLogEvent(new LogEvent("User Action - Input From User ID:" + user._Id, input, LogEvent.Type.Normal, DateTime.Now));
 				switch (TInput[0])
 				{
 					//User
@@ -365,6 +366,7 @@ namespace Maciek_OS_Core
 										Config.DeleteConfig();
 										Config.CreateNewConfig(true);
 										Config.LoadConfig();
+										Log.ChangeEnable(Config.DebugEnabled);
 										Dual.Msg("Logs are now enabled", ConsoleColor.Yellow);
 									}
 									else
@@ -380,6 +382,7 @@ namespace Maciek_OS_Core
 										Config.DeleteConfig();
 										Config.CreateNewConfig(false);
 										Config.LoadConfig();
+										Log.ChangeEnable(Config.DebugEnabled);
 										Dual.Msg("Logs are now disabled", ConsoleColor.Yellow);
 									}
 									else
