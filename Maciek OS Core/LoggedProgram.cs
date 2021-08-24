@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -238,6 +239,157 @@ namespace Maciek_OS_Core
 						}
 						break;
 					//User
+
+					case "clear":
+						action = true;
+						Console.Clear();
+						Dual.Watermark();
+						break;
+
+					case "log":
+					case "logs":
+						if (nbt > 1)
+						{
+							if (nbt == 2)
+							{
+								if (TInput[1] == "-clear")
+								{
+									action = true;
+									if (user._State == User.Type.SysAdmin)
+									{
+										Console.Clear();
+										Dual.LogWatermark();
+										Log.ClearLogs();
+										Console.ReadKey();
+									}
+									else
+									{
+										Dual.Msg("Not enough previlage level you need SysAdmin account", ConsoleColor.Red);
+									}
+								}
+								if (TInput[1] == "-open")
+								{
+									action = true;
+									if (user._State == User.Type.Admin || user._State == User.Type.SysAdmin)
+									{
+										Console.Clear();
+										Dual.LogWatermark();
+										Console.WriteLine("File nr: ");
+										int path = int.Parse(Console.ReadLine());
+										Console.WriteLine("");
+										string p = AppDomain.CurrentDomain.BaseDirectory + Config.DebugPath + "LOG" + path.ToString() + ".log";
+										try
+										{
+											string[] _file = File.ReadAllLines(@p);
+											foreach (string _item in _file)
+											{
+												string[] w = _item.Split('|');
+												Console.Write("[" + w[0] + "]");
+												bool nok = false;
+												switch (w[1])
+												{
+													case "{[NORMAL]}":
+														nok = false;
+														break;
+													case "{[INFO]}":
+														nok = false;
+														Console.ForegroundColor = ConsoleColor.Blue;
+														break;
+													case "{[WARRNING]}":
+														nok = false;
+														Console.ForegroundColor = ConsoleColor.Yellow;
+														break;
+													case "{[ERROR]}":
+														nok = false;
+														Console.ForegroundColor = ConsoleColor.DarkRed;
+														break;
+													case "{[CRITICAL_ERROR]}":
+														nok = true;
+														Console.ForegroundColor = ConsoleColor.Red;
+														break;
+													default:
+														break;
+												}
+												Console.WriteLine(w[1]);
+												if (!nok)
+												{
+													Console.ForegroundColor = ConsoleColor.White;
+												}
+												Console.WriteLine("Name of action: \n" + w[2]);
+												Console.WriteLine("Action: \n" + w[3]);
+												Console.WriteLine("");
+												Console.ForegroundColor = ConsoleColor.White;
+												
+											}
+											Console.ReadKey();
+											goto case "clear";
+										}
+										catch
+										{
+											Dual.Msg("File Not Found", ConsoleColor.Red);
+										}
+										
+									}
+									else
+									{
+										Dual.Msg("Not enough previlage level you need SysAdmin account", ConsoleColor.Red);
+									}
+								}
+								if (TInput[1] == "-state")
+								{
+									action = true;
+									if (user._State == User.Type.SysAdmin)
+									{
+										if (Config.DebugEnabled)
+										{
+											Dual.Msg("Logs are enabled", ConsoleColor.Yellow);
+										}
+										else
+										{
+											Dual.Msg("Logs are disabled", ConsoleColor.Yellow);
+										}
+									}
+									else
+									{
+										Dual.Msg("Not enough previlage level you need SysAdmin account", ConsoleColor.Red);
+									}
+								}
+							}
+							if (nbt == 3)
+							{
+								if (TInput[1] == "-state" && TInput[2] == "-on")
+								{
+									action = true;
+									if (user._State == User.Type.SysAdmin)
+									{
+										Config.DeleteConfig();
+										Config.CreateNewConfig(true);
+										Config.LoadConfig();
+										Dual.Msg("Logs are now enabled", ConsoleColor.Yellow);
+									}
+									else
+									{
+										Dual.Msg("Not enough previlage level you need SysAdmin account", ConsoleColor.Red);
+									}
+								}
+								if (TInput[1] == "-state" && TInput[2] == "-off")
+								{
+									action = true;
+									if (user._State == User.Type.SysAdmin)
+									{
+										Config.DeleteConfig();
+										Config.CreateNewConfig(false);
+										Config.LoadConfig();
+										Dual.Msg("Logs are now disabled", ConsoleColor.Yellow);
+									}
+									else
+									{
+										Dual.Msg("Not enough previlage level you need SysAdmin account", ConsoleColor.Red);
+									}
+								}
+							}
+						}
+						break;
 
 					case "edit":
 					case "note":

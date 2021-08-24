@@ -26,7 +26,7 @@ namespace Maciek_OS_Core
 			}
 			catch (FileNotFoundException)
 			{
-				Config.CreateNewConfig();
+				Config.CreateNewConfig(true);
 				Config.LoadConfig();
 			}
 			log = new Log(AppDomain.CurrentDomain.BaseDirectory, Config.DebugPath, Config.DebugEnabled);
@@ -86,57 +86,32 @@ namespace Maciek_OS_Core
 						case "user":
 							if (nbt > 1)
 							{
-								if ((TInput[1] == "-list") && nbt == 2)
+								if (nbt == 2)
 								{
-									action = true;
-									Console.WriteLine("  ID  |  User Type  |  Login");
-									List<User> userbase = UserController.ReturnUsers();
-									foreach (User item in userbase)
+									if (TInput[1] == "-list")
 									{
-										if (item._Visible)
+										action = true;
+										Console.WriteLine("  ID  |  User Type  |  Login");
+										List<User> userbase = UserController.ReturnUsers();
+										foreach (User item in userbase)
 										{
-											Console.WriteLine("  " + item._Id + "  |  " + item._State + "  |  " + item._Login);
+											if (item._Visible)
+											{
+												Console.WriteLine("  " + item._Id + "  |  " + item._State + "  |  " + item._Login);
+											}
 										}
 									}
-								}
-								if ((TInput[1] == "-login") && nbt == 2)
-								{
-									action = true;
-									Console.WriteLine("User");
-									Console.WriteLine("Login:");
-									string User = Console.ReadLine();
-									Console.WriteLine("Password:");
-									Console.ForegroundColor = ConsoleColor.Black;
-									string Password = Console.ReadLine();
-									Console.ForegroundColor = ConsoleColor.White;
-									loggedUser = UserController.FindUser(User, Password);
-									if (loggedUser != null)
+									if (TInput[1] == "-login")
 									{
-										LoggedProgram.LoggedMain(loggedUser);
-									}
-									else
-									{
-										Console.Clear();
-										Dual.Watermark();
-										Console.ForegroundColor = ConsoleColor.Red;
-										Console.WriteLine("!--{Incorrect User or Password}--!");
-										Console.ForegroundColor = ConsoleColor.White;
-									}
-								}
-								if ((TInput[1] == "-login" && nbt == 3) && TInput[2] == "/id")
-								{
-									action = true;
-									Console.WriteLine("User");
-									Console.WriteLine("Id:");
-									string text = Console.ReadLine();
-									int id;
-									if (int.TryParse(text,out id))
-									{
+										action = true;
+										Console.WriteLine("User");
+										Console.WriteLine("Login:");
+										string User = Console.ReadLine();
 										Console.WriteLine("Password:");
 										Console.ForegroundColor = ConsoleColor.Black;
 										string Password = Console.ReadLine();
 										Console.ForegroundColor = ConsoleColor.White;
-										loggedUser = UserController.FindUserById(id, Password);
+										loggedUser = UserController.FindUser(User, Password);
 										if (loggedUser != null)
 										{
 											LoggedProgram.LoggedMain(loggedUser);
@@ -150,13 +125,44 @@ namespace Maciek_OS_Core
 											Console.ForegroundColor = ConsoleColor.White;
 										}
 									}
-									else
+								}
+								if (nbt == 3)
+								{
+									if (TInput[1] == "-login" && TInput[2] == "-id")
 									{
-										Console.ForegroundColor = ConsoleColor.Red;
-										Console.WriteLine("sorry but this value should be number");
-										Console.ForegroundColor = ConsoleColor.White;
+										action = true;
+										Console.WriteLine("User");
+										Console.WriteLine("Id:");
+										string text = Console.ReadLine();
+										int id;
+										if (int.TryParse(text, out id))
+										{
+											Console.WriteLine("Password:");
+											Console.ForegroundColor = ConsoleColor.Black;
+											string Password = Console.ReadLine();
+											Console.ForegroundColor = ConsoleColor.White;
+											loggedUser = UserController.FindUserById(id, Password);
+											if (loggedUser != null)
+											{
+												LoggedProgram.LoggedMain(loggedUser);
+											}
+											else
+											{
+												Console.Clear();
+												Dual.Watermark();
+												Console.ForegroundColor = ConsoleColor.Red;
+												Console.WriteLine("!--{Incorrect User or Password}--!");
+												Console.ForegroundColor = ConsoleColor.White;
+											}
+										}
+										else
+										{
+											Console.ForegroundColor = ConsoleColor.Red;
+											Console.WriteLine("sorry but this value should be number");
+											Console.ForegroundColor = ConsoleColor.White;
+										}
+
 									}
-									
 								}
 							}
 							else
@@ -214,7 +220,7 @@ namespace Maciek_OS_Core
 			}
 			catch(Exception ex)
 			{
-				Log.AddLogEvent(new LogEvent("Critical error", ex.Message, LogEvent.Type.Critical_Error, DateTime.Now));
+				Log.AddLogEvent(new LogEvent("Aplication Crashed", ex.Message, LogEvent.Type.Critical_Error, DateTime.Now));
 				Console.ForegroundColor = ConsoleColor.Red;
 				Console.WriteLine("Error: " + ex.Message);
 				Console.WriteLine("Something went wrong");

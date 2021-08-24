@@ -9,7 +9,7 @@ namespace Maciek_OS_Core
 {
 	public class Dual
 	{
-		public static void EditorWatermark()
+		public static void LogWatermark()
 		{
 			Console.OutputEncoding = Encoding.Unicode;
 			if ((bool)Settings.Default["Experimental"])
@@ -20,14 +20,14 @@ namespace Maciek_OS_Core
 			{
 				Console.ForegroundColor = ConsoleColor.Green;
 			}
-			Console.WriteLine("+-----------------------+");
-			Console.WriteLine("|  Maciek Editor ©" + Settings.Default["Year"].ToString() + "  |");
-			Console.WriteLine("|  Ver " + Settings.Default["Version"].ToString() + "   CL  " + Settings.Default["Compiled"].ToString() + "  |");
+			Console.WriteLine("+---------------------------+");
+			Console.WriteLine("|  Maciek Log Opener ©" + Settings.Default["Year"].ToString() + "  |");
+			Console.WriteLine("|  Ver   " + Settings.Default["Version"].ToString() + "   CL    " + Settings.Default["Compiled"].ToString() + "  |");
 			if ((bool)Settings.Default["Experimental"])
 			{
-				Console.WriteLine("|  Experimental  " + Settings.Default["Build"].ToString() + "   |");
+				Console.WriteLine("|  Experimental       " + Settings.Default["Build"].ToString() + "  |");
 			}
-			Console.WriteLine("+-----------------------+");
+			Console.WriteLine("+---------------------------+");
 			Console.ForegroundColor = ConsoleColor.White;
 		}
 		public static void Watermark()

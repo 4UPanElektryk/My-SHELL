@@ -56,16 +56,21 @@ namespace Maciek_OS_Core
 				throw new FileNotFoundException("Can not find configuration file");
 			}
 		}
-		public static void CreateNewConfig()
+		public static void CreateNewConfig(bool Debug_enabled)
 		{
-			string[] file = {   "User.Path=Users.dat",
+			string[] file = {
+								"User.Path=Users.dat",
 								"User.OldPath=UsersOld.dat",
 								"Settings.Path=Settings.cfg",
 								"Settings.OldPath=Settings_backup.cfg",
-								"Debug.Path=\\Logs\\",
-								"Debug.Enabled=true"	
+								"Debug.Path=Logs\\",
+								"Debug.Enabled=" + Debug_enabled
 							};
 			File.WriteAllLines(path, file);
+		}
+		public static void DeleteConfig()
+		{
+			File.Delete(path);
 		}
 	}
 }
