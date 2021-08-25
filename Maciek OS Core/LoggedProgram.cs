@@ -29,6 +29,13 @@ namespace Maciek_OS_Core
 				Log.AddLogEvent(new LogEvent("User Action - Input From User ID:" + user._Id, input, LogEvent.Type.Normal, DateTime.Now));
 				switch (TInput[0])
 				{
+					case "start":
+						action = true;
+                        Console.WriteLine("File name:");
+						string c = Console.ReadLine();
+						Process.Start(c);
+						break;
+
 					//User
 					case "user":
 						if (nbt > 1)
