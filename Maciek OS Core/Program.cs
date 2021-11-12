@@ -18,8 +18,10 @@ namespace Maciek_OS_Core
 		static User loggedUser;
 		static UserController userController; //nie usuwać
 		static Log log;
+		public static bool Activated;
 		static void Main(string[] args)
 		{
+			
 			try
 			{
 				Config.LoadConfig();
@@ -29,6 +31,7 @@ namespace Maciek_OS_Core
 				Config.CreateNewConfig(true);
 				Config.LoadConfig();
 			}
+			Activated = Activation.CheckLicense();
 			log = new Log(AppDomain.CurrentDomain.BaseDirectory, Config.DebugPath, Config.DebugEnabled);
 			userController = new UserController(Config.UserPath, Config.UserPathOld);
 			Console.Title = "Maciek OS Core " + Settings.Default["Version"].ToString();
@@ -37,6 +40,10 @@ namespace Maciek_OS_Core
 				if ((bool)Settings.Default["Experimental"])
 				{
 					Console.Title = Console.Title + " Experimental";
+				}
+                if (!Activated)
+                {
+					Console.Title = Console.Title + " | PRODUKT NIE ZOSTAŁ AKTYWOWANY LUB LICENCJA JEST NIE POPRAWNA";
 				}
 				Dual.Watermark();
 				do
@@ -174,8 +181,15 @@ namespace Maciek_OS_Core
 						//Koniec Użytkownika
 
 						case "crash":
-							int n = 0;
-							int y = 5 / n;
+							if ((bool)Settings.Default["Experimental"])
+							{
+								int n = 0;
+								int y = 5 / n;
+							}
+							else
+							{
+								goto default;
+							}
 							break;
 
 
@@ -231,7 +245,9 @@ namespace Maciek_OS_Core
 					ConsoleKey Key = Console.ReadKey().Key;
 					if (Key == ConsoleKey.Y)
 					{
-						LoggedProgram.LoggedMain(null);
+						User tempusr = new User(0, Guid.Empty, User.Type.User, "", "");
+						tempusr._Visible = false;
+						LoggedProgram.LoggedMain(tempusr);
 						Console.WriteLine("");
 					}
 					else

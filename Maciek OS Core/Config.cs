@@ -9,12 +9,13 @@ namespace Maciek_OS_Core
 {
 	class Config
 	{
-		private static string path = "config.json";
+		private static string path = AppDomain.CurrentDomain.BaseDirectory + "config.json";
 		
 		public static string UserPath;
 		public static string UserPathOld;
 		public static string SettingsPath;
 		public static string SettingsPathBackup;
+		public static string AppLicense;
 		public static string DebugPath;
 		public static bool DebugEnabled;
 		public static void LoadConfig()
@@ -40,6 +41,9 @@ namespace Maciek_OS_Core
 						case "Settings.OldPath":
 							SettingsPathBackup = args;
 							break;
+						case "Aplication.License":
+							AppLicense = args;
+							break;
 						case "Debug.Path":
 							DebugPath = args;
 							break;
@@ -63,6 +67,7 @@ namespace Maciek_OS_Core
 								"User.OldPath=UsersOld.dat",
 								"Settings.Path=Settings.cfg",
 								"Settings.OldPath=Settings_backup.cfg",
+								"Aplication.License=null",
 								"Debug.Path=Logs\\",
 								"Debug.Enabled=" + Debug_enabled
 							};

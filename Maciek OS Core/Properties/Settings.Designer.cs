@@ -49,7 +49,7 @@ namespace Maciek_OS_Core.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("05.07")]
+        [global::System.Configuration.DefaultSettingValueAttribute("18.09")]
         public string Compiled {
             get {
                 return ((string)(this["Compiled"]));
@@ -73,7 +73,7 @@ namespace Maciek_OS_Core.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0146")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0216")]
         public string Build {
             get {
                 return ((string)(this["Build"]));

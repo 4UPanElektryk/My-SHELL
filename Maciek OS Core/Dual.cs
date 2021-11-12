@@ -49,6 +49,16 @@ namespace Maciek_OS_Core
 				Console.WriteLine("|  Experimental  " + Settings.Default["Build"].ToString() + "  |");
 			}
 			Console.WriteLine("+----------------------+");
+			if (!Program.Activated)
+			{
+				Console.BackgroundColor = ConsoleColor.DarkRed;
+				Console.ForegroundColor = ConsoleColor.White;
+				Console.WriteLine("PRODUKT NIE ZOSTAŁ AKTYWOWANY LUB LICENCJA JEST NIE POPRAWNA");
+				Console.WriteLine("Skontaktuj się z administratorem lub deweloperem");
+				
+				Console.BackgroundColor = ConsoleColor.Black;
+				Console.ForegroundColor = ConsoleColor.White;
+			}
 			Console.ForegroundColor = ConsoleColor.White;
 		}
 		public static void Msg(string text, ConsoleColor Color, ConsoleColor ColorAfter = ConsoleColor.White, ConsoleColor BGColor = ConsoleColor.Black, ConsoleColor BGColorAfter = ConsoleColor.Black)
