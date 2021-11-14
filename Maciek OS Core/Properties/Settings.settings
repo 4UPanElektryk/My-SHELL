@@ -15,7 +15,7 @@
       <Value Profile="(Default)">2021</Value>
     </Setting>
     <Setting Name="Build" Type="System.String" Scope="User">
-      <Value Profile="(Default)">0216</Value>
+      <Value Profile="(Default)">0254</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MOS_User_Menager_Integration;
 using MOS_Log_Integration;
 
@@ -20,6 +17,7 @@ namespace Maciek_OS_Core.Commands
 			{
 				if (((args[1] == "-cp") || (args[1] == "-changepassword")) && nbt == 2)
                 {
+					action = true;
 					Console.WriteLine("!-{User Password Change wizard}-!");
 					int id = user._Id;
 					Guid guid = user._Guid;
@@ -49,31 +47,47 @@ namespace Maciek_OS_Core.Commands
 					{
 						if (UserController.IsItFree(login))
 						{
-							Console.WriteLine("Password:");
+							Console.WriteLine("Password:(can't contain '|')");
+							bool x = true;
 							string password = Console.ReadLine();
-							Console.WriteLine("User Type: 0 - System Admin, 1 - Admin, 2 - User");
-							int type;
-							bool l = int.TryParse(Console.ReadLine(), out type);
-							if (l)
+							foreach (char item in password)
 							{
-								User.Type Utype = User.Type.User;
-								if (type == 0)
+								if (item == '|')
 								{
-									Utype = User.Type.SysAdmin;
+									x = false;
 								}
-								else if (type == 1)
+							}
+                            if (x)
+                            {
+								Console.WriteLine("User Type: 0 - System Admin, 1 - Admin, 2 - User");
+								int type;
+								bool l = int.TryParse(Console.ReadLine(), out type);
+								if (l)
 								{
-									Utype = User.Type.Admin;
+									User.Type Utype = User.Type.User;
+									if (type == 0)
+									{
+										Utype = User.Type.SysAdmin;
+									}
+									else if (type == 1)
+									{
+										Utype = User.Type.Admin;
+									}
+									else
+									{
+									}
+									User user1 = new User(0, Guid.Empty, Utype, login, password);
+									UserController.AddUser(user1);
 								}
 								else
 								{
+									Dual.Msg("sorry but this value should be number", ConsoleColor.Red);
 								}
-								User user1 = new User(0, Guid.Empty, Utype, login, password);
-								UserController.AddUser(user1);
 							}
-							else
-							{
-								Dual.Msg("sorry but this value should be number", ConsoleColor.Red);
+                            else
+                            {
+								Dual.Msg("password can't contain ' | '", ConsoleColor.Red);
+
 							}
 						}
 						else

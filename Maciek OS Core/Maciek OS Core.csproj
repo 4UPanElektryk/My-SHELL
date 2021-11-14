@@ -75,9 +75,10 @@
   <ItemGroup>
     <Compile Include="Activation.cs" />
     <Compile Include="Commands\CmdUser.cs" />
-    <Compile Include="Commands\HelpCmd.cs" />
+    <Compile Include="Commands\DirCmd.cs" />
+    <Compile Include="Commands\UserOnly\HelpCmd.cs" />
     <Compile Include="Commands\LogsCmd.cs" />
-    <Compile Include="Commands\StartCmd.cs" />
+    <Compile Include="Commands\UserOnly\StartCmd.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Dual.cs" />

@@ -30,6 +30,8 @@ namespace Maciek_OS_Core.Commands
 							Dual.LogWatermark();
 							Log.ClearLogs();
 							Console.ReadKey();
+							Dual.Watermark();
+							Console.Clear();
 						}
 						else
 						{

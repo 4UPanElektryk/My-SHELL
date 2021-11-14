@@ -31,8 +31,8 @@ namespace Maciek_OS_Core
 				Config.CreateNewConfig(true);
 				Config.LoadConfig();
 			}
-			Activated = Activation.CheckLicense();
 			log = new Log(AppDomain.CurrentDomain.BaseDirectory, Config.DebugPath, Config.DebugEnabled);
+			Activated = Activation.CheckLicense();
 			userController = new UserController(Config.UserPath, Config.UserPathOld);
 			Console.Title = "Maciek OS Core " + Settings.Default["Version"].ToString();
 			try

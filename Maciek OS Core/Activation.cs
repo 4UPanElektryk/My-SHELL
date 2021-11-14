@@ -16,9 +16,10 @@ namespace Maciek_OS_Core
 			try
 			{
 				WebClient webClient = new WebClient();
-				webClient.DownloadFile(new Uri("http://techm.ugu.pl/Licensing.tmp"), "Licensing.tmp");
-				string[] file = File.ReadAllLines("Licensing.tmp");
-				File.Delete("Licensing.tmp");
+				webClient.DownloadFile(new Uri("http://techm.ugu.pl/Licensing.tmp"), AppDomain.CurrentDomain.BaseDirectory + "Licensing.tmp");
+				string[] file = File.ReadAllLines(AppDomain.CurrentDomain.BaseDirectory + "Licensing.tmp");
+				File.Delete(AppDomain.CurrentDomain.BaseDirectory + "Licensing.tmp");
+				Log.AddLogEvent(new LogEvent("Licensing", "Activation: Succes", LogEvent.Type.Informtion, DateTime.Now));
 				return file;
 			}
 			catch

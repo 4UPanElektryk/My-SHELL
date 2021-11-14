@@ -1,44 +1,49 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using MOS_User_Menager_Integration;
-using Maciek_OS_Core.Properties;
-using Maciek_OS_Core;
-using MOS_Log_Integration;
+using System.Diagnostics;
 using Maciek_OS_Core.Commands;
+using MOS_User_Menager_Integration;
+using MOS_Log_Integration;
 
 namespace Maciek_OS_Core
 {
 	class LoggedProgram
 	{
+		public static string DIR;
 		public static void LoggedMain(User user)
 		{
+			DirCmd dirCmd = new DirCmd();
+			CmdUser cmdUser = new CmdUser();
+			StartCmd start = new StartCmd();
+			LogsCmd log = new LogsCmd();
+			DIR = AppDomain.CurrentDomain.BaseDirectory;
 			Console.Clear();
 			Dual.Watermark();
 			bool loop = true;
 			do
 			{
 				bool action = false;
-				Console.Write(">>");
-				string input = Console.ReadLine().ToLower();
+				Console.Write(DIR + ">");
+				string dt = Console.ReadLine();
+				string input = dt.ToLower();
 				string[] TInput = input.Split(' ');
 				int nbt = TInput.Length;
 				Log.AddLogEvent(new LogEvent("User Action - Input From User ID:" + user._Id, input, LogEvent.Type.Normal, DateTime.Now));
 				switch (TInput[0])
 				{
+					//cd
+					case "cd":
+						action = dirCmd.cd(dt,TInput, user);
+
+						break;
 					//Start
 					case "start":
-						StartCmd start = new StartCmd();
-						action = start.Execute(TInput, user);
+						action = start.Execute(dt, TInput, user);
 						break;
 
 					//User
 					case "user":
-						CmdUser cmdUser = new CmdUser();
 						action = cmdUser.Execute(TInput,user);
 						break;
 					//User
@@ -49,9 +54,12 @@ namespace Maciek_OS_Core
 						Dual.Watermark();
 						break;
 
+					case "dir":
+						action = dirCmd.dir(user);
+						break;
+
 					//Logs
 					case "log":
-						LogsCmd log = new LogsCmd();
 						action = log.Execute(TInput, user);
 						break;
 					case "logs":
