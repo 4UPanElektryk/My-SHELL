@@ -49,7 +49,7 @@ namespace Maciek_OS_Core.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("4.12")]
+        [global::System.Configuration.DefaultSettingValueAttribute("04.12")]
         public string Compiled {
             get {
                 return ((string)(this["Compiled"]));
