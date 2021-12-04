@@ -10,14 +10,15 @@ using System.Threading.Tasks;
 using Maciek_OS_Core.Properties;
 using MOS_User_Menager_Integration;
 using MOS_Log_Integration;
+using Maciek_OS_Core.Essentials;
 
 namespace Maciek_OS_Core
 {
 	class Program
 	{
 		static User loggedUser;
-		static UserController userController; //nie usuwać
-		static Log log;
+		static UserController userController; //nie usuwać | Do not delete this line
+		static Log log; //nie usuwać | Do not delete this line
 		public static bool Activated;
 		static void Main(string[] args)
 		{
@@ -26,8 +27,9 @@ namespace Maciek_OS_Core
 			{
 				Config.LoadConfig();
 			}
-			catch (FileNotFoundException)
+			catch
 			{
+				Config.DeleteConfig();
 				Config.CreateNewConfig(true);
 				Config.LoadConfig();
 			}
@@ -141,8 +143,7 @@ namespace Maciek_OS_Core
 										Console.WriteLine("User");
 										Console.WriteLine("Id:");
 										string text = Console.ReadLine();
-										int id;
-										if (int.TryParse(text, out id))
+										if (int.TryParse(text, out int id))
 										{
 											Console.WriteLine("Password:");
 											Console.ForegroundColor = ConsoleColor.Black;

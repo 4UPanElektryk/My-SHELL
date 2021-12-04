@@ -7,17 +7,16 @@ using System.Diagnostics;
 using System.IO;
 using MOS_User_Menager_Integration;
 using MOS_Log_Integration;
+using Maciek_OS_Core.Essentials;
 
-namespace Maciek_OS_Core.Commands
+namespace Maciek_OS_Core.Commands.UserOnly
 {
 	public class StartCmd
 	{
-		private User _User;
 		public bool Execute(string input,string[] args, User user)
 		{
 			string p = args[0] + " ";
-			string path = input.TrimStart(p.ToCharArray());
-			_User = user;
+			string path = Dual.TrimStart(input,p);
 			bool action = false;
 			if (path.Contains(':'))
 			{

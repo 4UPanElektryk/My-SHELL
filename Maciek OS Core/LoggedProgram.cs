@@ -5,6 +5,8 @@ using System.Diagnostics;
 using Maciek_OS_Core.Commands;
 using MOS_User_Menager_Integration;
 using MOS_Log_Integration;
+using Maciek_OS_Core.Commands.UserOnly;
+using Maciek_OS_Core.Essentials;
 
 namespace Maciek_OS_Core
 {
@@ -17,6 +19,7 @@ namespace Maciek_OS_Core
 			CmdUser cmdUser = new CmdUser();
 			StartCmd start = new StartCmd();
 			LogsCmd log = new LogsCmd();
+			Nano nano = new Nano();
 			DIR = AppDomain.CurrentDomain.BaseDirectory;
 			Console.Clear();
 			Dual.Watermark();
@@ -34,8 +37,15 @@ namespace Maciek_OS_Core
 				{
 					//cd
 					case "cd":
-						action = dirCmd.cd(dt,TInput, user);
-
+						action = dirCmd.Cd(dt,TInput, user);
+						break;
+					//mkdir
+					case "mkdir":
+						action = dirCmd.MKDir(TInput,dt);
+						break;
+					//deldir
+					case "deldir":
+						action = dirCmd.DelDir(TInput, dt);
 						break;
 					//Start
 					case "start":
@@ -55,7 +65,7 @@ namespace Maciek_OS_Core
 						break;
 
 					case "dir":
-						action = dirCmd.dir(user);
+						action = dirCmd.Dir(user);
 						break;
 
 					//Logs
@@ -88,6 +98,11 @@ namespace Maciek_OS_Core
 						Console.WriteLine("How Did We Get Here? ");
 						Console.ForegroundColor = ConsoleColor.White;
 						Console.WriteLine("");
+						break;
+
+					//Nano
+					case "nano":
+						action = nano.Execute(TInput, dt);
 						break;
 
 					//Logoff

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using MOS_Log_Integration;
 using MOS_User_Menager_Integration;
+using Maciek_OS_Core.Essentials;
 
 namespace Maciek_OS_Core.Commands
 {

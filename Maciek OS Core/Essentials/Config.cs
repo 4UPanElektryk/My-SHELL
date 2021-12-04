@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Maciek_OS_Core
+namespace Maciek_OS_Core.Essentials
 {
 	class Config
 	{
@@ -65,8 +65,6 @@ namespace Maciek_OS_Core
 			string[] file = {
 								"User.Path=Users.dat",
 								"User.OldPath=UsersOld.dat",
-								"Settings.Path=Settings.cfg",
-								"Settings.OldPath=Settings_backup.cfg",
 								"Aplication.License=null",
 								"Debug.Path=Logs\\",
 								"Debug.Enabled=" + Debug_enabled

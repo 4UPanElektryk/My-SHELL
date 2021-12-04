@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MOS_Log_Integration;
 
-namespace Maciek_OS_Core
+namespace Maciek_OS_Core.Essentials
 {
     public class Activation
     {

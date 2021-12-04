@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using MOS_User_Menager_Integration;
 using MOS_Log_Integration;
+using Maciek_OS_Core.Essentials;
 
 namespace Maciek_OS_Core.Commands
 {
@@ -60,8 +61,7 @@ namespace Maciek_OS_Core.Commands
                             if (x)
                             {
 								Console.WriteLine("User Type: 0 - System Admin, 1 - Admin, 2 - User");
-								int type;
-								bool l = int.TryParse(Console.ReadLine(), out type);
+								bool l = int.TryParse(Console.ReadLine(), out int type);
 								if (l)
 								{
 									User.Type Utype = User.Type.User;
@@ -114,8 +114,7 @@ namespace Maciek_OS_Core.Commands
 					action = true;
 					Console.WriteLine("!--{User Delete wizard}--!");
 					Console.WriteLine("Id:");
-					int Id;
-					bool t = int.TryParse(Console.ReadLine(), out Id);
+					bool t = int.TryParse(Console.ReadLine(), out int Id);
 					if (t)
 					{
 						Console.WriteLine("Password:");
@@ -187,8 +186,7 @@ namespace Maciek_OS_Core.Commands
 						{
 							action = true;
 							Console.WriteLine("Id:");
-							int Id;
-							bool t = int.TryParse(Console.ReadLine(), out Id);
+							bool t = int.TryParse(Console.ReadLine(), out int Id);
 							if (t)
 							{
 								if (UserController.FindUserByIdNoPass(Id) != null)
@@ -218,8 +216,7 @@ namespace Maciek_OS_Core.Commands
 							if (user._State == User.Type.SysAdmin)
 							{
 								Console.WriteLine("Id:");
-								int Id;
-								bool t = int.TryParse(Console.ReadLine(), out Id);
+								bool t = int.TryParse(Console.ReadLine(), out int Id);
 								if (t)
 								{
 									if (UserController.FindUserByIdNoPass(Id) != null)

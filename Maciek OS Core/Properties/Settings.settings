@@ -9,7 +9,7 @@
       <Value Profile="(Default)">4.3</Value>
     </Setting>
     <Setting Name="Compiled" Type="System.String" Scope="User">
-      <Value Profile="(Default)">18.09</Value>
+      <Value Profile="(Default)">4.12</Value>
     </Setting>
     <Setting Name="year" Type="System.String" Scope="User">
       <Value Profile="(Default)">2021</Value>
