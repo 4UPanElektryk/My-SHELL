@@ -286,7 +286,7 @@ namespace Maciek_OS_Core.Commands.UserOnly
 							{
 								foreach (Text item in texts)
 								{
-									if (ggg == item.N)
+									if (ggg - 1 == item.N)
 									{
 										vls[ggg] = Dual.ColorToInt(item.Color) + "#" + Dual.ColorToInt(item.BGColor) + "#" + item.S;
 									}
@@ -375,7 +375,7 @@ namespace Maciek_OS_Core.Commands.UserOnly
 							{
 								foreach (Text item in texts)
 								{
-									if (ggg == item.N)
+									if (ggg-1 == item.N)
 									{
 										vls[ggg + 1] = Dual.ColorToInt(item.Color) + "#" + Dual.ColorToInt(item.BGColor) + "#" + item.S;
 									}
