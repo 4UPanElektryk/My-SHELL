@@ -118,5 +118,8 @@
   <ItemGroup>
     <Content Include="document-console-icon.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Commands\UserOnly\Apps\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Net;
 using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MOS_Log_Integration;
 
 namespace Maciek_OS_Core.Essentials
@@ -16,7 +12,10 @@ namespace Maciek_OS_Core.Essentials
 			try
 			{
 				WebClient webClient = new WebClient();
-				webClient.DownloadFile(new Uri("http://techm.ugu.pl/Licensing.tmp"), AppDomain.CurrentDomain.BaseDirectory + "Licensing.tmp");
+                if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + "Licensing.tmp"))
+                {
+					webClient.DownloadFile(new Uri("http://techm.ugu.pl/Licensing.tmp"), AppDomain.CurrentDomain.BaseDirectory + "Licensing.tmp");
+				}
 				string[] file = File.ReadAllLines(AppDomain.CurrentDomain.BaseDirectory + "Licensing.tmp");
 				File.Delete(AppDomain.CurrentDomain.BaseDirectory + "Licensing.tmp");
 				Log.AddLogEvent(new LogEvent("Licensing", "Activation: Succes", LogEvent.Type.Informtion, DateTime.Now));
@@ -41,7 +40,7 @@ namespace Maciek_OS_Core.Essentials
 					string args = xdata[1];
 					switch (xdata[0])
 					{
-						case "MCOSCore4.2.License":
+						case "MCOSCore4.3.License":
 							License = args;
 							break;
 						default:

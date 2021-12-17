@@ -3,7 +3,6 @@ using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Maciek_OS_Core.Essentials;
 
 namespace Maciek_OS_Core.Commands.UserOnly
@@ -14,10 +13,7 @@ namespace Maciek_OS_Core.Commands.UserOnly
 		{
 			List<Text>texts = new List<Text>();
 			bool color_formating = false;
-			int k = 0;
-			int w = 0;
-			int g = 0;
-			int nbt = args.Length;
+			int k = 0,w = 0,g = 0,nbt = args.Length;
 			bool action = true;
 			string path;
 			if (nbt > 1)
@@ -126,7 +122,7 @@ namespace Maciek_OS_Core.Commands.UserOnly
 							}
 							if (TInput[1] == "-off")
 							{
-								color_formating = true;
+								color_formating = false;
 							}
 						}
 						if (mnbt == 1)
@@ -320,7 +316,7 @@ namespace Maciek_OS_Core.Commands.UserOnly
 						}
 						else
 						{
-							string[] vls = new string[texts.Count + 1];
+							string[] vls = new string[texts.Count];
 							int ggg = 0;
 							bool m = true;
 							do

@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Globalization;
 using System.Diagnostics;
-using System.IO;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using Maciek_OS_Core.Properties;
 using MOS_User_Menager_Integration;
 using MOS_Log_Integration;
