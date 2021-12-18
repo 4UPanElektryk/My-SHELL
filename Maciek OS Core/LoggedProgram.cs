@@ -16,10 +16,10 @@ namespace Maciek_OS_Core
 		public static void LoggedMain(User user)
 		{
 			DirCmd dirCmd = new DirCmd();
-			CmdUser cmdUser = new CmdUser();
+			UserCmd cmdUser = new UserCmd();
 			StartCmd start = new StartCmd();
 			LogsCmd log = new LogsCmd();
-			Nano nano = new Nano();
+			NanoCmd nano = new NanoCmd();
 			DIR = AppDomain.CurrentDomain.BaseDirectory;
 			Console.Clear();
 			Dual.Watermark();

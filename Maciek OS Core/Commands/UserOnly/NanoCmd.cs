@@ -7,7 +7,7 @@ using Maciek_OS_Core.Essentials;
 
 namespace Maciek_OS_Core.Commands.UserOnly
 {
-	class Nano
+	class NanoCmd
 	{
 		public bool Execute(string[] args, string input)
 		{

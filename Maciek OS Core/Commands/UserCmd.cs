@@ -6,7 +6,7 @@ using Maciek_OS_Core.Essentials;
 
 namespace Maciek_OS_Core.Commands
 {
-	public class CmdUser
+	public class UserCmd
 	{
 		private User _User;
 		public bool Execute(string[] args, User user)

@@ -74,11 +74,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Essentials\Activation.cs" />
-    <Compile Include="Commands\CmdUser.cs" />
+    <Compile Include="Commands\UserCmd.cs" />
     <Compile Include="Commands\DirCmd.cs" />
     <Compile Include="Commands\UserOnly\HelpCmd.cs" />
     <Compile Include="Commands\LogsCmd.cs" />
-    <Compile Include="Commands\UserOnly\Nano.cs" />
+    <Compile Include="Commands\UserOnly\NanoCmd.cs" />
     <Compile Include="Commands\UserOnly\StartCmd.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Essentials\Config.cs" />
@@ -118,8 +118,6 @@
   <ItemGroup>
     <Content Include="document-console-icon.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Commands\UserOnly\Apps\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

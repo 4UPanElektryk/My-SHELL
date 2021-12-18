@@ -27,9 +27,9 @@ namespace Maciek_OS_Core
 				Config.CreateNewConfig(true);
 				Config.LoadConfig();
 			}
-			log = new Log(AppDomain.CurrentDomain.BaseDirectory, Config.DebugPath, Config.DebugEnabled);
+			log = new Log(AppDomain.CurrentDomain.BaseDirectory, Config.LogsPath, Config.LogsEnabled);
 			Activated = Activation.CheckLicense();
-			userController = new UserController(Config.UserPath, Config.UserPathOld);
+			userController = new UserController(Config.UserPath, Config.UserPathOld, Config.LogsUserPath, Config.LogsEnabled);
 			Console.Title = "Maciek OS Core " + Settings.Default["Version"].ToString();
 			try
 			{

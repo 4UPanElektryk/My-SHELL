@@ -12,8 +12,9 @@ namespace Maciek_OS_Core.Essentials
 		public static string SettingsPath;
 		public static string SettingsPathBackup;
 		public static string AppLicense;
-		public static string DebugPath;
-		public static bool DebugEnabled;
+		public static string LogsPath;
+		public static string LogsUserPath;
+		public static bool LogsEnabled;
 		public static void LoadConfig()
 		{
 			if (File.Exists(path))
@@ -40,11 +41,14 @@ namespace Maciek_OS_Core.Essentials
 						case "Aplication.License":
 							AppLicense = args;
 							break;
-						case "Debug.Path":
-							DebugPath = args;
-							break;
-						case "Debug.Enabled":
-							DebugEnabled = bool.Parse(args);
+						case "Logs.Path":
+							LogsPath = args;
+                            break;
+                        case "Logs.UserLogsPath=Logs\\UserLogs\\":
+							LogsUserPath = args;
+                            break;
+						case "Logs.Enabled":
+							LogsEnabled = bool.Parse(args);
 							break;
 						default:
 							break;
@@ -62,8 +66,9 @@ namespace Maciek_OS_Core.Essentials
 								"User.Path=Users.dat",
 								"User.OldPath=UsersOld.dat",
 								"Aplication.License=null",
-								"Debug.Path=Logs\\",
-								"Debug.Enabled=" + Debug_enabled
+								"Logs.Path=Logs\\",
+								"Logs.UserLogsPath=Logs\\UserLogs\\",
+								"Logs.Enabled=" + Debug_enabled
 							};
 			File.WriteAllLines(path, file);
 		}
