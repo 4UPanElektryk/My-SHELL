@@ -49,7 +49,7 @@ namespace Maciek_OS_Core.Commands
 							Console.WriteLine("File nr: ");
 							int path = int.Parse(Console.ReadLine());
 							Console.WriteLine("");
-							string p = AppDomain.CurrentDomain.BaseDirectory + Config.DebugPath + "LOG" + path.ToString() + ".log";
+							string p = AppDomain.CurrentDomain.BaseDirectory + Config.LogsPath + "LOG" + path.ToString() + ".log";
 							try
 							{
 								string[] _file = File.ReadAllLines(@p);
@@ -113,7 +113,7 @@ namespace Maciek_OS_Core.Commands
 						action = true;
 						if (user._State == User.Type.SysAdmin)
 						{
-							if (Config.DebugEnabled)
+							if (Config.LogsEnabled)
 							{
 								Dual.Msg("Logs are enabled", ConsoleColor.Yellow);
 							}
@@ -138,7 +138,7 @@ namespace Maciek_OS_Core.Commands
 							Config.DeleteConfig();
 							Config.CreateNewConfig(true);
 							Config.LoadConfig();
-							Log.ChangeEnable(Config.DebugEnabled);
+							Log.ChangeEnable(Config.LogsEnabled);
 							Dual.Msg("Logs are now enabled", ConsoleColor.Yellow);
 						}
 						else
@@ -154,7 +154,7 @@ namespace Maciek_OS_Core.Commands
 							Config.DeleteConfig();
 							Config.CreateNewConfig(false);
 							Config.LoadConfig();
-							Log.ChangeEnable(Config.DebugEnabled);
+							Log.ChangeEnable(Config.LogsEnabled);
 							Dual.Msg("Logs are now disabled", ConsoleColor.Yellow);
 						}
 						else

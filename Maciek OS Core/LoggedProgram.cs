@@ -74,7 +74,7 @@ namespace Maciek_OS_Core
 						break;
 					case "logs":
 						action = true;
-						string[] f = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + Config.DebugPath);
+						string[] f = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + Config.LogsPath);
 						foreach (string item in f)
 						{
 							string x = AppDomain.CurrentDomain.BaseDirectory;

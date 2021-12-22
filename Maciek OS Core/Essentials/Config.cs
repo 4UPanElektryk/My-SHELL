@@ -44,7 +44,7 @@ namespace Maciek_OS_Core.Essentials
 						case "Logs.Path":
 							LogsPath = args;
                             break;
-                        case "Logs.UserLogsPath=Logs\\UserLogs\\":
+                        case "Logs.UserLogsPath":
 							LogsUserPath = args;
                             break;
 						case "Logs.Enabled":
