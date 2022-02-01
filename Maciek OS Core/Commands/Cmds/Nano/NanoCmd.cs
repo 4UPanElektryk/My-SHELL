@@ -4,16 +4,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Maciek_OS_Core.Essentials;
+using MOS_User_Menager_Integration;
 
-namespace Maciek_OS_Core.Commands.UserOnly
+namespace Maciek_OS_Core.Commands.Cmds.Nano
 {
-	class NanoCmd
+	class NanoCmd : Cmd
 	{
-		public bool Execute(string[] args, string input)
-		{
-			List<Text>texts = new List<Text>();
+		public NanoCmd (string name) : base (name) { }
+        public override bool Execute(string[] args, string input, User user)
+        {
+			List<Text> texts = new List<Text>();
 			bool color_formating = false;
-			int k = 0,w = 0,g = 0,nbt = args.Length;
+			int k = 0, w = 0, g = 0, nbt = args.Length;
 			bool action = true;
 			string path;
 			if (nbt > 1)
@@ -27,7 +29,7 @@ namespace Maciek_OS_Core.Commands.UserOnly
 			}
 			if (path.Contains(':'))
 			{
-			
+
 			}
 			else
 			{
@@ -36,12 +38,12 @@ namespace Maciek_OS_Core.Commands.UserOnly
 			if (File.Exists(path))
 			{
 				string[] file = File.ReadAllLines(path);
-                if (file[0] == "#color_formating_enabled")
-                {
+				if (file[0] == "#color_formating_enabled")
+				{
 					foreach (string item in file)
 					{
-                        if (k != 0)
-                        {
+						if (k != 0)
+						{
 							string[] jhj = item.Split('#');
 							string jh = jhj[0] + "#" + jhj[1] + "#";
 							string t = Dual.TrimStart(item, jh);
@@ -54,8 +56,8 @@ namespace Maciek_OS_Core.Commands.UserOnly
 					}
 					color_formating = true;
 				}
-                else
-                {
+				else
+				{
 					foreach (string item in file)
 					{
 						texts.Add(new Text(k, item));
@@ -67,11 +69,11 @@ namespace Maciek_OS_Core.Commands.UserOnly
 			}
 			bool loop = true;
 			w = k;
-            do
-            {
+			do
+			{
 				Console.Clear();
 				Dual.NanoWatermark();
-				
+
 				foreach (Text item in texts)
 				{
 					if (item.N.ToString().Length > g)
@@ -81,8 +83,8 @@ namespace Maciek_OS_Core.Commands.UserOnly
 				}
 				int lw = 0;
 				bool c = true;
-                do
-                {
+				do
+				{
 					foreach (Text item in texts)
 					{
 						if (lw == item.N)
@@ -99,10 +101,10 @@ namespace Maciek_OS_Core.Commands.UserOnly
 							Console.BackgroundColor = ConsoleColor.Black;
 						}
 					}
-                    if (lw == w)
-                    {
+					if (lw == w)
+					{
 						c = false;
-                    }
+					}
 					lw++;
 				} while (c);
 				Console.Write(">");
@@ -229,8 +231,9 @@ namespace Maciek_OS_Core.Commands.UserOnly
 								}
 								texts.Remove(text);
 								Console.WriteLine(text.S);
-								string lh = Console.ReadLine();
-								texts.Add(new Text(text.N, lh));
+								text.S = Console.ReadLine();
+
+								texts.Add(text);
 							}
 						}
 						break;
@@ -392,30 +395,18 @@ namespace Maciek_OS_Core.Commands.UserOnly
 							"Exit          | e",
 							"Color Palette | p"
 						};
-						Dual.showMsg(gtext ,ConsoleColor.White ,ConsoleColor.Blue );
+						Dual.ShowMsg(gtext, ConsoleColor.White, ConsoleColor.Blue);
 						Console.ReadLine();
-						
+
 						break;
 
 					default:
-                        break;
-                }
-            } while (loop);
+						break;
+				}
+			} while (loop);
 			Console.Clear();
 			Dual.Watermark();
 			return action;
 		}
-	}
-	public class Text
-	{
-		public int N;
-		public string S;
-		public ConsoleColor Color = ConsoleColor.White;
-		public ConsoleColor BGColor = ConsoleColor.Black;
-        public Text(int n,string s)
-        {
-			N = n;
-			S = s;
-        }
 	}
 }

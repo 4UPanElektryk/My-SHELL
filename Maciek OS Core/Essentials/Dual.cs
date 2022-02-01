@@ -119,7 +119,7 @@ namespace Maciek_OS_Core.Essentials
 			}
 			return path;
 		}
-		public static void showMsg(string[] text, ConsoleColor Color, ConsoleColor BGColor = ConsoleColor.Black)
+		public static void ShowMsg(string[] text, ConsoleColor Color, ConsoleColor BGColor = ConsoleColor.Black)
         {
 			Console.ForegroundColor = Color;
 			Console.BackgroundColor = BGColor;
@@ -173,21 +173,37 @@ namespace Maciek_OS_Core.Essentials
 			ConsoleColor color;
 			switch (n)
 			{
+				//Black
 				case 0: color = ConsoleColor.Black; break;
+				//Blue
 				case 1: color = ConsoleColor.DarkBlue; break;
+				//Green
 				case 2: color = ConsoleColor.DarkGreen; break;
+				//Aqua
 				case 3: color = ConsoleColor.DarkCyan; break;
+				//Red
 				case 4: color = ConsoleColor.DarkRed; break;
+				//Purple
 				case 5: color = ConsoleColor.DarkMagenta; break;
+				//Yellow
 				case 6: color = ConsoleColor.DarkYellow; break;
+				//White
 				case 7: color = ConsoleColor.Gray; break;
+				//Gray
 				case 8: color = ConsoleColor.DarkGray; break;
+				//Light Blue
 				case 9: color = ConsoleColor.Blue; break;
+				//Light Green
 				case 10: color = ConsoleColor.Green; break;
+				//Light Aqua
 				case 11: color = ConsoleColor.Cyan; break;
+				//Light Red
 				case 12: color = ConsoleColor.Red; break;
+				//Light Purple
 				case 13: color = ConsoleColor.Magenta; break;
+				//Light Yellow
 				case 14: color = ConsoleColor.Yellow; break;
+				//Bright White
 				case 15: color = ConsoleColor.White; break;
 				default:
 					color = ConsoleColor.White;

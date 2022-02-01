@@ -1,22 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
+﻿using MOS_User_Menager_Integration;
+using System;
 using MOS_Log_Integration;
-using MOS_User_Menager_Integration;
 using Maciek_OS_Core.Essentials;
+using System.IO;
 
-namespace Maciek_OS_Core.Commands
+namespace Maciek_OS_Core.Commands.Cmds
 {
-	class LogsCmd
-	{
-		private User _User;
-		public bool Execute(string[] args, User user)
-		{
+    class Logs : Cmd
+    {
+		public Logs(string name) : base(name) { }
+		public override bool Execute(string[] args, string input, User user)
+        {
 			int nbt = args.Length;
-			_User = user;
 			bool action = false;
 			if (nbt > 1)
 			{
@@ -164,14 +159,17 @@ namespace Maciek_OS_Core.Commands
 					}
 				}
 			}
+            else
+            {
+				action = true;
+				string[] f = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + Config.LogsPath);
+				foreach (string item in f)
+				{
+					string x = AppDomain.CurrentDomain.BaseDirectory;
+					Console.WriteLine(item.TrimStart(x.ToCharArray()));
+				}
+			}
 			return action;
 		}
-		public bool ScriptExecute(string[] args, User user)
-		{
-			int nbt = args.Length;
-			_User = user;
-			bool action = false;
-			return action;
-		}
-	}
+    }
 }

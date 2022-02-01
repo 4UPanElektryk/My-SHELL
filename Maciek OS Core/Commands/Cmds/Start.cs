@@ -1,22 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Diagnostics;
+﻿using MOS_User_Menager_Integration;
+using System;
 using System.IO;
-using MOS_User_Menager_Integration;
-using MOS_Log_Integration;
 using Maciek_OS_Core.Essentials;
+using MOS_Log_Integration;
+using System.Diagnostics;
+using System.Linq;
 
-namespace Maciek_OS_Core.Commands.UserOnly
+namespace Maciek_OS_Core.Commands.Cmds
 {
-	public class StartCmd
-	{
-		public bool Execute(string input,string[] args, User user)
-		{
+    class Start : Cmd
+    {
+		public Start(string name) : base(name) { }
+		public override bool Execute(string[] args, string input, User user)
+        {
 			string p = args[0] + " ";
-			string path = Dual.TrimStart(input,p);
+			string path = Dual.TrimStart(input, p);
 			bool action = false;
 			if (path.Contains(':'))
 			{
@@ -50,5 +48,5 @@ namespace Maciek_OS_Core.Commands.UserOnly
 			}
 			return action;
 		}
-	}
+    }
 }

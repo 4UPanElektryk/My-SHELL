@@ -27,25 +27,23 @@ namespace Maciek_OS_Core
 				Config.CreateNewConfig(true);
 				Config.LoadConfig();
 			}
-			log = new Log(AppDomain.CurrentDomain.BaseDirectory, Config.LogsPath, Config.LogsEnabled);
-			Activated = Activation.CheckLicense();
-			userController = new UserController(Config.UserPath, Config.UserPathOld, Config.LogsUserPath, Config.LogsEnabled);
-			/*try
+			try
 			{
 				log = new Log(AppDomain.CurrentDomain.BaseDirectory, Config.LogsPath, Config.LogsEnabled);
 				Activated = Activation.CheckLicense();
-				userController = new UserController(Config.UserPath, Config.UserPathOld, Config.LogsUserPath, Config.LogsEnabled);
+				userController = new UserController(Config.UserPath, Config.UserPathOld);
 			}
 			catch(Exception ex)
 			{
 				string[] msg = { 
 									"Startup Failed:",
-									ex.Message 
+									ex.Message,
+									ex.Data.ToString()
 								};
-				Dual.showMsg(msg,Dual.IntToColor(15), Dual.IntToColor(4));
+				Dual.ShowMsg(msg,Dual.IntToColor(15), Dual.IntToColor(4));
+				Console.ReadKey();
 			}
-			Console.ReadKey();
-			Console.Clear();*/
+			Console.Clear();
 			Console.Title = "Maciek OS Core " + Settings.Default["Version"].ToString();
 			try
 			{

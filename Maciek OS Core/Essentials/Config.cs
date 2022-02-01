@@ -9,10 +9,9 @@ namespace Maciek_OS_Core.Essentials
 		
 		public static string UserPath;
 		public static string UserPathOld;
-		public static string SettingsPath;
-		public static string SettingsPathBackup;
 		public static string AppLicense;
 		public static string LogsPath;
+		public static string NanoExtentions;
 		public static string LogsUserPath;
 		public static bool LogsEnabled;
 		public static void LoadConfig()
@@ -32,14 +31,10 @@ namespace Maciek_OS_Core.Essentials
 						case "User.OldPath":
 							UserPathOld = args;
 							break;
-						case "Settings.Path":
-							SettingsPath = args;
-							break;
-						case "Settings.OldPath":
-							SettingsPathBackup = args;
-							break;
 						case "Aplication.License":
 							AppLicense = args;
+							break;
+						case "Nano.Extentions":
 							break;
 						case "Logs.Path":
 							LogsPath = args;
@@ -66,6 +61,7 @@ namespace Maciek_OS_Core.Essentials
 								"User.Path=Users.dat",
 								"User.OldPath=UsersOld.dat",
 								"Aplication.License=null",
+                                "Nano.Extentions=Extentions\\",
 								"Logs.Path=Logs\\",
 								"Logs.UserLogsPath=Logs\\UserLogs\\",
 								"Logs.Enabled=" + Debug_enabled

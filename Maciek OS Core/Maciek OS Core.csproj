@@ -73,14 +73,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\Cmds\CD.cs" />
+    <Compile Include="Commands\Cmds\Clear.cs" />
+    <Compile Include="Commands\Cmds\DelDir.cs" />
+    <Compile Include="Commands\Cmds\Dir.cs" />
+    <Compile Include="Commands\Cmds\Logoff.cs" />
+    <Compile Include="Commands\Cmds\Logs.cs" />
+    <Compile Include="Commands\Cmds\MKDir.cs" />
+    <Compile Include="Commands\Cmds\Note.cs" />
+    <Compile Include="Commands\Cmds\Start.cs" />
+    <Compile Include="Commands\Cmds\Nano\Text.cs" />
+    <Compile Include="Commands\Cmds\Users.cs" />
+    <Compile Include="Commands\CommandMenager.cs" />
     <Compile Include="Essentials\Activation.cs" />
-    <Compile Include="Commands\UserCmd.cs" />
-    <Compile Include="Commands\DirCmd.cs" />
-    <Compile Include="Commands\UserOnly\HelpCmd.cs" />
-    <Compile Include="Commands\LogsCmd.cs" />
-    <Compile Include="Commands\UserOnly\NanoCmd.cs" />
-    <Compile Include="Commands\UserOnly\StartCmd.cs" />
-    <Compile Include="Commands\Command.cs" />
+    <Compile Include="Commands\Cmds\Nano\NanoCmd.cs" />
+    <Compile Include="Commands\Cmd.cs" />
     <Compile Include="Essentials\Config.cs" />
     <Compile Include="Essentials\Dual.cs" />
     <Compile Include="GlobalSuppressions.cs" />

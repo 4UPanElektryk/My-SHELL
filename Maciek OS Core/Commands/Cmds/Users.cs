@@ -1,43 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
-using MOS_User_Menager_Integration;
-using MOS_Log_Integration;
 using Maciek_OS_Core.Essentials;
+using MOS_User_Menager_Integration;
 
-namespace Maciek_OS_Core.Commands
+namespace Maciek_OS_Core.Commands.Cmds
 {
-	public class UserCmd
-	{
-		private User _User;
-		public bool Execute(string[] args, User user)
-		{
+    class Users : Cmd
+    {
+		public Users(string name) : base(name) { }
+		public override bool Execute(string[] args, string input, User user)
+        {
 			bool action = false;
 			int nbt = args.Length;
-			_User = user;
 			if (nbt > 1)
 			{
 				if (((args[1] == "-cp") || (args[1] == "-changepassword")) && nbt == 2)
-                {
+				{
 					action = true;
 					Console.WriteLine("!-{User Password Change wizard}-!");
 					int id = user._Id;
 					Guid guid = user._Guid;
 					User.Type type = user._State;
 					string login = user._Login;
-                    Console.WriteLine("Password:");
+					Console.WriteLine("Password:");
 					string s = Console.ReadLine();
 					if (UserController.FindUser(login, s) != null)
-                    {
+					{
 						Console.WriteLine("New Password:");
 						string sl = Console.ReadLine();
 						UserController.DeleteUser(user);
-						UserController.AddUser(new User(id,guid,type,login,sl));
+						UserController.AddUser(new User(id, guid, type, login, sl));
 					}
-                    else
-                    {
+					else
+					{
 						Dual.Msg("Incorrect Password", ConsoleColor.Red);
 					}
-                }
+				}
 				if ((args[1] == "-add") && nbt == 2)
 				{
 					action = true;
@@ -58,8 +56,8 @@ namespace Maciek_OS_Core.Commands
 									x = false;
 								}
 							}
-                            if (x)
-                            {
+							if (x)
+							{
 								Console.WriteLine("User Type: 0 - System Admin, 1 - Admin, 2 - User");
 								bool l = int.TryParse(Console.ReadLine(), out int type);
 								if (l)
@@ -84,8 +82,8 @@ namespace Maciek_OS_Core.Commands
 									Dual.Msg("sorry but this value should be number", ConsoleColor.Red);
 								}
 							}
-                            else
-                            {
+							else
+							{
 								Dual.Msg("password can't contain ' | '", ConsoleColor.Red);
 
 							}
@@ -257,13 +255,5 @@ namespace Maciek_OS_Core.Commands
 			}
 			return action;
 		}
-		public bool ScriptExecute(string[] args, User user)
-		{
-			bool action = false;
-			int nbt = args.Length;
-			_User = user;
-
-			return action;
-		}
-	}
+    }
 }

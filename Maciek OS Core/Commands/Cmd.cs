@@ -8,20 +8,22 @@ using MOS_User_Menager_Integration;
 
 namespace Maciek_OS_Core.Commands
 {
-	class Command
+	class Cmd
 	{
-		private User _User;
-		public bool Execute(string[] args, User user)
+		public readonly string _Name = "null";
+		public Cmd(string name)
+        {
+			_Name = name;
+        }
+		public virtual bool Execute(string[] args, string input, User user)
 		{
 			int nbt = args.Length;
-			_User = user;
 			bool action = false;
 			return action;
 		}
-		public bool ScriptExecute(string[] args, User user)
+		public virtual bool ScriptExecute(string[] args, User user)
 		{
 			int nbt = args.Length;
-			_User = user;
 			bool action = false;
 			return action;
 		}
