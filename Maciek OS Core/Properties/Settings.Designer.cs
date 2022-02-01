@@ -49,7 +49,7 @@ namespace Maciek_OS_Core.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("04.12")]
+        [global::System.Configuration.DefaultSettingValueAttribute("01.02")]
         public string Compiled {
             get {
                 return ((string)(this["Compiled"]));
@@ -61,7 +61,7 @@ namespace Maciek_OS_Core.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2021")]
+        [global::System.Configuration.DefaultSettingValueAttribute("2022")]
         public string year {
             get {
                 return ((string)(this["year"]));
@@ -73,7 +73,7 @@ namespace Maciek_OS_Core.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0254")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0264")]
         public string Build {
             get {
                 return ((string)(this["Build"]));
