@@ -9,13 +9,13 @@
       <Value Profile="(Default)">4.3</Value>
     </Setting>
     <Setting Name="Compiled" Type="System.String" Scope="User">
-      <Value Profile="(Default)">01.02</Value>
+      <Value Profile="(Default)">03.02</Value>
     </Setting>
     <Setting Name="year" Type="System.String" Scope="User">
       <Value Profile="(Default)">2022</Value>
     </Setting>
     <Setting Name="Build" Type="System.String" Scope="User">
-      <Value Profile="(Default)">0264</Value>
+      <Value Profile="(Default)">0275</Value>
     </Setting>
   </Settings>
 </SettingsFile>
