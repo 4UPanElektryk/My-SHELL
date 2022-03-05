@@ -6,14 +6,15 @@ namespace Maciek_OS_Core.Essentials
 	class Config
 	{
 		private static string path = AppDomain.CurrentDomain.BaseDirectory + "config.json";
-		
-		public static string UserPath;
-		public static string UserPathOld;
+
+		public static bool AppAutoUpdate;
 		public static string AppLicense;
 		public static string LogsPath;
-		public static string NanoExtentions;
-		public static string LogsUserPath;
 		public static bool LogsEnabled;
+		public static string LogsUserPath;
+		public static string NanoExtentions;
+		public static string UserPath;
+		public static string UserPathOld;
 		public static void LoadConfig()
 		{
 			if (File.Exists(path))
@@ -45,6 +46,7 @@ namespace Maciek_OS_Core.Essentials
 						case "Logs.Enabled":
 							LogsEnabled = bool.Parse(args);
 							break;
+						case "Aplication.CheckForUpdates":
 						default:
 							break;
 					}

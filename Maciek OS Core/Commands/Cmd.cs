@@ -21,11 +21,5 @@ namespace Maciek_OS_Core.Commands
 			bool action = false;
 			return action;
 		}
-		public virtual bool ScriptExecute(string[] args, User user)
-		{
-			int nbt = args.Length;
-			bool action = false;
-			return action;
-		}
 	}
 }
