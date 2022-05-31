@@ -1,13 +1,15 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
-using Maciek_OS_Core.Properties;
+using Maciek_SHELL.Properties;
 
-namespace Maciek_OS_Core.Essentials
+namespace Maciek_SHELL.Essentials
 {
-	public class Dual
+	public static class Dual
 	{
-		public static void LogWatermark()
+        public static void LogWatermark()
 		{
 			Console.OutputEncoding = Encoding.Unicode;
 			if ((bool)Settings.Default["Experimental"])
@@ -19,8 +21,8 @@ namespace Maciek_OS_Core.Essentials
 				Console.ForegroundColor = ConsoleColor.Green;
 			}
 			Console.WriteLine("+---------------------------+");
-			Console.WriteLine("|  Maciek Log Opener ©" + Settings.Default["Year"].ToString() + "  |");
-			Console.WriteLine("|  Ver   " + Settings.Default["Version"].ToString() + "   CL    " + Settings.Default["Compiled"].ToString() + "  |");
+			Console.WriteLine("|  Maciek Log Opener ©" + GetCompilationTime().Year + "  |");
+			Console.WriteLine("|  Ver   " + Settings.Default["Version"].ToString() + "   CL    " + GetCompilationDDMMString() + "  |");
 			if ((bool)Settings.Default["Experimental"])
 			{
 				Console.WriteLine("|  Experimental       " + Settings.Default["Build"].ToString() + "  |");
@@ -40,8 +42,8 @@ namespace Maciek_OS_Core.Essentials
 				Console.ForegroundColor = ConsoleColor.Green;
 			}
 			Console.WriteLine("+----------------------+");
-			Console.WriteLine("|  Nano Editor  ©" + Settings.Default["Year"].ToString() + "  |");
-			Console.WriteLine("|  Ver " + Settings.Default["Version"].ToString() + "   CL " + Settings.Default["Compiled"].ToString() + "  |");
+			Console.WriteLine("|  Nano Editor  ©" + GetCompilationYYYYString() + "  |");
+			Console.WriteLine("|  Ver " + Settings.Default["Version"].ToString() + "   CL " + GetCompilationDDMMString() + "  |");
 			if ((bool)Settings.Default["Experimental"])
 			{
 				Console.WriteLine("|  Experimental  " + Settings.Default["Build"].ToString() + "  |");
@@ -60,24 +62,14 @@ namespace Maciek_OS_Core.Essentials
 			{
 				Console.ForegroundColor = ConsoleColor.Green;
 			}
-			Console.WriteLine("+----------------------+");
-			Console.WriteLine("|  Maciek Basic ©" + Settings.Default["Year"].ToString() + "  |");
-			Console.WriteLine("|  Ver " + Settings.Default["Version"].ToString() + "   CL " + Settings.Default["Compiled"].ToString() + "  |");
+			Console.WriteLine("┏━━━━━━━━━━━━━━━━━━━━┓");
+			Console.WriteLine("┃ Maciek Shell ©" + GetCompilationYYYYString() + " ┃");
+			Console.WriteLine("┃ Ver " + Settings.Default["Version"].ToString() + "   CL " + GetCompilationDDMMString() + " ┃");
 			if ((bool)Settings.Default["Experimental"])
 			{
-				Console.WriteLine("|  Experimental  " + Settings.Default["Build"].ToString() + "  |");
+				Console.WriteLine("┃ Experimental  " + Settings.Default["Build"].ToString() + " ┃");
 			}
-			Console.WriteLine("+----------------------+");
-			if (!Program.Activated)
-			{
-				Console.BackgroundColor = ConsoleColor.DarkRed;
-				Console.ForegroundColor = ConsoleColor.White;
-				Console.WriteLine("PRODUKT NIE ZOSTAŁ AKTYWOWANY LUB LICENCJA JEST NIE POPRAWNA");
-				Console.WriteLine("Skontaktuj się z administratorem lub deweloperem");
-				
-				Console.BackgroundColor = ConsoleColor.Black;
-				Console.ForegroundColor = ConsoleColor.White;
-			}
+			Console.WriteLine("┗━━━━━━━━━━━━━━━━━━━━┛ ");
 			Console.ForegroundColor = ConsoleColor.White;
 		}
 		public static void Msg(string text, ConsoleColor Color, ConsoleColor ColorAfter = ConsoleColor.White, ConsoleColor BGColor = ConsoleColor.Black, ConsoleColor BGColorAfter = ConsoleColor.Black)
@@ -119,7 +111,7 @@ namespace Maciek_OS_Core.Essentials
 			}
 			return path;
 		}
-		public static void showMsg(string[] text, ConsoleColor Color, ConsoleColor BGColor = ConsoleColor.Black)
+		public static void ShowMsg(string[] text, ConsoleColor Color, ConsoleColor BGColor = ConsoleColor.Black)
         {
 			Console.ForegroundColor = Color;
 			Console.BackgroundColor = BGColor;
@@ -173,21 +165,37 @@ namespace Maciek_OS_Core.Essentials
 			ConsoleColor color;
 			switch (n)
 			{
+				//Black
 				case 0: color = ConsoleColor.Black; break;
+				//Blue
 				case 1: color = ConsoleColor.DarkBlue; break;
+				//Green
 				case 2: color = ConsoleColor.DarkGreen; break;
+				//Aqua
 				case 3: color = ConsoleColor.DarkCyan; break;
+				//Red
 				case 4: color = ConsoleColor.DarkRed; break;
+				//Purple
 				case 5: color = ConsoleColor.DarkMagenta; break;
+				//Yellow
 				case 6: color = ConsoleColor.DarkYellow; break;
+				//White
 				case 7: color = ConsoleColor.Gray; break;
+				//Gray
 				case 8: color = ConsoleColor.DarkGray; break;
+				//Light Blue
 				case 9: color = ConsoleColor.Blue; break;
+				//Light Green
 				case 10: color = ConsoleColor.Green; break;
+				//Light Aqua
 				case 11: color = ConsoleColor.Cyan; break;
+				//Light Red
 				case 12: color = ConsoleColor.Red; break;
+				//Light Purple
 				case 13: color = ConsoleColor.Magenta; break;
+				//Light Yellow
 				case 14: color = ConsoleColor.Yellow; break;
+				//Bright White
 				case 15: color = ConsoleColor.White; break;
 				default:
 					color = ConsoleColor.White;
@@ -218,6 +226,22 @@ namespace Maciek_OS_Core.Essentials
 				case ConsoleColor.White: color = 15; break;
             }
 			return color;
+        }
+		public static DateTime GetCompilationTime()
+		{
+			return File.GetLastWriteTime(Assembly.GetExecutingAssembly().Location);
+		}
+        public static string GetCompilationDDMMString()
+        {
+            return File.GetLastWriteTime(Assembly.GetExecutingAssembly().Location).ToString("dd.MM");
+        }
+		public static string GetCompilationYYYYString()
+		{
+			return File.GetLastWriteTime(Assembly.GetExecutingAssembly().Location).ToString("yyyy");
+		}
+        public static string Repath(string inputpath)
+        {
+            return inputpath.Replace("~", AppDomain.CurrentDomain.BaseDirectory);
         }
 	}
 }

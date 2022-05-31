@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Net;
 using System.IO;
-using MOS_Log_Integration;
+using SimpleLogs4Net;
 
-namespace Maciek_OS_Core.Essentials
+namespace Maciek_SHELL.Essentials
 {
     public class Activation
     {
@@ -18,12 +18,12 @@ namespace Maciek_OS_Core.Essentials
 				}
 				string[] file = File.ReadAllLines(AppDomain.CurrentDomain.BaseDirectory + "Licensing.tmp");
 				File.Delete(AppDomain.CurrentDomain.BaseDirectory + "Licensing.tmp");
-				Log.AddLogEvent(new LogEvent("Licensing", "Activation: Succes", LogEvent.Type.Informtion, DateTime.Now));
+				Log.AddEvent(new Event("Licensing - Activation: Succes", Event.Type.Informtion, DateTime.Now));
 				return file;
 			}
 			catch
 			{
-				Log.AddLogEvent(new LogEvent("Licensing", "Licensing Failed: Connection Fail", LogEvent.Type.Error, DateTime.Now));
+				Log.AddEvent(new Event("Licensing - Licensing Failed: Connection Fail", Event.Type.Error, DateTime.Now));
 				throw new Exception("Licensing Failed: Connection Fail");
 			}
 		}

@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Collections.Generic;
-using Maciek_OS_Core.Properties;
+using Maciek_SHELL.Properties;
 using MOS_User_Menager_Integration;
-using MOS_Log_Integration;
-using Maciek_OS_Core.Essentials;
+using SimpleLogs4Net;
+using Maciek_SHELL.Essentials;
 
-namespace Maciek_OS_Core
+namespace Maciek_SHELL
 {
 	class Program
 	{
 		static User loggedUser;
-		static UserController userController; //nie usuwać | Do not delete this line
-		static Log log; //nie usuwać | Do not delete this line
 		public static bool Activated;
 		static void Main(string[] args)
 		{
@@ -27,19 +25,31 @@ namespace Maciek_OS_Core
 				Config.CreateNewConfig(true);
 				Config.LoadConfig();
 			}
-			log = new Log(AppDomain.CurrentDomain.BaseDirectory, Config.DebugPath, Config.DebugEnabled);
-			Activated = Activation.CheckLicense();
-			userController = new UserController(Config.UserPath, Config.UserPathOld);
-			Console.Title = "Maciek OS Core " + Settings.Default["Version"].ToString();
+			try
+			{
+				new Log(Config.LogsPath, Config.LogsEnabled,Config.LogsPrefix);
+				Activated = Activation.CheckLicense();
+				new UserController(Config.UserFile, Config.UserFileOld);
+			}
+			catch(Exception ex)
+			{
+				string[] msg = { 
+									"Startup Failed:",
+									ex.Message,
+									ex.Data.ToString(),
+									ex.Source.ToString(),
+                                    "Application will be restarted"
+                                };
+				Dual.ShowMsg(msg,Dual.IntToColor(15), Dual.IntToColor(4));
+				Console.ReadKey();
+			}
+			Console.Clear();
+			Console.Title = "Maciek Shell " + Settings.Default["Version"].ToString();
 			try
 			{
 				if ((bool)Settings.Default["Experimental"])
 				{
 					Console.Title = Console.Title + " Experimental";
-				}
-                if (!Activated)
-                {
-					Console.Title = Console.Title + " | PRODUKT NIE ZOSTAŁ AKTYWOWANY LUB LICENCJA JEST NIE POPRAWNA";
 				}
 				Dual.Watermark();
 				do
@@ -48,7 +58,7 @@ namespace Maciek_OS_Core
 					string input = Console.ReadLine().ToLower();
 					string[] TInput = input.Split(' ');
 					int nbt = TInput.Length;
-					Log.AddLogEvent(new LogEvent("User Action - Input", input,LogEvent.Type.Normal, DateTime.Now));
+					Log.AddEvent(new Event("User Action - Input: " + input,Event.Type.Normal, DateTime.Now));
 					switch (TInput[0])
 					{
 
@@ -59,7 +69,7 @@ namespace Maciek_OS_Core
 							{
 								if (TInput[1] == "-user")
 								{
-									Log.AddLogEvent(new LogEvent("User Action - Help Opened", "Help Sub -user", LogEvent.Type.Normal, DateTime.Now));
+									Log.AddEvent(new Event("User Action - Help Opened: Help Sub -user", Event.Type.Normal, DateTime.Now));
 									action = true;
 									Console.WriteLine("User");
 									Console.WriteLine("-login for login");
@@ -81,7 +91,7 @@ namespace Maciek_OS_Core
 						case "note":
 						case "notepad":
 							action = true;
-							Log.AddLogEvent(new LogEvent("User Action", "Notepad oppening", LogEvent.Type.Normal, DateTime.Now));
+							Log.AddEvent(new Event("User Action: Notepad oppening", Event.Type.Normal, DateTime.Now));
 							Process.Start("note.exe");
 							break;
 
@@ -229,7 +239,7 @@ namespace Maciek_OS_Core
 			}
 			catch(Exception ex)
 			{
-				Log.AddLogEvent(new LogEvent("Aplication Crashed", ex.Message, LogEvent.Type.Critical_Error, DateTime.Now));
+				Log.AddEvent(new Event("Aplication Crashed Message: " + ex.Message, Event.Type.Critical_Error, DateTime.Now));
 				Console.ForegroundColor = ConsoleColor.Red;
 				Console.WriteLine("Error: " + ex.Message);
 				Console.WriteLine("Something went wrong");
@@ -240,7 +250,7 @@ namespace Maciek_OS_Core
 					ConsoleKey Key = Console.ReadKey().Key;
 					if (Key == ConsoleKey.Y)
 					{
-						User tempusr = new User(0, Guid.Empty, User.Type.User, "", "");
+						User tempusr = new User(0, Guid.Empty, User.Type.User, "Temporary User", "");
 						tempusr._Visible = false;
 						LoggedProgram.LoggedMain(tempusr);
 						Console.WriteLine("");

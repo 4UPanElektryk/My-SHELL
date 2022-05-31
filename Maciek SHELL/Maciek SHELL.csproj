@@ -8,7 +8,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>Maciek_OS_Core</RootNamespace>
     <AssemblyName>Maciek OS Core</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -27,6 +27,7 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -48,18 +49,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>document-console-icon.ico</ApplicationIcon>
+    <ApplicationIcon>Images\document-console-icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
   <PropertyGroup />
   <ItemGroup>
-    <Reference Include="MOS Log Integration">
-      <HintPath>..\..\MOS Log Integration\MOS Log Integration\bin\Debug\netstandard2.0\MOS Log Integration.dll</HintPath>
-    </Reference>
-    <Reference Include="MOS User Menager Integration">
+    <Reference Include="MOS User Menager Integration, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\MOS User Menager Integration\MOS User Menager Integration\bin\Debug\netstandard2.0\MOS User Menager Integration.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleLogs4Net, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleLogs4Net.1.2.0\lib\netstandard2.0\SimpleLogs4Net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -73,16 +75,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\Cmds\CD.cs" />
+    <Compile Include="Commands\Cmds\Clear.cs" />
+    <Compile Include="Commands\Cmds\DelDir.cs" />
+    <Compile Include="Commands\Cmds\Dir.cs" />
+    <Compile Include="Commands\Cmds\Logoff.cs" />
+    <Compile Include="Commands\Cmds\Logs.cs" />
+    <Compile Include="Commands\Cmds\MKDir.cs" />
+    <Compile Include="Commands\Cmds\Note.cs" />
+    <Compile Include="Commands\Cmds\Start.cs" />
+    <Compile Include="Commands\Cmds\Nano\Text.cs" />
+    <Compile Include="Commands\Cmds\Users.cs" />
+    <Compile Include="Commands\CommandMenager.cs" />
+    <Compile Include="Commands\SubCmd.cs" />
     <Compile Include="Essentials\Activation.cs" />
-    <Compile Include="Commands\CmdUser.cs" />
-    <Compile Include="Commands\DirCmd.cs" />
-    <Compile Include="Commands\UserOnly\HelpCmd.cs" />
-    <Compile Include="Commands\LogsCmd.cs" />
-    <Compile Include="Commands\UserOnly\Nano.cs" />
-    <Compile Include="Commands\UserOnly\StartCmd.cs" />
-    <Compile Include="Commands\Command.cs" />
+    <Compile Include="Commands\Cmds\Nano\NanoCmd.cs" />
+    <Compile Include="Commands\Cmd.cs" />
     <Compile Include="Essentials\Config.cs" />
     <Compile Include="Essentials\Dual.cs" />
+    <Compile Include="Essentials\Prompt.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="LoggedProgram.cs" />
     <Compile Include="Program.cs" />
@@ -98,6 +109,7 @@
       <Link>.editorconfig</Link>
     </None>
     <None Include="App.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -116,10 +128,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="document-console-icon.ico" />
+    <Content Include="Images\document-console-icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Commands\UserOnly\Apps\" />
+    <Folder Include="Commands\Cmds\SubCmds\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
