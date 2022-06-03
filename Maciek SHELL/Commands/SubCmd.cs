@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MOS_User_Menager_Integration;
+﻿using MOS_User_Menager_Integration;
 
 namespace Maciek_SHELL.Commands
 {
-    class SubCmd
+    public class SubCmd
     {
-        public readonly string _Name = "null";
-        public readonly bool _IsDefault = false;
+        public string _Name = "null";
+        public bool _IsDefault = false;
+        public string _Help = null;
         public SubCmd(string name)
         {
             _Name = name;

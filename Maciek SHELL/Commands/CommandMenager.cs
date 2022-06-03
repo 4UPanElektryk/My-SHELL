@@ -1,48 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using MOS_User_Menager_Integration;
-using Maciek_SHELL.Commands.Cmds;
+﻿using Maciek_SHELL.Commands.Cmds;
 using Maciek_SHELL.Commands.Cmds.Nano;
-using SimpleLogs4Net;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MOS_User_Menager_Integration;
+using System.Collections.Generic;
 
 namespace Maciek_SHELL.Commands
 {
     class CommandMenager
     {
-        public List<Cmd> CmdList;
+        public static List<Cmd> CmdList;
         public CommandMenager()
         {
             CmdList = new List<Cmd>
             {
-                new Users("user"),
-                new Start("start"),
-                new MKDir("mkdir"),
-                new Logs("logs"),
-                new Dir("dir"),
-                new DelDir("deldir"),
-                new CD("cd"),
+                new CmdUsers("user"),
+                new CmdStart("start"),
+                new CmdMKDir("mkdir"),
+                new CmdLogs("logs"),
+                new CmdDir("dir"),
+                new CmdDelDir("deldir"),
+                new CmdCD("cd"),
                 new NanoCmd("nano"),
-                new Logoff("logoff"),
-                new Note("notepad"),
-                new Clear("clear")
+                new CmdLogoff("logoff"),
+                new CmdNote("notepad"),
+                new CmdClear("clear"),
+                new CmdStatus("status")
             };
         }
-        public bool ExecuteCommand(string dt, User user)
+        public bool ExecuteCommand(string input, User user)
         {
-            string input = dt.ToLower();
-            string[] args = input.Split(' ');
-            int nbt = args.Length;
+            string[] args = input.ToLower().Split(' ');
             foreach (Cmd item in CmdList)
             {
                 if (item._Name == args[0])
                 {
-                    return item.Execute(args, dt, user);
+                    return item.Execute(args, input, user);
                 }
             }
-            if (dt == "")
+            if (input == "")
             {
                 return true;
             }
