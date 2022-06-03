@@ -6,9 +6,9 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1E93AC15-A78D-4D51-BE79-8A34AEB5420B}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Maciek_OS_Core</RootNamespace>
-    <AssemblyName>Maciek OS Core</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <RootNamespace>Maciek_SHELL</RootNamespace>
+    <AssemblyName>Maciek SHELL</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -75,17 +75,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\Cmds\CD.cs" />
-    <Compile Include="Commands\Cmds\Clear.cs" />
-    <Compile Include="Commands\Cmds\DelDir.cs" />
-    <Compile Include="Commands\Cmds\Dir.cs" />
-    <Compile Include="Commands\Cmds\Logoff.cs" />
-    <Compile Include="Commands\Cmds\Logs.cs" />
-    <Compile Include="Commands\Cmds\MKDir.cs" />
-    <Compile Include="Commands\Cmds\Note.cs" />
-    <Compile Include="Commands\Cmds\Start.cs" />
+    <Compile Include="Commands\Cmds\CmdCD.cs" />
+    <Compile Include="Commands\Cmds\CmdClear.cs" />
+    <Compile Include="Commands\Cmds\CmdHelp.cs" />
+    <Compile Include="Commands\Cmds\CmdDelDir.cs" />
+    <Compile Include="Commands\Cmds\CmdDir.cs" />
+    <Compile Include="Commands\Cmds\CmdLogoff.cs" />
+    <Compile Include="Commands\Cmds\CmdLogs.cs" />
+    <Compile Include="Commands\Cmds\CmdMKDir.cs" />
+    <Compile Include="Commands\Cmds\CmdNote.cs" />
+    <Compile Include="Commands\Cmds\CmdStart.cs" />
     <Compile Include="Commands\Cmds\Nano\Text.cs" />
-    <Compile Include="Commands\Cmds\Users.cs" />
+    <Compile Include="Commands\Cmds\CmdStatus.cs" />
+    <Compile Include="Commands\Cmds\SubCmds\CmdLogs_Default.cs" />
+    <Compile Include="Commands\Cmds\SubCmds\CmdLogs_Open.cs" />
+    <Compile Include="Commands\Cmds\SubCmds\CmdLogs_State.cs" />
+    <Compile Include="Commands\Cmds\SubCmds\Error_SubCmdNotFound.cs" />
+    <Compile Include="Commands\Cmds\SubCmds\CmdLogs_Clear.cs" />
+    <Compile Include="Commands\Cmds\SubCmds\CmdUsers_Add.cs" />
+    <Compile Include="Commands\Cmds\SubCmds\CmdUsers_CP.cs" />
+    <Compile Include="Commands\Cmds\SubCmds\CmdUsers_Del.cs" />
+    <Compile Include="Commands\Cmds\SubCmds\CmdUsers_Info.cs" />
+    <Compile Include="Commands\Cmds\SubCmds\CmdUsers_List.cs" />
+    <Compile Include="Commands\Cmds\CmdUsers.cs" />
     <Compile Include="Commands\CommandMenager.cs" />
     <Compile Include="Commands\SubCmd.cs" />
     <Compile Include="Essentials\Activation.cs" />
@@ -130,8 +142,6 @@
   <ItemGroup>
     <Content Include="Images\document-console-icon.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Commands\Cmds\SubCmds\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,16 +1,12 @@
-﻿using MOS_User_Menager_Integration;
-using Maciek_SHELL.Essentials;
+﻿using Maciek_SHELL.Essentials;
+using MOS_User_Menager_Integration;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Maciek_SHELL.Commands.Cmds
 {
-    class Clear : Cmd
+    class CmdClear : Cmd
     {
-        public Clear(string name) : base(name) { }
+        public CmdClear(string name) : base(name) { }
         public override bool Execute(string[] args, string input, User user)
         {
             Console.Clear();
