@@ -1,8 +1,4 @@
-﻿using Maciek_SHELL.Commands.Cmds.SubCmds;
-using Maciek_SHELL.Essentials;
-using MOS_User_Menager_Integration;
-using System;
-using System.IO;
+﻿using Maciek_SHELL.Commands.SubCmds;
 namespace Maciek_SHELL.Commands.Cmds
 {
     class CmdLogs : Cmd
@@ -14,5 +10,5 @@ namespace Maciek_SHELL.Commands.Cmds
             _Subs.Add(new CmdLogs_State("state"));
             _Subs.Add(new CmdLogs_Default(null));
         }
-	}
+    }
 }

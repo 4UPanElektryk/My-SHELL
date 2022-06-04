@@ -37,7 +37,7 @@ namespace Maciek_SHELL.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("4.3")]
+        [global::System.Configuration.DefaultSettingValueAttribute("4.4")]
         public string Version {
             get {
                 return ((string)(this["Version"]));
@@ -49,7 +49,7 @@ namespace Maciek_SHELL.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0275")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0314")]
         public string Build {
             get {
                 return ((string)(this["Build"]));

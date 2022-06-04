@@ -6,10 +6,10 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="Version" Type="System.String" Scope="User">
-      <Value Profile="(Default)">4.3</Value>
+      <Value Profile="(Default)">4.4</Value>
     </Setting>
     <Setting Name="Build" Type="System.String" Scope="User">
-      <Value Profile="(Default)">0275</Value>
+      <Value Profile="(Default)">0314</Value>
     </Setting>
   </Settings>
 </SettingsFile>
