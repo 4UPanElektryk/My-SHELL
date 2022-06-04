@@ -12,11 +12,13 @@ namespace Maciek_SHELL
 	{
 		static User loggedUser;
 		public static bool Activated;
+		public static bool Experimental;
 		public static PerformanceCounter cpuCounter;
 		public static PerformanceCounter ramCounter;
 		public static Process currentProc;
 		static void Main(string[] args)
 		{
+			Experimental = Debugger.IsAttached;
 			currentProc = Process.GetCurrentProcess();
 			cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
 			ramCounter = new PerformanceCounter("Memory", "Available MBytes");
@@ -51,12 +53,12 @@ namespace Maciek_SHELL
 			}
 			Console.Clear();
 			Console.Title = "Maciek Shell " + Settings.Default["Version"].ToString();
-			try
-			{
-				if ((bool)Settings.Default["Experimental"])
-				{
-					Console.Title = Console.Title + " Experimental";
-				}
+            if (Experimental)
+            {
+                Console.Title += " Experimental";
+            }
+            try
+			{	
 				Dual.Watermark();
 				do
 				{
@@ -249,7 +251,7 @@ namespace Maciek_SHELL
 				Console.ForegroundColor = ConsoleColor.Red;
 				Console.WriteLine("Error: " + ex.Message);
 				Console.WriteLine("Something went wrong");
-				if ((bool)Settings.Default["Experimental"])
+				if (Debugger.IsAttached)
 				{
 					Console.ForegroundColor = ConsoleColor.Yellow;
 					if (Dual.YesOrNO("Do You want to Continue with code?"))

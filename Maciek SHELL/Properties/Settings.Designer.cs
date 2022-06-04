@@ -25,18 +25,6 @@ namespace Maciek_SHELL.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Experimental {
-            get {
-                return ((bool)(this["Experimental"]));
-            }
-            set {
-                this["Experimental"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("4.4")]
         public string Version {
             get {

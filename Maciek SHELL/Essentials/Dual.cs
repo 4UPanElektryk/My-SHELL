@@ -55,7 +55,7 @@ namespace Maciek_SHELL.Essentials
 		public static void Watermark()
 		{
 			Console.OutputEncoding = Encoding.Unicode;
-			if ((bool)Settings.Default["Experimental"])
+			if (Program.Experimental)
 			{
 				Console.ForegroundColor = ConsoleColor.Yellow;
 			}
@@ -66,7 +66,7 @@ namespace Maciek_SHELL.Essentials
 			Console.WriteLine("┏━━━━━━━━━━━━━━━━━━━━┓");
 			Console.WriteLine("┃ Maciek Shell ©" + GetCompilationYYYYString() + " ┃");
 			Console.WriteLine("┃ Ver " + Settings.Default["Version"].ToString() + "   CL " + GetCompilationDDMMString() + " ┃");
-			if ((bool)Settings.Default["Experimental"])
+			if (Program.Experimental)
 			{
 				Console.WriteLine("┃ Experimental  " + Settings.Default["Build"].ToString() + " ┃");
 			}
