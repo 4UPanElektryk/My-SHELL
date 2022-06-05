@@ -1,4 +1,5 @@
 ﻿using MOS_User_Menager_Integration;
+using Maciek_SHELL.Essentials;
 using System;
 
 namespace Maciek_SHELL.Commands.Cmds
@@ -8,9 +9,7 @@ namespace Maciek_SHELL.Commands.Cmds
 		public CmdLogoff(string name) : base(name) { }
 		public override bool Execute(string[] args, string input, User user)
 		{
-			Console.Write("Do You want to Logoff? Y | N >> ");
-			ConsoleKey Key = Console.ReadKey().Key;
-			if (Key == ConsoleKey.Y)
+			if (Dual.YesOrNO("Do You want to Logoff?"))
 			{
 				Console.WriteLine("");
 				LoggedProgram.loop = false;

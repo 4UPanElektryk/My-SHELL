@@ -13,7 +13,7 @@ namespace Maciek_SHELL.Essentials
 		public static void LogWatermark()
 		{
 			Console.OutputEncoding = Encoding.Unicode;
-			if ((bool)Settings.Default["Experimental"])
+			if (Program.Experimental)
 			{
 				Console.ForegroundColor = ConsoleColor.Yellow;
 			}
@@ -24,7 +24,7 @@ namespace Maciek_SHELL.Essentials
 			Console.WriteLine("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
 			Console.WriteLine("┃  Maciek Log Opener ©" + GetCompilationTime().Year + "  ┃");
 			Console.WriteLine("┃  Ver   " + Settings.Default["Version"].ToString() + "   CL    " + GetCompilationDDMMString() + "  ┃");
-			if ((bool)Settings.Default["Experimental"])
+			if (Program.Experimental)
 			{
 				Console.WriteLine("┃  Experimental       " + Settings.Default["Build"].ToString() + "  ┃");
 			}
@@ -34,7 +34,7 @@ namespace Maciek_SHELL.Essentials
 		public static void NanoWatermark()
 		{
 			Console.OutputEncoding = Encoding.Unicode;
-			if ((bool)Settings.Default["Experimental"])
+			if (Program.Experimental)
 			{
 				Console.ForegroundColor = ConsoleColor.Yellow;
 			}
@@ -45,7 +45,7 @@ namespace Maciek_SHELL.Essentials
 			Console.WriteLine("+----------------------+");
 			Console.WriteLine("|  Nano Editor  ©" + GetCompilationYYYYString() + "  |");
 			Console.WriteLine("|  Ver " + Settings.Default["Version"].ToString() + "   CL " + GetCompilationDDMMString() + "  |");
-			if ((bool)Settings.Default["Experimental"])
+			if (Program.Experimental)
 			{
 				Console.WriteLine("|  Experimental  " + Settings.Default["Build"].ToString() + "  |");
 			}
@@ -55,7 +55,7 @@ namespace Maciek_SHELL.Essentials
 		public static void Watermark()
 		{
 			Console.OutputEncoding = Encoding.Unicode;
-			if ((bool)Settings.Default["Experimental"])
+			if (Program.Experimental)
 			{
 				Console.ForegroundColor = ConsoleColor.Yellow;
 			}
@@ -66,7 +66,7 @@ namespace Maciek_SHELL.Essentials
 			Console.WriteLine("┏━━━━━━━━━━━━━━━━━━━━┓");
 			Console.WriteLine("┃ Maciek Shell ©" + GetCompilationYYYYString() + " ┃");
 			Console.WriteLine("┃ Ver " + Settings.Default["Version"].ToString() + "   CL " + GetCompilationDDMMString() + " ┃");
-			if ((bool)Settings.Default["Experimental"])
+			if (Program.Experimental)
 			{
 				Console.WriteLine("┃ Experimental  " + Settings.Default["Build"].ToString() + " ┃");
 			}
@@ -241,7 +241,7 @@ namespace Maciek_SHELL.Essentials
 		}
 		public static string Repath(string inputpath)
 		{
-			return inputpath.Replace("~", AppDomain.CurrentDomain.BaseDirectory);
+			return inputpath.Replace("~\\", AppDomain.CurrentDomain.BaseDirectory);
 		}
 		public static bool YesOrNO(string message)
 		{

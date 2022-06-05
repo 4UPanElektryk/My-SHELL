@@ -12,11 +12,13 @@ namespace Maciek_SHELL
 	{
 		static User loggedUser;
 		public static bool Activated;
+		public static bool Experimental;
 		public static PerformanceCounter cpuCounter;
 		public static PerformanceCounter ramCounter;
 		public static Process currentProc;
 		static void Main(string[] args)
 		{
+			Experimental = Debugger.IsAttached;
 			currentProc = Process.GetCurrentProcess();
 			cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
 			ramCounter = new PerformanceCounter("Memory", "Available MBytes");
@@ -27,15 +29,15 @@ namespace Maciek_SHELL
 			}
 			catch
 			{
-				Config.DeleteConfig();
-				Config.CreateNewConfig(true);
+				Config.ResetConfig();
+				Config.SaveConfig();
 				Config.LoadConfig();
 			}
 			try
 			{
-				new Log(Config.LogsPath, Config.LogsEnabled, Config.LogsPrefix);
-				Activated = Activation.CheckLicense();
-				new UserController(Config.UserFile, Config.UserFileOld);
+				new Log(Config._LogsConfig.Path, Config._LogsConfig.Enabled, Config._LogsConfig.Prefix);
+				Activated = Activation.CheckLicense(Config._AppConfig.License);
+				new UserController(Config._UserConfig.File, Config._UserConfig.FileBackup);
 			}
 			catch (Exception ex)
 			{
@@ -49,14 +51,14 @@ namespace Maciek_SHELL
 				Dual.ShowMsg(msg, Dual.IntToColor(15), Dual.IntToColor(4));
 				Console.ReadKey();
 			}
-			Console.Clear();
+			//Console.Clear();
 			Console.Title = "Maciek Shell " + Settings.Default["Version"].ToString();
-			try
-			{
-				if ((bool)Settings.Default["Experimental"])
-				{
-					Console.Title = Console.Title + " Experimental";
-				}
+            if (Experimental)
+            {
+                Console.Title += " Experimental";
+            }
+            try
+			{	
 				Dual.Watermark();
 				do
 				{
@@ -192,7 +194,7 @@ namespace Maciek_SHELL
 						//Koniec Użytkownika
 
 						case "crash":
-							if ((bool)Settings.Default["Experimental"])
+							if (Program.Experimental)
 							{
 								int n = 0;
 								int y = 5 / n;
@@ -205,7 +207,7 @@ namespace Maciek_SHELL
 
 
 						case "test":
-							if ((bool)Settings.Default["Experimental"])
+							if (Program.Experimental)
 							{
 								action = true;
 								UserController.Save();
@@ -249,7 +251,7 @@ namespace Maciek_SHELL
 				Console.ForegroundColor = ConsoleColor.Red;
 				Console.WriteLine("Error: " + ex.Message);
 				Console.WriteLine("Something went wrong");
-				if ((bool)Settings.Default["Experimental"])
+				if (Debugger.IsAttached)
 				{
 					Console.ForegroundColor = ConsoleColor.Yellow;
 					if (Dual.YesOrNO("Do You want to Continue with code?"))

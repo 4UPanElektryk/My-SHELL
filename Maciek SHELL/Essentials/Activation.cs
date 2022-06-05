@@ -27,7 +27,7 @@ namespace Maciek_SHELL.Essentials
 				throw new Exception("Licensing Failed: Connection Fail");
 			}
 		}
-		public static bool CheckLicense()
+		public static bool CheckLicense(string license)
 		{
 			try
 			{
@@ -48,7 +48,7 @@ namespace Maciek_SHELL.Essentials
 					}
 					active = bool.Parse(xdata[2]);
 				}
-				if (Config.AppLicense == License && active)
+				if (license == License && active)
 				{
 					return true;
 				}
