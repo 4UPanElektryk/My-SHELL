@@ -1,105 +1,75 @@
 ﻿using System;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace Maciek_SHELL.Essentials
 {
+	public class OutputAndInput
+	{
+		public AppConfig Aplication { get; set; }
+		public UserConfig UserController { get; set; }
+		public LogsConfig Logs { get; set; }
+	}
 	class Config
 	{
 		private static string path = AppDomain.CurrentDomain.BaseDirectory + "config.json";
 
-		public static bool AppAutoUpdate = false;
-		public static string AppLicense = "null";
-		public static string LogsPath = "Logs\\";
-		public static bool LogsEnabled = true;
-		public static string LogsUserPath = "Logs\\User\\";
-		public static string LogsPrefix = "LOG";
-		public static string NanoExtentions = "NanoExtentions\\";
-		public static string UserFile = "Users.dat";
-		public static string UserFileOld = "OldUsers.dat";
+		public static AppConfig _AppConfig;
+		public static UserConfig _UserConfig;
+		public static LogsConfig _LogsConfig;
+        /// <summary>
+		/// Loads the Config from the file
+		/// </summary>
+		/// <exception cref="IOException"></exception>
+		/// <exception cref="FileNotFoundException"></exception>
 		public static void LoadConfig()
 		{
 			if (File.Exists(path))
 			{
-				string[] file = File.ReadAllLines(path);
-				foreach (string item in file)
-				{
-					//check if line is comment
-					if (!item.Contains("#"))
-					{
-						string[] data = item.Split('=');
-						string args = data[1];
-						switch (data[0])
-						{
-							case "User.Path":
-								UserFile = args;
-								break;
-							case "User.OldPath":
-								UserFileOld = args;
-								break;
-							case "Aplication.License":
-								AppLicense = args;
-								break;
-							case "Aplication.CheckForUpdates":
-								AppAutoUpdate = Convert.ToBoolean(args);
-								break;
-							case "Nano.Extentions":
-								break;
-							case "Logs.Path":
-								LogsPath = args;
-								break;
-							case "Logs.UserLogsPath":
-								LogsUserPath = args;
-								break;
-							case "Logs.Enabled":
-								LogsEnabled = Convert.ToBoolean(args);
-								break;
-							case "Logs.Prefix":
-								LogsPrefix = args;
-								break;
-							default:
-								break;
-						}
-					}
-				}
+				string outputstring = File.ReadAllText(path);
+				OutputAndInput re = JsonConvert.DeserializeObject<OutputAndInput>(outputstring);
+                if (re != null)
+                {
+					_AppConfig = re.Aplication;
+					_UserConfig = re.UserController;
+					_LogsConfig = re.Logs;
+                }
+                else
+                {
+					throw new IOException("Config is empty");
+                }
 			}
-			else
-			{
-				throw new FileNotFoundException("Can not find configuration file");
-			}
+            else
+            {
+				throw new FileNotFoundException("Config file not found",path);
+            }
 		}
+        /// <summary>
+		/// Saves the current configuration
+		/// </summary>
 		public static void SaveConfig()
 		{
-			string[] file =
+			OutputAndInput outputAndInput = new OutputAndInput()
 			{
-				"User.Path=" + UserFile,
-				"User.OldPath=" + UserFileOld,
-				"Aplication.License=" + AppLicense,
-				"Aplication.CheckForUpdates=" + AppAutoUpdate,
-				"Logs.Path=" + LogsPath,
-				"Logs.Enabled=" + LogsEnabled.ToString(),
-				"Logs.Prefix=" + LogsPrefix,
+				Aplication = _AppConfig,
+				UserController = _UserConfig,
+				Logs = _LogsConfig
 			};
+			string file = JsonConvert.SerializeObject(outputAndInput,Formatting.Indented);
 			File.Delete(path);
-			File.WriteAllLines(path, file);
+			File.WriteAllText(path, file);
 		}
-		public static void CreateNewConfig(bool Debug_enabled)
-		{
-			string[] file = {
-								"User.Path=Users.dat",
-								"User.OldPath=UsersOld.dat",
-								"Aplication.License=null",
-								"Aplication.CheckForUpdates=false",
-								"Nano.Extentions=NanoExtentions\\",
-								"Logs.Path=Logs\\",
-								"Logs.UserLogsPath=Logs\\UserLogs\\",
-								"Logs.Enabled=" + Debug_enabled,
-								"Logs.Prefix=LOG",
-							};
-			File.WriteAllLines(path, file);
-		}
-		public static void DeleteConfig()
-		{
-			File.Delete(path);
-		}
+        /// <summary>
+		/// Resets Config to Default values
+		/// </summary>
+        public static void ResetConfig()
+        {
+            _AppConfig = new AppConfig();
+            _UserConfig = new UserConfig();
+            _LogsConfig = new LogsConfig();
+            _AppConfig.Reset();
+			_LogsConfig.Reset();
+			_UserConfig.Reset();
+        }
 	}
 }

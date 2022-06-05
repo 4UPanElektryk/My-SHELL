@@ -23,7 +23,7 @@ namespace Maciek_SHELL.Commands.SubCmds
 				if (Dual.YesOrNO("Do you want to delete logs?"))
 				{
 					Console.WriteLine();
-					foreach (string item in Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + Config.LogsPath))
+					foreach (string item in Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + Config._LogsConfig.Path))
 					{
 						if (item.EndsWith(".log"))
 						{

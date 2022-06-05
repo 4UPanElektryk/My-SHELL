@@ -19,7 +19,7 @@ namespace Maciek_SHELL
 			loop = true;
 			do
 			{
-				string ShowDIR = DIR.ToLower().Replace(AppDomain.CurrentDomain.BaseDirectory.ToLower(), "~");
+				string ShowDIR = DIR.ToLower().Replace(AppDomain.CurrentDomain.BaseDirectory.ToLower(), "~\\");
 				bool action = false;
 				string input = Prompt.ShowPropt(user, ShowDIR);
 				Log.AddEvent(new Event("User Action - Input From User ID:" + user._Id + " Input: " + input, Event.Type.Normal, DateTime.Now));
@@ -34,7 +34,7 @@ namespace Maciek_SHELL
 			} while (loop);
 			Console.Clear();
 			Console.WriteLine("You have been logged off");
-			Thread.Sleep(3000);
+			Dual.AwaitingEnter();
 			Console.Clear();
 			Dual.Watermark();
 		}

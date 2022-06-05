@@ -29,15 +29,15 @@ namespace Maciek_SHELL
 			}
 			catch
 			{
-				Config.DeleteConfig();
-				Config.CreateNewConfig(true);
+				Config.ResetConfig();
+				Config.SaveConfig();
 				Config.LoadConfig();
 			}
 			try
 			{
-				new Log(Config.LogsPath, Config.LogsEnabled, Config.LogsPrefix);
-				Activated = Activation.CheckLicense();
-				new UserController(Config.UserFile, Config.UserFileOld);
+				new Log(Config._LogsConfig.Path, Config._LogsConfig.Enabled, Config._LogsConfig.Prefix);
+				Activated = Activation.CheckLicense(Config._AppConfig.License);
+				new UserController(Config._UserConfig.File, Config._UserConfig.FileBackup);
 			}
 			catch (Exception ex)
 			{
@@ -51,7 +51,7 @@ namespace Maciek_SHELL
 				Dual.ShowMsg(msg, Dual.IntToColor(15), Dual.IntToColor(4));
 				Console.ReadKey();
 			}
-			Console.Clear();
+			//Console.Clear();
 			Console.Title = "Maciek Shell " + Settings.Default["Version"].ToString();
             if (Experimental)
             {
@@ -194,7 +194,7 @@ namespace Maciek_SHELL
 						//Koniec Użytkownika
 
 						case "crash":
-							if ((bool)Settings.Default["Experimental"])
+							if (Program.Experimental)
 							{
 								int n = 0;
 								int y = 5 / n;
@@ -207,7 +207,7 @@ namespace Maciek_SHELL
 
 
 						case "test":
-							if ((bool)Settings.Default["Experimental"])
+							if (Program.Experimental)
 							{
 								action = true;
 								UserController.Save();

@@ -17,21 +17,33 @@ namespace Maciek_SHELL.Commands.SubCmds
 			{
 				if (bool.TryParse(args[0], out bool result))
 				{
-					Config.LogsEnabled = result;
+					Config._LogsConfig.Enabled = result;
 					Config.SaveConfig();
 					Config.LoadConfig();
-					Log.ChangeEnable(result);
-				}
+					Log.ChangeEnable(Config._LogsConfig.Enabled);
+                    if (Config._LogsConfig.Enabled)
+                    {
+                        Dual.Msg("Logs are now enabled", ConsoleColor.Yellow);
+                    }
+                    else
+                    {
+                        Dual.Msg("Logs are now disabled", ConsoleColor.Yellow);
+                    }
+                }
 			}
 			else
 			{
 				if (user._State == User.Type.SysAdmin)
 				{
-					Config.DeleteConfig();
-					Config.CreateNewConfig(true);
-					Config.LoadConfig();
-					Log.ChangeEnable(Config.LogsEnabled);
-					Dual.Msg("Logs are now enabled", ConsoleColor.Yellow);
+					Log.ChangeEnable(Config._LogsConfig.Enabled);
+                    if (Config._LogsConfig.Enabled)
+                    {
+                        Dual.Msg("Logs are enabled", ConsoleColor.Yellow);
+                    }
+                    else
+                    {
+                        Dual.Msg("Logs are disabled", ConsoleColor.Yellow);
+                    }
 				}
 				else
 				{

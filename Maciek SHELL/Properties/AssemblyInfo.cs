@@ -1,15 +1,16 @@
-﻿using System.Reflection;
+﻿using System.Resources;
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 // Ogólne informacje o zestawie są kontrolowane poprzez następujący 
 // zestaw atrybutów. Zmień wartości tych atrybutów, aby zmodyfikować informacje
 // powiązane z zestawem.
-[assembly: AssemblyTitle("Maciek OS Core")]
+[assembly: AssemblyTitle("Maciek SHELL")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Maciek OS Core")]
-[assembly: AssemblyCopyright("Copyright ©  2021")]
+[assembly: AssemblyProduct("Maciek SHELL")]
+[assembly: AssemblyCopyright("Copyright ©  2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -33,3 +34,4 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: NeutralResourcesLanguage("en-US")]

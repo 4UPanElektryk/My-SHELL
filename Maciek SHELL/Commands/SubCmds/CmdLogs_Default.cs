@@ -15,7 +15,7 @@ namespace Maciek_SHELL.Commands.SubCmds
 		{
 			if (args.Length == 1)
 			{
-				foreach (string item in Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + Config.LogsPath))
+				foreach (string item in Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + Config._LogsConfig.Path))
 				{
 					if (item.EndsWith(".log"))
 					{
