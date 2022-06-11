@@ -1,6 +1,6 @@
-﻿using MOS_User_Menager_Integration;
+﻿using MShell.Integrations.User_Manager;
 
-namespace Maciek_SHELL.Commands
+namespace MShell.Commands
 {
 	public class SubCmd
 	{

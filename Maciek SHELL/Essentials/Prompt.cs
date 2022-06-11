@@ -1,7 +1,7 @@
-﻿using MOS_User_Menager_Integration;
+﻿using MShell.Integrations.User_Manager;
 using System;
 
-namespace Maciek_SHELL.Essentials
+namespace MShell.Essentials
 {
 	class Prompt
 	{

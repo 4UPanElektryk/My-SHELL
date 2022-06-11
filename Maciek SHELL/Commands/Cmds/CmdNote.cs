@@ -1,9 +1,9 @@
-﻿using MOS_User_Menager_Integration;
+﻿using MShell.Integrations.User_Manager;
 using SimpleLogs4Net;
 using System;
 using System.Diagnostics;
 
-namespace Maciek_SHELL.Commands.Cmds
+namespace MShell.Commands.Cmds
 {
 	class CmdNote : Cmd
 	{

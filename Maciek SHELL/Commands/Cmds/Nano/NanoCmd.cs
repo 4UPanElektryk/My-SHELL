@@ -1,12 +1,12 @@
-﻿using Maciek_SHELL.Essentials;
-using MOS_User_Menager_Integration;
+﻿using MShell.Essentials;
+using MShell.Integrations.User_Manager;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace Maciek_SHELL.Commands.Cmds.Nano
+namespace MShell.Commands.Cmds.Nano
 {
 	class NanoCmd : Cmd
 	{

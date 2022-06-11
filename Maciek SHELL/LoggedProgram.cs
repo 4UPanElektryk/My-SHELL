@@ -1,10 +1,10 @@
-﻿using Maciek_SHELL.Commands;
-using Maciek_SHELL.Essentials;
-using MOS_User_Menager_Integration;
+﻿using MShell.Commands;
+using MShell.Essentials;
+using MShell.Integrations.User_Manager;
 using SimpleLogs4Net;
 using System;
 using System.Threading;
-namespace Maciek_SHELL
+namespace MShell
 {
 	class LoggedProgram
 	{

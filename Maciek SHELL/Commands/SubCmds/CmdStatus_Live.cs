@@ -1,14 +1,14 @@
-﻿using MOS_User_Menager_Integration;
+﻿using MShell.Integrations.User_Manager;
 using System;
 using System.Threading;
-using Maciek_SHELL.Essentials;
-using Maciek_SHELL.Properties;
+using MShell.Essentials;
+using MShell.Properties;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Maciek_SHELL.Commands.SubCmds
+namespace MShell.Commands.SubCmds
 {
 	public class CmdStatus_Live : SubCmd
 	{

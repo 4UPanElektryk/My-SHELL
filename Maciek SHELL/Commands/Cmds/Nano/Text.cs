@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Maciek_SHELL.Commands.Cmds.Nano
+namespace MShell.Commands.Cmds.Nano
 {
 	public class Text
 	{

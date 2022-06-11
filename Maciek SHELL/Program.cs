@@ -1,16 +1,29 @@
-﻿using Maciek_SHELL.Essentials;
-using Maciek_SHELL.Properties;
-using MOS_User_Menager_Integration;
+﻿using MShell.Essentials;
+using MShell.Properties;
+using MShell.Integrations.User_Manager;
 using SimpleLogs4Net;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace Maciek_SHELL
+namespace MShell
 {
 	class Program
 	{
-		static User loggedUser;
+        /*
+		 *     __       __                      __            __         ______   __                  __  __ 
+		 *    /  \     /  |                    /  |          /  |       /      \ /  |                /  |/  |
+		 *    $$  \   /$$ |  ______    _______ $$/   ______  $$ |   __ /$$$$$$  |$$ |____    ______  $$ |$$ |
+		 *    $$$  \ /$$$ | /      \  /       |/  | /      \ $$ |  /  |$$ \__$$/ $$      \  /      \ $$ |$$ |
+		 *    $$$$  /$$$$ | $$$$$$  |/$$$$$$$/ $$ |/$$$$$$  |$$ |_/$$/ $$      \ $$$$$$$  |/$$$$$$  |$$ |$$ |
+		 *    $$ $$ $$/$$ | /    $$ |$$ |      $$ |$$    $$ |$$   $$<   $$$$$$  |$$ |  $$ |$$    $$ |$$ |$$ |
+		 *    $$ |$$$/ $$ |/$$$$$$$ |$$ \_____ $$ |$$$$$$$$/ $$$$$$  \ /  \__$$ |$$ |  $$ |$$$$$$$$/ $$ |$$ |
+		 *    $$ | $/  $$ |$$    $$ |$$       |$$ |$$       |$$ | $$  |$$    $$/ $$ |  $$ |$$       |$$ |$$ |
+		 *    $$/      $$/  $$$$$$$/  $$$$$$$/ $$/  $$$$$$$/ $$/   $$/  $$$$$$/  $$/   $$/  $$$$$$$/ $$/ $$/ 
+		 *                                                                                                   
+		 *                                                                                                                                                                                                     
+		*/
+        static User loggedUser;
 		public static bool Activated;
 		public static bool Experimental;
 		public static PerformanceCounter cpuCounter;
@@ -18,20 +31,20 @@ namespace Maciek_SHELL
 		public static Process currentProc;
 		static void Main(string[] args)
 		{
-			Experimental = Debugger.IsAttached;
+			Experimental = true;
 			currentProc = Process.GetCurrentProcess();
 			cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
 			ramCounter = new PerformanceCounter("Memory", "Available MBytes");
 			cpuCounter.NextValue();
 			try
 			{
-				Config.LoadConfig();
+				Config.Load();
 			}
 			catch
 			{
-				Config.ResetConfig();
-				Config.SaveConfig();
-				Config.LoadConfig();
+				Config.Reset();
+				Config.Save();
+				Config.Load();
 			}
 			try
 			{

@@ -1,9 +1,9 @@
-﻿using Maciek_SHELL.Essentials;
-using MOS_User_Menager_Integration;
+﻿using MShell.Essentials;
+using MShell.Integrations.User_Manager;
 using System;
 using System.IO;
 
-namespace Maciek_SHELL.Commands.SubCmds
+namespace MShell.Commands.SubCmds
 {
 	class CmdLogs_Default : SubCmd
 	{

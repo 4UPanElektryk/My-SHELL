@@ -10,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MOS User Menager Integration", "..\MOS User Menager Integration\MOS User Menager Integration\MOS User Menager Integration.csproj", "{9CD6F790-D5F2-4527-89B6-3AB8D5C99D48}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MShell User Menager", "..\MOS User Menager Integration\MOS User Menager Integration\MShell User Menager.csproj", "{9CD6F790-D5F2-4527-89B6-3AB8D5C99D48}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

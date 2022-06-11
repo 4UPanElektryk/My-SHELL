@@ -1,4 +1,4 @@
-﻿using Maciek_SHELL.Properties;
+﻿using MShell.Properties;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace Maciek_SHELL.Essentials
+namespace MShell.Essentials
 {
 	public static class Dual
 	{

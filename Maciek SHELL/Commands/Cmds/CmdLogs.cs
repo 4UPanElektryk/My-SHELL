@@ -1,5 +1,5 @@
-﻿using Maciek_SHELL.Commands.SubCmds;
-namespace Maciek_SHELL.Commands.Cmds
+﻿using MShell.Commands.SubCmds;
+namespace MShell.Commands.Cmds
 {
     class CmdLogs : Cmd
     {

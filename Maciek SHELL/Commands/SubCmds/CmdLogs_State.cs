@@ -1,9 +1,9 @@
-﻿using Maciek_SHELL.Essentials;
-using MOS_User_Menager_Integration;
+﻿using MShell.Essentials;
+using MShell.Integrations.User_Manager;
 using SimpleLogs4Net;
 using System;
 
-namespace Maciek_SHELL.Commands.SubCmds
+namespace MShell.Commands.SubCmds
 {
 	class CmdLogs_State : SubCmd
 	{
@@ -18,8 +18,8 @@ namespace Maciek_SHELL.Commands.SubCmds
 				if (bool.TryParse(args[0], out bool result))
 				{
 					Config._LogsConfig.Enabled = result;
-					Config.SaveConfig();
-					Config.LoadConfig();
+					Config.Save();
+					Config.Load();
 					Log.ChangeEnable(Config._LogsConfig.Enabled);
                     if (Config._LogsConfig.Enabled)
                     {

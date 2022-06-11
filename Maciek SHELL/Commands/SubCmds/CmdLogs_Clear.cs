@@ -1,10 +1,10 @@
-﻿using Maciek_SHELL.Essentials;
-using MOS_User_Menager_Integration;
+﻿using MShell.Essentials;
+using MShell.Integrations.User_Manager;
 using SimpleLogs4Net;
 using System;
 using System.IO;
 
-namespace Maciek_SHELL.Commands.SubCmds
+namespace MShell.Commands.SubCmds
 {
 	public class CmdLogs_Clear : SubCmd
 	{

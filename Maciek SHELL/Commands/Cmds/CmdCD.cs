@@ -1,11 +1,11 @@
-﻿using Maciek_SHELL.Essentials;
-using MOS_User_Menager_Integration;
+﻿using MShell.Essentials;
+using MShell.Integrations.User_Manager;
 using SimpleLogs4Net;
 using System;
 using System.IO;
 using System.Linq;
 
-namespace Maciek_SHELL.Commands.Cmds
+namespace MShell.Commands.Cmds
 {
 	class CmdCD : Cmd
 	{

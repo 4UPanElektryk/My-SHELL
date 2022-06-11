@@ -1,8 +1,8 @@
-﻿using MOS_User_Menager_Integration;
-using Maciek_SHELL.Essentials;
+﻿using MShell.Integrations.User_Manager;
+using MShell.Essentials;
 using System;
 
-namespace Maciek_SHELL.Commands.Cmds
+namespace MShell.Commands.Cmds
 {
 	class CmdLogoff : Cmd
 	{

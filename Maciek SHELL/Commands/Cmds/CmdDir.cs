@@ -1,8 +1,8 @@
-﻿using MOS_User_Menager_Integration;
+﻿using MShell.Integrations.User_Manager;
 using System;
 using System.IO;
 
-namespace Maciek_SHELL.Commands.Cmds
+namespace MShell.Commands.Cmds
 {
 	class CmdDir : Cmd
 	{

@@ -1,10 +1,10 @@
-﻿using Maciek_SHELL.Properties;
-using MOS_User_Menager_Integration;
-using Maciek_SHELL.Essentials;
-using Maciek_SHELL.Commands.SubCmds;
+﻿using MShell.Properties;
+using MShell.Integrations.User_Manager;
+using MShell.Essentials;
+using MShell.Commands.SubCmds;
 using System;
 
-namespace Maciek_SHELL.Commands.Cmds
+namespace MShell.Commands.Cmds
 {
 	class CmdStatus : Cmd
 	{

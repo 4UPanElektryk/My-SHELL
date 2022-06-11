@@ -1,7 +1,7 @@
-﻿using MOS_User_Menager_Integration;
+﻿using MShell.Integrations.User_Manager;
 using System.Collections.Generic;
 
-namespace Maciek_SHELL.Commands
+namespace MShell.Commands
 {
 	class Cmd
 	{

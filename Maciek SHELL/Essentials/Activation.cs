@@ -3,7 +3,7 @@ using System;
 using System.IO;
 using System.Net;
 
-namespace Maciek_SHELL.Essentials
+namespace MShell.Essentials
 {
 	public class Activation
 	{

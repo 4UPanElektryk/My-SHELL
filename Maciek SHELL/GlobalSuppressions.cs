@@ -5,5 +5,5 @@
 
 using System.Diagnostics.CodeAnalysis;
 
-[assembly: SuppressMessage("CodeQuality", "IDE0052:Usuń nieodczytywane składowe prywatne", Justification = "Critical variable", Scope = "member", Target = "~F:Maciek_SHELL.Program.userController")]
-[assembly: SuppressMessage("CodeQuality", "IDE0052:Usuń nieodczytywane składowe prywatne", Justification = "Critical variable", Scope = "member", Target = "~F:Maciek_SHELL.Program.log")]
+[assembly: SuppressMessage("CodeQuality", "IDE0052:Usuń nieodczytywane składowe prywatne", Justification = "Critical variable", Scope = "member", Target = "~F:MShell.Program.userController")]
+[assembly: SuppressMessage("CodeQuality", "IDE0052:Usuń nieodczytywane składowe prywatne", Justification = "Critical variable", Scope = "member", Target = "~F:MShell.Program.log")]

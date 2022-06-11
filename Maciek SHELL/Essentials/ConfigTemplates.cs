@@ -4,16 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Maciek_SHELL.Essentials
+namespace MShell.Essentials
 {
     public class AppConfig
     {
         public bool AutoUpdate { get; set; }
+        public bool UpdateToBeta { get; set; }
         public string License { get; set; }
         public bool? DevMode { get; set; }
         public void Reset()
         {
             AutoUpdate = false;
+            UpdateToBeta = false;
             License = "null";
         }
         public AppConfig()

@@ -2,7 +2,7 @@
 using System.IO;
 using Newtonsoft.Json;
 
-namespace Maciek_SHELL.Essentials
+namespace MShell.Essentials
 {
 	public class OutputAndInput
 	{
@@ -12,17 +12,23 @@ namespace Maciek_SHELL.Essentials
 	}
 	class Config
 	{
-		private static string path = AppDomain.CurrentDomain.BaseDirectory + "config.json";
+		public static string path = AppDomain.CurrentDomain.BaseDirectory + "config.json";
 
 		public static AppConfig _AppConfig;
+        /// <summary>
+		/// Stores the data for User Menager integration
+		/// </summary>
 		public static UserConfig _UserConfig;
-		public static LogsConfig _LogsConfig;
+        /// <summary>
+        /// Stores the data for SimpleLogs4Net
+        /// </summary>
+        public static LogsConfig _LogsConfig;
         /// <summary>
 		/// Loads the Config from the file
 		/// </summary>
 		/// <exception cref="IOException"></exception>
 		/// <exception cref="FileNotFoundException"></exception>
-		public static void LoadConfig()
+		public static void Load()
 		{
 			if (File.Exists(path))
 			{
@@ -47,7 +53,7 @@ namespace Maciek_SHELL.Essentials
         /// <summary>
 		/// Saves the current configuration
 		/// </summary>
-		public static void SaveConfig()
+		public static void Save()
 		{
 			OutputAndInput outputAndInput = new OutputAndInput()
 			{
@@ -62,7 +68,7 @@ namespace Maciek_SHELL.Essentials
         /// <summary>
 		/// Resets Config to Default values
 		/// </summary>
-        public static void ResetConfig()
+        public static void Reset()
         {
             _AppConfig = new AppConfig();
             _UserConfig = new UserConfig();

@@ -1,9 +1,9 @@
-﻿using Maciek_SHELL.Commands.Cmds;
-using Maciek_SHELL.Commands.Cmds.Nano;
-using MOS_User_Menager_Integration;
+﻿using MShell.Commands.Cmds;
+using MShell.Commands.Cmds.Nano;
+using MShell.Integrations.User_Manager;
 using System.Collections.Generic;
 
-namespace Maciek_SHELL.Commands
+namespace MShell.Commands
 {
 	class CommandMenager
 	{
@@ -24,7 +24,8 @@ namespace Maciek_SHELL.Commands
 				new CmdNote("notepad"),
 				new CmdClear("clear"),
 				new CmdStatus("status"),
-				new CmdTest("test")
+				new CmdTest("test"),
+				new CmdNeofetch("neofetch"),
 			};
 		}
 		public bool ExecuteCommand(string input, User user)

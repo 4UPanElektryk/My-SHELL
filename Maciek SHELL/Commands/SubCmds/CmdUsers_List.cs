@@ -1,8 +1,8 @@
-﻿using MOS_User_Menager_Integration;
+﻿using MShell.Integrations.User_Manager;
 using System;
 using System.Collections.Generic;
 
-namespace Maciek_SHELL.Commands.SubCmds
+namespace MShell.Commands.SubCmds
 {
 	public class CmdUsers_List : SubCmd
 	{

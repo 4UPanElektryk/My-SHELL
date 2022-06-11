@@ -1,6 +1,6 @@
-﻿using Maciek_SHELL.Commands.SubCmds;
+﻿using MShell.Commands.SubCmds;
 
-namespace Maciek_SHELL.Commands.Cmds
+namespace MShell.Commands.Cmds
 {
 	class CmdUsers : Cmd
 	{
