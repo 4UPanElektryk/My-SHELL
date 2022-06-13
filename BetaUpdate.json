@@ -1,1 +1,22 @@
-
+{
+  "BuildNumber": 1,
+  "Version": 4.5,
+  "Files": [
+    {
+      "_Path": "MShell.exe",
+      "_Uri": "https://github.com/4UPanElektryk/Maciek-SHELL/releases/download/Relese_4.4/MShell.exe"
+    },
+    {
+      "_Path": "MShell.Integrations.UserMenager.dll",
+      "_Uri": "https://github.com/4UPanElektryk/Maciek-SHELL/releases/download/Relese_4.4/MShell.Integrations.UserMenager.dll"
+    },
+    {
+      "_Path": "Newtonsoft.Json.dll",
+      "_Uri": "https://github.com/4UPanElektryk/Maciek-SHELL/releases/download/Relese_4.4/Newtonsoft.Json.dll"
+    },
+    {
+      "_Path": "SimpleLogs4Net.dll",
+      "_Uri": "https://github.com/4UPanElektryk/Maciek-SHELL/releases/download/Relese_4.4/SimpleLogs4Net.dll"
+    }
+  ]
+}
