@@ -29,7 +29,7 @@ namespace MShell.Commands.SubCmds
 			}
 			else if (nbt == 1)
 			{
-				if (args[0] == "-full")
+				if (args[0] == "full")
 				{
 					if (user != null)
 					{
@@ -45,7 +45,7 @@ namespace MShell.Commands.SubCmds
 						Dual.Msg("Cannot show info if user is null", ConsoleColor.Red);
 					}
 				}
-				if (args[0] == "-id")
+				if (args[0] == "id")
 				{
 					Console.WriteLine("Id:");
 					bool t = int.TryParse(Console.ReadLine(), out int Id);
@@ -72,7 +72,7 @@ namespace MShell.Commands.SubCmds
 			}
 			else if (nbt == 2)
 			{
-				if ((args[0] == "-id") && (args[1] == "-full"))
+				if ((args[0] == "id") && (args[1] == "full"))
 				{
 					if (user._State == User.Type.SysAdmin)
 					{

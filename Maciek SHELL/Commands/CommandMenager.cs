@@ -16,7 +16,7 @@ namespace MShell.Commands
 				new CmdStart("start"),
 				new CmdMKDir("mkdir"),
 				new CmdLogs("logs"),
-				new CmdDir("dir"),
+				new CmdLs("ls"),
 				new CmdDelDir("deldir"),
 				new CmdCD("cd"),
 				new NanoCmd("nano"),
@@ -24,9 +24,12 @@ namespace MShell.Commands
 				new CmdNote("notepad"),
 				new CmdClear("clear"),
 				new CmdStatus("status"),
-				new CmdTest("test"),
-				new CmdNeofetch("neofetch"),
 			};
+            if (Program.Experimental)
+            {
+				CmdList.Add(new CmdNeofetch("neofetch"));
+				CmdList.Add(new CmdTest("test"));
+            }
 		}
 		public bool ExecuteCommand(string input, User user)
 		{

@@ -5,26 +5,14 @@ using SimpleLogs4Net;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 
 namespace MShell
 {
 	class Program
 	{
-        /*
-		 *     __       __                      __            __         ______   __                  __  __ 
-		 *    /  \     /  |                    /  |          /  |       /      \ /  |                /  |/  |
-		 *    $$  \   /$$ |  ______    _______ $$/   ______  $$ |   __ /$$$$$$  |$$ |____    ______  $$ |$$ |
-		 *    $$$  \ /$$$ | /      \  /       |/  | /      \ $$ |  /  |$$ \__$$/ $$      \  /      \ $$ |$$ |
-		 *    $$$$  /$$$$ | $$$$$$  |/$$$$$$$/ $$ |/$$$$$$  |$$ |_/$$/ $$      \ $$$$$$$  |/$$$$$$  |$$ |$$ |
-		 *    $$ $$ $$/$$ | /    $$ |$$ |      $$ |$$    $$ |$$   $$<   $$$$$$  |$$ |  $$ |$$    $$ |$$ |$$ |
-		 *    $$ |$$$/ $$ |/$$$$$$$ |$$ \_____ $$ |$$$$$$$$/ $$$$$$  \ /  \__$$ |$$ |  $$ |$$$$$$$$/ $$ |$$ |
-		 *    $$ | $/  $$ |$$    $$ |$$       |$$ |$$       |$$ | $$  |$$    $$/ $$ |  $$ |$$       |$$ |$$ |
-		 *    $$/      $$/  $$$$$$$/  $$$$$$$/ $$/  $$$$$$$/ $$/   $$/  $$$$$$/  $$/   $$/  $$$$$$$/ $$/ $$/ 
-		 *                                                                                                   
-		 *                                                                                                                                                                                                     
-		*/
         static User loggedUser;
-		public static bool Activated;
+		public static bool FoundUpdater;
 		public static bool Experimental;
 		public static PerformanceCounter cpuCounter;
 		public static PerformanceCounter ramCounter;
@@ -32,47 +20,30 @@ namespace MShell
 		static void Main(string[] args)
 		{
 			Experimental = true;
+			FoundUpdater = false;
 			currentProc = Process.GetCurrentProcess();
 			cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
 			ramCounter = new PerformanceCounter("Memory", "Available MBytes");
 			cpuCounter.NextValue();
-			try
-			{
-				Config.Load();
-			}
-			catch
-			{
-				Config.Reset();
-				Config.Save();
-				Config.Load();
-			}
-			try
-			{
-				new Log(Config._LogsConfig.Path, Config._LogsConfig.Enabled, Config._LogsConfig.Prefix);
-				Activated = Activation.CheckLicense(Config._AppConfig.License);
-				new UserController(Config._UserConfig.File, Config._UserConfig.FileBackup);
-			}
-			catch (Exception ex)
-			{
-				string[] msg = {
-									"Startup Failed:",
-									ex.Message,
-									ex.Data.ToString(),
-									ex.Source.ToString(),
-									"Application will be restarted"
-								};
-				Dual.ShowMsg(msg, Dual.IntToColor(15), Dual.IntToColor(4));
-				Console.ReadKey();
-			}
-			//Console.Clear();
 			Console.Title = "Maciek Shell " + Settings.Default["Version"].ToString();
             if (Experimental)
             {
                 Console.Title += " Experimental";
             }
+            if (!RST.RunTest())
+            {
+				return;
+            }
+			Console.ResetColor();
+			Console.Clear();
             try
 			{	
 				Dual.Watermark();
+                if (CheckUpdates.CheckForUpdates())
+                {
+                    Dual.Msg("Newer version has been found!", ConsoleColor.Cyan);
+                    Dual.Msg("If you want to update Type \"update\"", ConsoleColor.Cyan);
+                }
 				do
 				{
 					bool action = false;
@@ -82,6 +53,10 @@ namespace MShell
 					Log.AddEvent(new Event("User Action - Input: " + input, Event.Type.Normal, DateTime.Now));
 					switch (TInput[0])
 					{
+						case "update":
+							CheckUpdates.Update();
+							break;
+
 
 						//Pomoc
 						case "help":

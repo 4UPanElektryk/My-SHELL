@@ -75,10 +75,13 @@ namespace MShell.Essentials
 		}
 		public static void Msg(string text, ConsoleColor Color, ConsoleColor BGColor = ConsoleColor.Black)
 		{
+			ConsoleColor BeforeColor = Console.ForegroundColor;
+			ConsoleColor BeforeBgColor = Console.BackgroundColor;
 			Console.BackgroundColor = BGColor;
 			Console.ForegroundColor = Color;
 			Console.WriteLine(text);
-			Console.ResetColor();
+			Console.ForegroundColor = BeforeColor;
+			Console.BackgroundColor = BeforeBgColor;
 		}
 		public static string TrimStart(string text, string trimText)
 		{
