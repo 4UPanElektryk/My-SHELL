@@ -238,6 +238,7 @@ namespace MShell
 				Log.AddEvent(new Event("Aplication Crashed Message: " + ex.Message, Event.Type.Critical_Error, DateTime.Now));
 				Console.ForegroundColor = ConsoleColor.Red;
 				Console.WriteLine("Error: " + ex.Message);
+                Console.WriteLine(ex.Source);
 				Console.WriteLine("Something went wrong");
 				if (Debugger.IsAttached)
 				{

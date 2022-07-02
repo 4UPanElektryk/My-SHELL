@@ -7,7 +7,9 @@ namespace MShell.Commands
 	{
 		public string _Name = null;
 		public List<SubCmd> _Subs;
-		public string _Help = null;
+		public string description = null;
+		public string args = null;
+
 		public Cmd(string name)
 		{
 			_Subs = new List<SubCmd>();
@@ -20,7 +22,7 @@ namespace MShell.Commands
 			{
 				foreach (SubCmd item in _Subs)
 				{
-					if (item._Name == args[1])
+					if (item._Name == args[1].ToLower())
 					{
 						string[] new_args = new string[args.Length - 2];
 						for (int i = 2; i < args.Length; i++)

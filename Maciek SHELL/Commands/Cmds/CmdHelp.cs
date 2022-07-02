@@ -7,8 +7,8 @@ namespace MShell.Commands.Cmds
 	{
 		public CmdHelp(string name) : base(name)
 		{
-			/*description = "Wyświetla listę wszystkich komend";
-			args = "";*/
+			description = "Wyświetla listę wszystkich komend";
+			args = "<Command Name>";
 		}
 
 		public override bool Execute(string[] args, string input, User user)
@@ -16,7 +16,7 @@ namespace MShell.Commands.Cmds
 			Console.WriteLine("Command List:");
 			foreach (Cmd cmd in CommandMenager.CmdList)
 			{
-				Console.WriteLine(cmd._Name + " - " + cmd._Help);
+				Console.WriteLine(cmd._Name + " - " + cmd.description);
 			}
 			return true;
 		}

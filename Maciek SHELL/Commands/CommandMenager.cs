@@ -2,6 +2,8 @@
 using MShell.Commands.Cmds.Nano;
 using MShell.Integrations.User_Manager;
 using System.Collections.Generic;
+using MShell.Essentials;
+using MShell.Binds;
 
 namespace MShell.Commands
 {
@@ -12,20 +14,22 @@ namespace MShell.Commands
 		{
 			CmdList = new List<Cmd>
 			{
+				new CmdCD("cd"),
+				new CmdClear("clear"),
+				new CmdDelDir("deldir"),
+				new CmdHelp("help"),
+				new CmdLs("ls"),
+				new CmdLogoff("logoff"),
+				new CmdLogs("logs"),
+				new CmdMKDir("mkdir"),
+				new NanoCmd("nano"),
+				new CmdNote("notepad"),
 				new CmdUsers("user"),
 				new CmdStart("start"),
-				new CmdMKDir("mkdir"),
-				new CmdLogs("logs"),
-				new CmdLs("ls"),
-				new CmdDelDir("deldir"),
-				new CmdCD("cd"),
-				new NanoCmd("nano"),
-				new CmdLogoff("logoff"),
-				new CmdNote("notepad"),
-				new CmdClear("clear"),
 				new CmdStatus("status"),
+				new CmdBinds("binds"),
 			};
-            if (Program.Experimental)
+            if (Config._AppConfig.DevMode)
             {
 				CmdList.Add(new CmdNeofetch("neofetch"));
 				CmdList.Add(new CmdTest("test"));
@@ -33,10 +37,10 @@ namespace MShell.Commands
 		}
 		public bool ExecuteCommand(string input, User user)
 		{
-			string[] args = input.ToLower().Split(' ');
+			string[] args = input.Split(' ');
 			foreach (Cmd item in CmdList)
 			{
-				if (item._Name == args[0])
+				if (item._Name == args[0].ToLower())
 				{
 					return item.Execute(args, input, user);
 				}
@@ -45,7 +49,23 @@ namespace MShell.Commands
 			{
 				return true;
 			}
-			return false;
+			return BindManager.ExecuteBind(input,user);
 		}
-	}
+        public bool ExecuteCommandForBind(string input, User user)
+        {
+            string[] args = input.Split(' ');
+            foreach (Cmd item in CmdList)
+            {
+                if (item._Name == args[0].ToLower())
+                {
+                    return item.Execute(args, input, user);
+                }
+            }
+            if (input == "")
+            {
+                return true;
+            }
+            return false;
+        }
+    }
 }

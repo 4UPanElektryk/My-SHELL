@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MShell.Integrations.User_Manager;
+using MShell.Binds;
 using SimpleLogs4Net;
 
 namespace MShell.Essentials
@@ -51,9 +52,9 @@ namespace MShell.Essentials
 			}
 			#endregion
 			#region Dependecies Test
-			if (File.Exists("MShellUpdater.exe"))
+			if (File.Exists("Updater.exe"))
 			{
-				TestMsg("MShellUpdater.exe found", MsgType.OK);
+				TestMsg("Updater.exe found", MsgType.OK);
 				Program.FoundUpdater = true;
 			}
 			else
@@ -109,15 +110,44 @@ namespace MShell.Essentials
 				error_encounterd = true;
 			}
 			#endregion
+			#region Binds initialization
+			bool filemissing = false;
+			if (File.Exists(Config._AppConfig.BindFile))
+			{
+				TestMsg("Found Bind File", MsgType.OK);
+			}
+			else
+			{
+				TestMsg("Bind File is Missing", MsgType.Warning);
+				filemissing = true;
+			}
+			try
+			{
+				TestMsg("Atempting Bind Manager initialization", MsgType.Warning);
+				new BindManager(Config._AppConfig.BindFile);
+				TestMsg("Bind Manager initialization Succeded", MsgType.OK);
+			}
+			catch (Exception ex)
+			{
+				TestMsg("Bind Manager initialization Failed", MsgType.Error);
+				TestMsg(ex.Message, MsgType.Error);
+				error_encounterd = true;
+			}
+            if (filemissing && !error_encounterd)
+            {
+				BindManager.Save();
+				BindManager.Load();
+            }
+			#endregion
 			if (error_encounterd)
 			{
 				Console.ForegroundColor = ConsoleColor.Yellow;
 				return Dual.YesOrNO("Errors has been encountered. \nAre you sure you want to continue?");
-            }
-            else
-            {
+			}
+			else
+			{
 				return true;
-            }
+			}
 		}
 		private static void TestMsg(string message,MsgType type)
 		{

@@ -37,7 +37,7 @@ namespace MShell.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0314")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0001")]
         public string Build {
             get {
                 return ((string)(this["Build"]));

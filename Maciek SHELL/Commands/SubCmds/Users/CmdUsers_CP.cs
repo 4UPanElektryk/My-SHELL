@@ -19,12 +19,16 @@ namespace MShell.Commands.SubCmds
 			User.Type type = user._State;
 			string login = user._Login;
 			Console.WriteLine("Password:");
+			Console.ForegroundColor = ConsoleColor.Black;
 			string s = Console.ReadLine();
+			Console.ResetColor();
 			if (UserController.FindUser(login, s) != null)
 			{
 				Console.WriteLine("New Password:");
-				string sl = Console.ReadLine();
-				UserController.DeleteUser(user);
+                Console.ForegroundColor = ConsoleColor.Black;
+                string sl = Console.ReadLine();
+                Console.ResetColor();
+                UserController.DeleteUser(user);
 				UserController.AddUserOverride(new User(id, guid, type, login, sl));
 			}
 			else

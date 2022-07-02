@@ -14,6 +14,7 @@ namespace MShell.Commands.Cmds
 		{
 			bool action = true;
 			string path = Dual.TrimStart(input, args[0] + " ");
+			path = path.Replace("~",AppDomain.CurrentDomain.BaseDirectory);
 			if (path != "..")
 			{
 				if (path.Contains(':'))
@@ -32,7 +33,19 @@ namespace MShell.Commands.Cmds
 				{
 					if (Directory.Exists(LoggedProgram.DIR + path))
 					{
-						LoggedProgram.DIR = LoggedProgram.DIR + path + "\\";
+						string paths = path;
+                        foreach (string item in Directory.GetDirectories(LoggedProgram.DIR))
+                        {
+                            Console.WriteLine(item);
+                            Console.WriteLine(Dual.TrimStart(item, LoggedProgram.DIR));
+                            Console.WriteLine(Dual.TrimStart(item, LoggedProgram.DIR).ToLower() == path.ToLower());
+                            if (Dual.TrimStart(item,LoggedProgram.DIR).ToLower() == path.ToLower())
+                            {
+                                Console.WriteLine("found");
+								paths = Dual.TrimStart(item, LoggedProgram.DIR);
+                            }
+                        }
+						LoggedProgram.DIR = LoggedProgram.DIR + paths + "\\";
 						Log.AddEvent(new Event("User action: Directory Change - " + LoggedProgram.DIR, Event.Type.Informtion, DateTime.Now));
 					}
 					else

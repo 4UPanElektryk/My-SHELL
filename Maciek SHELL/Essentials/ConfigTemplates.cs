@@ -10,13 +10,14 @@ namespace MShell.Essentials
     {
         public bool AutoUpdate { get; set; }
         public bool UpdateToBeta { get; set; }
-        public string License { get; set; }
-        public bool? DevMode { get; set; }
+        public bool DevMode { get; set; }
+        public string BindFile { get; set; }
         public void Reset()
         {
-            AutoUpdate = false;
+            AutoUpdate = true;
             UpdateToBeta = false;
-            License = "null";
+            DevMode = false;
+            BindFile = "binds.json";
         }
         public AppConfig()
         {

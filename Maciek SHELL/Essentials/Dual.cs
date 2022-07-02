@@ -326,5 +326,18 @@ namespace MShell.Essentials
 			}
 			return strings.ToArray();
 		}
+		public static string GetThePath(string path)
+        {
+			string actualpath = path;
+            if (actualpath.Contains(':'))
+            {
+
+            }
+            else
+            {
+				actualpath = LoggedProgram.DIR + actualpath;
+            }
+			return actualpath;
+        }
 	}
 }

@@ -6,7 +6,7 @@
       <Value Profile="(Default)">4.4</Value>
     </Setting>
     <Setting Name="Build" Type="System.String" Scope="User">
-      <Value Profile="(Default)">0314</Value>
+      <Value Profile="(Default)">0001</Value>
     </Setting>
   </Settings>
 </SettingsFile>

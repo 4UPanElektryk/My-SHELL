@@ -12,7 +12,7 @@ namespace MShell.Commands.Cmds
     {
         public CmdNeofetch(string name) : base(name)
         {
-            _Help = "Neofetch";
+            description = "Neofetch";
         }
         public override bool Execute(string[] args, string input, User user)
         {

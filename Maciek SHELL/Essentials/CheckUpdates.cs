@@ -10,29 +10,37 @@ namespace MShell.Essentials
 {
     public class CheckUpdates
     {
+        static string UpadaterName = "Updater.exe";
         public static bool CheckForUpdates()
         {
-            if (!Program.FoundUpdater)
+            if (Config._AppConfig.DevMode)
             {
                 return false;
             }
-            bool NewerVersion = false;
+            if (!Program.FoundUpdater || !Config._AppConfig.AutoUpdate)
+            {
+                return false;
+            }
             string args = "-c";
             if (Config._AppConfig.UpdateToBeta)
             {
                 args += "b";
             }
-            args += " " + Settings.Default["Version"].ToString() + " " + Settings.Default["Build"].ToString();
-            Process P = Process.Start("MShellUpdater.exe", args);
+            string version = Settings.Default["Version"].ToString().Replace('.', ',');
+            args += " " + version + " " + Settings.Default["Build"].ToString();
+            ProcessStartInfo processStartInfo = new ProcessStartInfo();
+            processStartInfo.FileName = UpadaterName;
+            processStartInfo.Arguments = args;
+            Process P = Process.Start(processStartInfo);
             P.WaitForExit();
             int result = P.ExitCode;
             if (result == 1)
             {
-                return false;
+                return true;
             }
             else if (result == 3)
             {
-                return true;
+                return false;
             }
             else
             {
@@ -50,13 +58,16 @@ namespace MShell.Essentials
             {
                 if (Config._AppConfig.UpdateToBeta)
                 {
-                    Process P = Process.Start("MShellUpdater.exe", "updatebeta");
+                    ProcessStartInfo processStartInfo = new ProcessStartInfo();
+                    processStartInfo.FileName = UpadaterName;
+                    processStartInfo.Arguments = "updatebeta";
+                    Process P = Process.Start(processStartInfo);
                 }
                 else
                 {
-                    Process P = Process.Start("MShellUpdater.exe", "update");
+                    Process P = Process.Start(UpadaterName, "update");
                 }
-                Program.currentProc.Close();
+                Program.currentProc.Kill();
             }
         }
     }

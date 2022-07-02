@@ -8,7 +8,7 @@ namespace MShell.Commands.Cmds
 	{
 		public CmdTest(string name) : base(name)
 		{
-			_Help = "Tests Basic Functions of SHELL";
+			description = "Tests Basic Functions of SHELL";
 		}
 		public override bool Execute(string[] args, string input, User user)
 		{
