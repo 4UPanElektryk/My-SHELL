@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MShell.Binds;
+using SimpleLogs4Net;
 
 namespace MShell.Commands.SubCmds
 {
@@ -15,6 +16,7 @@ namespace MShell.Commands.SubCmds
         }
         public override bool Execute(string[] args, string input, User user)
         {
+            Log.Write("Listing binds");
             foreach (Bind item in BindManager.Binds)
             {
                 Console.WriteLine();

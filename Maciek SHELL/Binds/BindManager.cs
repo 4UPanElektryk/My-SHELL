@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
 using MShell.Integrations.User_Manager;
@@ -8,6 +8,7 @@ using MShell.Essentials;
 using MShell.Commands;
 using Newtonsoft.Json;
 using System.IO;
+using SimpleLogs4Net;
 
 namespace MShell.Binds
 {
@@ -42,6 +43,7 @@ namespace MShell.Binds
 		}
 		public static void AddBind(Bind bind)
 		{
+			Log.Write("Added bind: " + bind.Name);
 			Binds.Add(bind);
 			Save();
 		}
@@ -77,27 +79,38 @@ namespace MShell.Binds
 				Dual.Msg("No Binds Named \"" + name + "\" Found", ConsoleColor.Red);
 				return false;
 			}
+			int lastline = 0;
 			try
 			{
+				Stopwatch stopwatch = new Stopwatch();
+                stopwatch.Start();
                 Dictionary<string, string> argsDict = new Dictionary<string, string>();
+                if (bind.Args > 0)
+                {
+                    for (int i = 0; i < bind.Args; i++)
+                    {
+						argsDict.Add("$%" + i, args[i + 1]);
+                    }
+                }
                 foreach (string item in File.ReadAllLines(bind.Path))
 				{
 					string command = item;
-                    if (bind.Args > 0)
+                    foreach (var item2 in argsDict)
                     {
-                        for (int i = 0; i < bind.Args; i++)
-                        {
-                            command = command.Replace("$%" + i, args[i + 1]);
-                        }
+						command = command.Replace(item2.Key,item2.Value);
                     }
 					commandMenager.ExecuteCommandForBind(command, user);
+					lastline++;
 				}
-			}
+				stopwatch.Stop();
+                Console.WriteLine(stopwatch.ElapsedMilliseconds);
+            }
 			catch (Exception ex)
 			{
 				Dual.Msg(ex.Message, ConsoleColor.Red);
 				Dual.Msg(ex.Source, ConsoleColor.Red);
-			}
+                Log.Write("Exeption Encountered while executing bind: At line: " + lastline + " Message: \"" + ex.Message,Event.Type.Error);
+            }
 			return true;
 		}
 	}

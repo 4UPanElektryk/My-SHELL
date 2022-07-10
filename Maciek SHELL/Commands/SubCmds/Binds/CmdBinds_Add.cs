@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SimpleLogs4Net;
 
 namespace MShell.Commands.SubCmds
 {
@@ -46,6 +47,7 @@ namespace MShell.Commands.SubCmds
                 Path = path,
                 Args = i
             };
+            Log.Write("Added bind by User " + user._Id,Event.Type.Informtion);
             BindManager.AddBind(bind);
             return true;
         }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SimpleLogs4Net;
 
 namespace MShell.Commands.SubCmds
 {
@@ -50,6 +51,7 @@ namespace MShell.Commands.SubCmds
 			}
 			Dual.ProgressBar(RAMUsageProcatage, color, false);
 			//End of RAM bar
+			Log.Write("Ram Usage: " + RAMUsageProcatage + "% Cpu Usage: " + CPUUsageProcatage + "%");
 			return true;
 		}
 	}
