@@ -9,6 +9,7 @@ using MShell.Commands;
 using Newtonsoft.Json;
 using System.IO;
 using SimpleLogs4Net;
+using System.Linq;
 
 namespace MShell.Binds
 {
@@ -69,15 +70,15 @@ namespace MShell.Binds
 			string[] args = input.Split(' ');
 			string name = args[0];
 			Bind bind = GetBind(name);
-			if (!File.Exists(bind.Path))
-			{
-				Dual.Msg("Bind file not found \"" + bind.Path + "\"", ConsoleColor.Red);
-				return true;
-			}
 			if (bind == null)
 			{
 				Dual.Msg("No Binds Named \"" + name + "\" Found", ConsoleColor.Red);
 				return false;
+			}
+			if (!File.Exists(bind.Path))
+			{
+				Dual.Msg("Bind file not found \"" + bind.Path + "\"", ConsoleColor.Red);
+				return true;
 			}
 			int lastline = 0;
 			try
@@ -85,6 +86,11 @@ namespace MShell.Binds
 				Stopwatch stopwatch = new Stopwatch();
                 stopwatch.Start();
                 Dictionary<string, string> argsDict = new Dictionary<string, string>();
+                if (bind.Args != (args.Length - 1))
+                {
+                    Dual.Msg("Bind Takes " + bind.Args + " not " + args.Length, ConsoleColor.Red);
+                    return true;
+                }
                 if (bind.Args > 0)
                 {
                     for (int i = 0; i < bind.Args; i++)
@@ -95,11 +101,8 @@ namespace MShell.Binds
                 foreach (string item in File.ReadAllLines(bind.Path))
 				{
 					string command = item;
-                    foreach (var item2 in argsDict)
-                    {
-						command = command.Replace(item2.Key,item2.Value);
-                    }
-					commandMenager.ExecuteCommandForBind(command, user);
+                    command = argsDict.Aggregate(command, (result, s) => result.Replace(s.Key, s.Value));
+                    commandMenager.ExecuteCommandForBind(command, user);
 					lastline++;
 				}
 				stopwatch.Stop();
