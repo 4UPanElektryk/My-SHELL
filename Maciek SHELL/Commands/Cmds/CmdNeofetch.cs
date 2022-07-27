@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MShell.Properties;
+using MShell.Essentials;
 
 namespace MShell.Commands.Cmds
 {
@@ -17,6 +18,7 @@ namespace MShell.Commands.Cmds
         public override bool Execute(string[] args, string input, User user)
         {
             Console.Clear();
+            #region Logo
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(@" __       __           ______  __                __ __ ");
             Console.WriteLine(@"/  \     /  |         /      \/  |              /  /  |");
@@ -30,9 +32,26 @@ namespace MShell.Commands.Cmds
             Console.WriteLine(@"            /  \__$$ |                                 ");
             Console.WriteLine(@"            $$    $$/                                  ");
             Console.WriteLine(@"             $$$$$$/                                   ");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Ver: " + Settings.Default["Version"].ToString());
+            #endregion
+            #region Colors
+            for (int i = 0; i < 16; i++)
+            {
+                Console.BackgroundColor = Dual.IntToColor(i);
+                Console.Write("   ");
+                if (i == 7)
+                {
+                    Console.WriteLine();
+                }
+            }
             Console.ResetColor();
+            Console.WriteLine();
+            #endregion
+            #region Data
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Version: " + Settings.Default["Version"].ToString());
+            Console.WriteLine("Build date: " + Dual.GetCompilationDDMMString() + "." + Dual.GetCompilationYYYYString());
+            Console.ResetColor();
+            #endregion
             return true;
         }
     }

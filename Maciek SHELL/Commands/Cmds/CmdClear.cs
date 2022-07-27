@@ -10,7 +10,6 @@ namespace MShell.Commands.Cmds
 		public override bool Execute(string[] args, string input, User user)
 		{
 			Console.Clear();
-			Dual.Watermark();
 			return true;
 		}
 	}
