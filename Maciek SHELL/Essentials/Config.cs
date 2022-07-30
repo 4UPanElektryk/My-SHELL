@@ -1,20 +1,20 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.IO;
-using Newtonsoft.Json;
 
 namespace MShell.Essentials
 {
-	public class OutputAndInput
-	{
-		public AppConfig Aplication { get; set; }
-		public UserConfig UserController { get; set; }
-		public LogsConfig Logs { get; set; }
-	}
-	class Config
-	{
-		public static string path = AppDomain.CurrentDomain.BaseDirectory + "config.json";
+    public class OutputAndInput
+    {
+        public AppConfig Aplication { get; set; }
+        public UserConfig UserController { get; set; }
+        public LogsConfig Logs { get; set; }
+    }
+    class Config
+    {
+        public static string path = AppDomain.CurrentDomain.BaseDirectory + "config.json";
 
-		public static AppConfig _AppConfig;
+        public static AppConfig _AppConfig;
         /// <summary>
 		/// Stores the data for User Menager integration
 		/// </summary>
@@ -29,42 +29,42 @@ namespace MShell.Essentials
 		/// <exception cref="IOException"></exception>
 		/// <exception cref="FileNotFoundException"></exception>
 		public static void Load()
-		{
-			if (File.Exists(path))
-			{
-				string outputstring = File.ReadAllText(path);
-				OutputAndInput re = JsonConvert.DeserializeObject<OutputAndInput>(outputstring);
+        {
+            if (File.Exists(path))
+            {
+                string outputstring = File.ReadAllText(path);
+                OutputAndInput re = JsonConvert.DeserializeObject<OutputAndInput>(outputstring);
                 if (re != null)
                 {
-					_AppConfig = re.Aplication;
-					_UserConfig = re.UserController;
-					_LogsConfig = re.Logs;
+                    _AppConfig = re.Aplication;
+                    _UserConfig = re.UserController;
+                    _LogsConfig = re.Logs;
                 }
                 else
                 {
-					throw new IOException("Config is empty");
+                    throw new IOException("Config is empty");
                 }
-			}
+            }
             else
             {
-				throw new FileNotFoundException("Config file not found",path);
+                throw new FileNotFoundException("Config file not found", path);
             }
-		}
+        }
         /// <summary>
 		/// Saves the current configuration
 		/// </summary>
 		public static void Save()
-		{
-			OutputAndInput outputAndInput = new OutputAndInput()
-			{
-				Aplication = _AppConfig,
-				UserController = _UserConfig,
-				Logs = _LogsConfig
-			};
-			string file = JsonConvert.SerializeObject(outputAndInput,Formatting.Indented);
-			File.Delete(path);
-			File.WriteAllText(path, file);
-		}
+        {
+            OutputAndInput outputAndInput = new OutputAndInput()
+            {
+                Aplication = _AppConfig,
+                UserController = _UserConfig,
+                Logs = _LogsConfig
+            };
+            string file = JsonConvert.SerializeObject(outputAndInput, Formatting.Indented);
+            File.Delete(path);
+            File.WriteAllText(path, file);
+        }
         /// <summary>
 		/// Resets Config to Default values
 		/// </summary>
@@ -74,8 +74,8 @@ namespace MShell.Essentials
             _UserConfig = new UserConfig();
             _LogsConfig = new LogsConfig();
             _AppConfig.Reset();
-			_LogsConfig.Reset();
-			_UserConfig.Reset();
+            _LogsConfig.Reset();
+            _UserConfig.Reset();
         }
-	}
+    }
 }

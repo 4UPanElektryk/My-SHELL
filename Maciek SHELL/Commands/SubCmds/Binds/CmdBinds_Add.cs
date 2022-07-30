@@ -1,19 +1,15 @@
-﻿using MShell.Integrations.User_Manager;
+﻿using MShell.Binds;
+using MShell.Essentials;
+using MShell.Integrations.User_Manager;
+using SimpleLogs4Net;
 using System;
 using System.IO;
-using MShell.Essentials;
-using MShell.Binds;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SimpleLogs4Net;
 
 namespace MShell.Commands.SubCmds
 {
-	class CmdBinds_Add : SubCmd
-	{
-		public CmdBinds_Add(string name) : base(name){}
+    class CmdBinds_Add : SubCmd
+    {
+        public CmdBinds_Add(string name) : base(name) { }
         public override bool Execute(string[] args, string input, User user)
         {
             Console.WriteLine("Name: ");
@@ -47,7 +43,7 @@ namespace MShell.Commands.SubCmds
                 Path = path,
                 Args = i
             };
-            Log.Write("Added bind by User " + user._Id,Event.Type.Informtion);
+            Log.Write("Added bind by User " + user._Id, Event.Type.Informtion);
             BindManager.AddBind(bind);
             return true;
         }
