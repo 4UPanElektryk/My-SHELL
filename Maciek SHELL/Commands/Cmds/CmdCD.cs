@@ -9,12 +9,15 @@ namespace MShell.Commands.Cmds
 {
 	class CmdCD : Cmd
 	{
-		public CmdCD(string name) : base(name) { }
+		public CmdCD(string name) : base(name) 
+		{
+			description = "changes active directory";
+		}
 		public override bool Execute(string[] args, string input, User user)
 		{
 			bool action = true;
 			string path = Dual.TrimStart(input, args[0] + " ");
-			path = path.Replace("~",AppDomain.CurrentDomain.BaseDirectory);
+			path = path.Replace("~\\",AppDomain.CurrentDomain.BaseDirectory);
 			if (path != "..")
 			{
 				if (path.Contains(':'))
@@ -36,13 +39,9 @@ namespace MShell.Commands.Cmds
 						string paths = path;
                         foreach (string item in Directory.GetDirectories(LoggedProgram.DIR))
                         {
-                            Console.WriteLine(item);
-                            Console.WriteLine(Dual.TrimStart(item, LoggedProgram.DIR));
-                            Console.WriteLine(Dual.TrimStart(item, LoggedProgram.DIR).ToLower() == path.ToLower());
                             if (Dual.TrimStart(item,LoggedProgram.DIR).ToLower() == path.ToLower())
                             {
-                                Console.WriteLine("found");
-								paths = Dual.TrimStart(item, LoggedProgram.DIR);
+                                paths = Dual.TrimStart(item, LoggedProgram.DIR);
                             }
                         }
 						LoggedProgram.DIR = LoggedProgram.DIR + paths + "\\";

@@ -57,6 +57,8 @@ namespace MShell
 							CheckUpdates.Update();
 							break;
 
+						case "exit":
+							return;
 
 						//Pomoc
 						case "help":
@@ -182,7 +184,7 @@ namespace MShell
 						//Koniec Użytkownika
 
 						case "crash":
-							if (Program.Experimental)
+							if (Config._AppConfig.DevMode)
 							{
 								int n = 0;
 								int y = 5 / n;
@@ -240,12 +242,12 @@ namespace MShell
 				Console.WriteLine("Error: " + ex.Message);
                 Console.WriteLine(ex.Source);
 				Console.WriteLine("Something went wrong");
-				if (Debugger.IsAttached)
+				if (Config._AppConfig.DevMode)
 				{
 					Console.ForegroundColor = ConsoleColor.Yellow;
 					if (Dual.YesOrNO("Do You want to Continue with code?"))
 					{
-						User tempusr = new User(0, Guid.Empty, User.Type.User, "Temporary User", "");
+						User tempusr = new User(0, Guid.Empty, User.Type.SysAdmin, "Temporary User", "");
 						tempusr._Visible = false;
 						LoggedProgram.LoggedMain(tempusr);
 						Console.WriteLine("");

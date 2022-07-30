@@ -188,13 +188,13 @@ namespace MShell.Commands.Cmds.Nano
 							{
 								Console.BackgroundColor = Dual.IntToColor(15);
 								Console.ForegroundColor = Dual.IntToColor(i);
-								Console.Write(i + " Tset ");
+								Console.Write(i + " Test ");
 							}
 							else
 							{
 								Console.BackgroundColor = Dual.IntToColor(0);
 								Console.ForegroundColor = Dual.IntToColor(i);
-								Console.Write(i + " Tset ");
+								Console.Write(i + " Test ");
 							}
 
 						}
@@ -206,7 +206,7 @@ namespace MShell.Commands.Cmds.Nano
 								Console.ForegroundColor = Dual.IntToColor(0);
 							}
 							Console.BackgroundColor = Dual.IntToColor(i);
-							Console.Write(i + " Tset ");
+							Console.Write(i + " Test ");
 						}
 						Console.BackgroundColor = Dual.IntToColor(0);
 						Console.ForegroundColor = Dual.IntToColor(15);

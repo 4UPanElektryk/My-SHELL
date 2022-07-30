@@ -17,7 +17,6 @@ namespace MShell.Commands.Cmds
         }
         public override bool Execute(string[] args, string input, User user)
         {
-            Console.Clear();
             #region Logo
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(@" __       __           ______  __                __ __ ");

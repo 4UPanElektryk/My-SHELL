@@ -6,7 +6,10 @@ namespace MShell.Commands.Cmds
 {
 	class CmdClear : Cmd
 	{
-		public CmdClear(string name) : base(name) { }
+		public CmdClear(string name) : base(name) 
+		{
+			description = "Clears the screen";
+		}
 		public override bool Execute(string[] args, string input, User user)
 		{
 			Console.Clear();

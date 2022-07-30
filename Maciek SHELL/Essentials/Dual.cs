@@ -21,14 +21,14 @@ namespace MShell.Essentials
 			{
 				Console.ForegroundColor = ConsoleColor.Green;
 			}
-			Console.WriteLine("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-			Console.WriteLine("┃  Maciek Log Opener ©" + GetCompilationTime().Year + "  ┃");
-			Console.WriteLine("┃  Ver   " + Settings.Default["Version"].ToString() + "   CL    " + GetCompilationDDMMString() + "  ┃");
+			Console.WriteLine("┏━━━━━━━━━━━━━━━━━━━━━━━┓");
+			Console.WriteLine("┃ MySH Log Opener ©" + GetCompilationTime().Year + " ┃");
+			Console.WriteLine("┃ Ver   " + Settings.Default["Version"].ToString() + "   CL  " + GetCompilationDDMMString() + " ┃");
 			if (Program.Experimental)
 			{
-				Console.WriteLine("┃  Experimental       " + Settings.Default["Build"].ToString() + "  ┃");
+				Console.WriteLine("┃ Experimental     " + Settings.Default["Build"].ToString() + " ┃");
 			}
-			Console.WriteLine("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+			Console.WriteLine("┗━━━━━━━━━━━━━━━━━━━━━━━┛");
 			Console.ForegroundColor = ConsoleColor.White;
 		}
 		public static void NanoWatermark()
@@ -63,14 +63,14 @@ namespace MShell.Essentials
 			{
 				Console.ForegroundColor = ConsoleColor.Green;
 			}
-			Console.WriteLine("┏━━━━━━━━━━━━━━━━━━━━┓");
-			Console.WriteLine("┃ Maciek Shell ©" + GetCompilationYYYYString() + " ┃");
-			Console.WriteLine("┃ Ver " + Settings.Default["Version"].ToString() + "   CL " + GetCompilationDDMMString() + " ┃");
+			Console.WriteLine("┏━━━━━━━━━━━━━━━━━━━┓");
+			Console.WriteLine("┃ My SHELL    ©" + GetCompilationYYYYString() + " ┃");
+			Console.WriteLine("┃ Ver " + Settings.Default["Version"].ToString() + "  CL " + GetCompilationDDMMString() + " ┃");
 			if (Program.Experimental)
 			{
-				Console.WriteLine("┃ Experimental  " + Settings.Default["Build"].ToString() + " ┃");
+				Console.WriteLine("┃ Experimental " + Settings.Default["Build"].ToString() + " ┃");
 			}
-			Console.WriteLine("┗━━━━━━━━━━━━━━━━━━━━┛ ");
+			Console.WriteLine("┗━━━━━━━━━━━━━━━━━━━┛ ");
 			Console.ForegroundColor = ConsoleColor.White;
 		}
 		public static void Msg(string text, ConsoleColor Color, ConsoleColor BGColor = ConsoleColor.Black)

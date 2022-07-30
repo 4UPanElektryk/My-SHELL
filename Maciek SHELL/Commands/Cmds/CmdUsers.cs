@@ -6,6 +6,7 @@ namespace MShell.Commands.Cmds
 	{
 		public CmdUsers(string name) : base(name)
 		{
+			description = "Manipulation of users";
 			_Subs.Add(new CmdUsers_Add("add"));
 			_Subs.Add(new CmdUsers_List("list"));
 			_Subs.Add(new CmdUsers_Info("info"));

@@ -7,7 +7,10 @@ namespace MShell.Commands.Cmds
 {
 	class CmdLs : Cmd
 	{
-		public CmdLs(string name) : base(name) { }
+		public CmdLs(string name) : base(name) 
+		{
+			description = "Lists Stuff in current directory";
+		}
 		public override bool Execute(string[] args, string input, User user)
 		{
 			Console.ForegroundColor = ConsoleColor.Gray;

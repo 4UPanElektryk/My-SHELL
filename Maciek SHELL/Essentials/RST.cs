@@ -37,7 +37,7 @@ namespace MShell.Essentials
 			}
 			try
 			{
-				TestMsg("Attempting Load of Config file", MsgType.Warning);
+				TestMsg("Attempting Load of Config file", MsgType.Normal);
 				Config.Load();
 				TestMsg("Load succesfull", MsgType.OK);
 			}
@@ -59,14 +59,14 @@ namespace MShell.Essentials
 			}
 			else
 			{
-				TestMsg("MShellUpdater.exe not found", MsgType.Error);
+				TestMsg("Updater.exe not found", MsgType.Error);
 				error_encounterd = true;
 			}
 			#endregion
 			#region Log Initializaion
 			try
 			{
-				TestMsg("Atempting Log initialization", MsgType.Warning);
+				TestMsg("Atempting Log initialization", MsgType.Normal);
 				new Log(Config._LogsConfig.Path, Config._LogsConfig.Enabled, Config._LogsConfig.Prefix);
 				TestMsg("Log initialization Succeded", MsgType.OK);
 			}
@@ -98,7 +98,7 @@ namespace MShell.Essentials
 			}
 			try
 			{
-				TestMsg("Atempting User Controller initialization", MsgType.Warning);
+				TestMsg("Atempting User Controller initialization", MsgType.Normal);
 				new UserController(Config._UserConfig.File, Config._UserConfig.FileBackup);
 				TestMsg("User Controller initialization Succeded", MsgType.OK);
 			}
@@ -123,7 +123,7 @@ namespace MShell.Essentials
 			}
 			try
 			{
-				TestMsg("Atempting Bind Manager initialization", MsgType.Warning);
+				TestMsg("Atempting Bind Manager initialization", MsgType.Normal);
 				new BindManager(Config._AppConfig.BindFile);
 				TestMsg("Bind Manager initialization Succeded", MsgType.OK);
 			}
@@ -138,7 +138,14 @@ namespace MShell.Essentials
 				BindManager.Save();
 				BindManager.Load();
             }
-			#endregion
+            #endregion
+
+            #region End Data
+            if (Config._AppConfig.DevMode)
+            {
+				Config._AppConfig.DevMode = Dual.YesOrNO("Dev Mode is enabled.\nDo you want to continue in Dev Mode");
+				Config.Save();
+            }
 			if (error_encounterd)
 			{
 				Console.ForegroundColor = ConsoleColor.Yellow;
@@ -148,6 +155,7 @@ namespace MShell.Essentials
 			{
 				return true;
 			}
+			#endregion
 		}
 		private static void TestMsg(string message,MsgType type)
 		{

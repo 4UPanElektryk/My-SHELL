@@ -5,6 +5,7 @@ namespace MShell.Commands.Cmds
     {
         public CmdLogs(string name) : base(name)
         {
+            description = "Manipulation of Logs";
             _Subs.Add(new CmdLogs_Open("open"));
             _Subs.Add(new CmdLogs_Clear("clear"));
             _Subs.Add(new CmdLogs_State("state"));

@@ -19,8 +19,7 @@ namespace MShell
 			loop = true;
 			do
 			{
-				string ShowDIR = DIR.ToLower().Replace(AppDomain.CurrentDomain.BaseDirectory.ToLower(), "~\\");
-				ShowDIR = ShowDIR.Replace(DIR.ToLower(),DIR);
+				string ShowDIR = DIR.Replace(AppDomain.CurrentDomain.BaseDirectory, "~\\");
 				bool action = false;
 				string input = Prompt.ShowPropt(user, ShowDIR);
 				Log.AddEvent(new Event("User Action - Input From User ID:" + user._Id + " Input: " + input, Event.Type.Normal, DateTime.Now));

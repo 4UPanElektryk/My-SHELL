@@ -23,7 +23,6 @@ namespace MShell.Commands
 				new CmdLogs("logs"),
 				new CmdMKDir("mkdir"),
 				new NanoCmd("nano"),
-				new CmdNote("notepad"),
 				new CmdUsers("user"),
 				new CmdStart("start"),
 				new CmdStatus("status"),

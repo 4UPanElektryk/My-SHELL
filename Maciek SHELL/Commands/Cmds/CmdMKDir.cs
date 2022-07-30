@@ -8,7 +8,10 @@ namespace MShell.Commands.Cmds
 {
 	class CmdMKDir : Cmd
 	{
-		public CmdMKDir(string name) : base(name) { }
+		public CmdMKDir(string name) : base(name) 
+		{
+			description = "Creates directory";
+		}
 		public override bool Execute(string[] args, string input, User user)
 		{
 			bool action = false;

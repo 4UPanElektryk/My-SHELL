@@ -8,7 +8,10 @@ namespace MShell.Commands.Cmds
 {
 	class CmdDelDir : Cmd
 	{
-		public CmdDelDir(string name) : base(name) { }
+		public CmdDelDir(string name) : base(name) 
+		{
+			description = "deletes directory";
+		}
 		public override bool Execute(string[] args, string input, User user)
 		{
 			bool action = false;

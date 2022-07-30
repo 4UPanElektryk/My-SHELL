@@ -7,7 +7,10 @@ namespace MShell.Commands.Cmds
 {	
 	class CmdLogoff : Cmd
 	{
-		public CmdLogoff(string name) : base(name) { }
+		public CmdLogoff(string name) : base(name)
+		{
+			description = "Loggs off currently logged user";
+		}
 		public override bool Execute(string[] args, string input, User user)
 		{
 			if (Dual.YesOrNO("Do You want to Logoff?"))
