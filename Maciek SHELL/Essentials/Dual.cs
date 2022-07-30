@@ -10,6 +10,7 @@ namespace MShell.Essentials
 {
     public static class Dual
     {
+        #region Watermarks
         public static void LogWatermark()
         {
             Console.OutputEncoding = Encoding.Unicode;
@@ -73,6 +74,8 @@ namespace MShell.Essentials
             Console.WriteLine("┗━━━━━━━━━━━━━━━━━━━┛ ");
             Console.ForegroundColor = ConsoleColor.White;
         }
+        #endregion
+        #region Msgs
         public static void Msg(string text, ConsoleColor Color, ConsoleColor BGColor = ConsoleColor.Black)
         {
             ConsoleColor BeforeColor = Console.ForegroundColor;
@@ -82,37 +85,6 @@ namespace MShell.Essentials
             Console.WriteLine(text);
             Console.ForegroundColor = BeforeColor;
             Console.BackgroundColor = BeforeBgColor;
-        }
-        public static string TrimStart(string text, string trimText)
-        {
-            string p = trimText;
-            string path = "";
-            int startfrom = p.Length;
-            int j = 0;
-            foreach (char item in text.ToArray())
-            {
-                j++;
-                if (j > startfrom)
-                {
-                    path = path + item;
-                }
-            }
-            return path;
-        }
-        public static string TrimEnd(string text, int chars)
-        {
-            string path = "";
-            int startfrom = text.Length - chars;
-            int j = 0;
-            foreach (char item in text.ToArray())
-            {
-                j++;
-                if (j <= startfrom)
-                {
-                    path = path + item;
-                }
-            }
-            return path;
         }
         public static void ShowMsg(string[] text, ConsoleColor Color, ConsoleColor BGColor = ConsoleColor.Black)
         {
@@ -163,6 +135,41 @@ namespace MShell.Essentials
             Console.BackgroundColor = ConsoleColor.Black;
             Console.SetCursorPosition(x, y);
         }
+        #endregion
+        #region Trim strings
+        public static string TrimStart(string text, string trimText)
+        {
+            string p = trimText;
+            string path = "";
+            int startfrom = p.Length;
+            int j = 0;
+            foreach (char item in text.ToArray())
+            {
+                j++;
+                if (j > startfrom)
+                {
+                    path = path + item;
+                }
+            }
+            return path;
+        }
+        public static string TrimEnd(string text, int chars)
+        {
+            string path = "";
+            int startfrom = text.Length - chars;
+            int j = 0;
+            foreach (char item in text.ToArray())
+            {
+                j++;
+                if (j <= startfrom)
+                {
+                    path = path + item;
+                }
+            }
+            return path;
+        }
+        #endregion
+        #region colors
         public static ConsoleColor IntToColor(int n)
         {
             ConsoleColor color;
@@ -230,6 +237,8 @@ namespace MShell.Essentials
             }
             return color;
         }
+        #endregion
+        #region Compilation Time
         public static DateTime GetCompilationTime()
         {
             return File.GetLastWriteTime(Assembly.GetExecutingAssembly().Location);
@@ -242,10 +251,8 @@ namespace MShell.Essentials
         {
             return File.GetLastWriteTime(Assembly.GetExecutingAssembly().Location).ToString("yyyy");
         }
-        public static string Repath(string inputpath)
-        {
-            return inputpath.Replace("~\\", AppDomain.CurrentDomain.BaseDirectory);
-        }
+        #endregion
+        #region User Input
         public static bool YesOrNO(string message)
         {
             Console.WriteLine(message);
@@ -261,6 +268,16 @@ namespace MShell.Essentials
                 return false;
             }
         }
+        public static void AwaitingEnter()
+        {
+            Console.WriteLine("Press Enter to continue...");
+            ConsoleKey key = ConsoleKey.NoName;
+            while (key != ConsoleKey.Enter)
+            {
+                key = Console.ReadKey(true).Key;
+            }
+        }
+        #endregion
         public static void ProgressBar(float percent, ConsoleColor color, bool normal = true, int width = 50)
         {
             int g = 100 / width;
@@ -305,15 +322,6 @@ namespace MShell.Essentials
             Console.WriteLine("%");
             Console.ResetColor();
         }
-        public static void AwaitingEnter()
-        {
-            Console.WriteLine("Press Enter to continue...");
-            ConsoleKey key = ConsoleKey.NoName;
-            while (key != ConsoleKey.Enter)
-            {
-                key = Console.ReadKey(true).Key;
-            }
-        }
         public static string[] DeleteNullAndEmptyItems(string[] inputstring)
         {
             List<string> strings = new List<string>();
@@ -328,7 +336,7 @@ namespace MShell.Essentials
         }
         public static string GetThePath(string path)
         {
-            string actualpath = path;
+            string actualpath = path.Replace("~\\", AppDomain.CurrentDomain.BaseDirectory);
             if (actualpath.Contains(':'))
             {
 

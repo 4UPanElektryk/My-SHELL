@@ -16,7 +16,7 @@ namespace MShell.Commands
             {
                 new CmdCD("cd"),
                 new CmdClear("clear"),
-                new CmdDelDir("deldir"),
+                new CmdDel("del"),
                 new CmdHelp("help"),
                 new CmdLs("ls"),
                 new CmdLogoff("logoff"),

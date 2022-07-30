@@ -104,7 +104,9 @@ namespace MShell.Binds
                     lastline++;
                 }
                 stopwatch.Stop();
-                Console.WriteLine(stopwatch.ElapsedMilliseconds);
+                double hg = stopwatch.ElapsedMilliseconds / 1000.000;
+                string TaskTook = "Task took: " + hg.ToString().Replace(',', '.') + "s";
+                Console.WriteLine(TaskTook);
             }
             catch (Exception ex)
             {

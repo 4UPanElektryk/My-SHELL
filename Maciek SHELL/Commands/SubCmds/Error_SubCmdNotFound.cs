@@ -21,6 +21,7 @@ namespace MShell.Commands.SubCmds
             else
             {
                 Console.WriteLine("This Command(" + args[0] + ") require sub commands");
+                Console.WriteLine("You can see them by typing \"help " + args[0] +"\"");
             }
             Console.ResetColor();
             return true;

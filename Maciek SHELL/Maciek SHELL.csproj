@@ -100,9 +100,9 @@
     <Compile Include="Commands\Cmds\CmdBinds.cs" />
     <Compile Include="Commands\Cmds\CmdCD.cs" />
     <Compile Include="Commands\Cmds\CmdClear.cs" />
+    <Compile Include="Commands\Cmds\CmdDel.cs" />
     <Compile Include="Commands\Cmds\CmdEditor.cs" />
     <Compile Include="Commands\Cmds\CmdHelp.cs" />
-    <Compile Include="Commands\Cmds\CmdDelDir.cs" />
     <Compile Include="Commands\Cmds\CmdLs.cs" />
     <Compile Include="Commands\Cmds\CmdLogoff.cs" />
     <Compile Include="Commands\Cmds\CmdLogs.cs" />
@@ -114,6 +114,8 @@
     <Compile Include="Commands\Cmds\CmdStatus.cs" />
     <Compile Include="Commands\SubCmds\Binds\CmdBinds_Add.cs" />
     <Compile Include="Commands\SubCmds\Binds\CmdBinds_List.cs" />
+    <Compile Include="Commands\SubCmds\Del\CmdDel_Dir.cs" />
+    <Compile Include="Commands\SubCmds\Del\CmdDel_File.cs" />
     <Compile Include="Commands\SubCmds\Logs\CmdLogs_Default.cs" />
     <Compile Include="Commands\SubCmds\Logs\CmdLogs_Open.cs" />
     <Compile Include="Commands\SubCmds\Logs\CmdLogs_State.cs" />
