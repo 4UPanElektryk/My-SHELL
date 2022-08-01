@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MShell.Properties;
+using MShell.Essentials;
 
 namespace MShell.Commands.Cmds
 {
@@ -32,6 +33,17 @@ namespace MShell.Commands.Cmds
             Console.WriteLine(@"             $$$$$$/                                   ");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Ver: " + Settings.Default["Version"].ToString());
+            for (int i = 0; i <= 15; i++)
+            {
+                Console.BackgroundColor = Dual.IntToColor(i);
+                Console.Write("   ");
+                Console.ResetColor();
+                if (i == 7)
+                {
+                    Console.WriteLine();
+                }
+            }
+            Console.WriteLine();
             Console.ResetColor();
             return true;
         }

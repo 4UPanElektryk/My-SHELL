@@ -3,7 +3,7 @@ using MShell.Essentials;
 using MShell.Integrations.User_Manager;
 using SimpleLogs4Net;
 using System;
-using System.Threading;
+using System.Collections.Generic;
 namespace MShell
 {
 	class LoggedProgram
@@ -17,12 +17,14 @@ namespace MShell
 			Dual.Watermark();
 			CommandMenager commandMenager = new CommandMenager();
 			loop = true;
+			Program.inputs = new List<string>();
 			do
 			{
 				string ShowDIR = DIR.ToLower().Replace(AppDomain.CurrentDomain.BaseDirectory.ToLower(), "~\\");
 				ShowDIR = ShowDIR.Replace(DIR.ToLower(),DIR);
 				bool action = false;
 				string input = Prompt.ShowPropt(user, ShowDIR);
+                Program.inputs.Add(input);
 				Log.AddEvent(new Event("User Action - Input From User ID:" + user._Id + " Input: " + input, Event.Type.Normal, DateTime.Now));
 				action = commandMenager.ExecuteCommand(input, user);
 				if (!action)

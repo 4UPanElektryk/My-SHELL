@@ -14,7 +14,8 @@ namespace MShell
         static User loggedUser;
 		public static bool FoundUpdater;
 		public static bool Experimental;
-		public static PerformanceCounter cpuCounter;
+		public static List<string> inputs;
+        public static PerformanceCounter cpuCounter;
 		public static PerformanceCounter ramCounter;
 		public static Process currentProc;
 		static void Main(string[] args)
@@ -36,6 +37,7 @@ namespace MShell
             }
 			Console.ResetColor();
 			Console.Clear();
+			new MakeCrashLog("crash.log");
             try
 			{	
 				Dual.Watermark();
@@ -239,8 +241,10 @@ namespace MShell
 				Console.ForegroundColor = ConsoleColor.Red;
 				Console.WriteLine("Error: " + ex.Message);
                 Console.WriteLine(ex.Source);
+                Console.WriteLine(ex.StackTrace);
 				Console.WriteLine("Something went wrong");
-				if (Debugger.IsAttached)
+				MakeCrashLog.WriteLog(ex.Message,ex.Source,ex.StackTrace,inputs);
+                if (Debugger.IsAttached)
 				{
 					Console.ForegroundColor = ConsoleColor.Yellow;
 					if (Dual.YesOrNO("Do You want to Continue with code?"))
