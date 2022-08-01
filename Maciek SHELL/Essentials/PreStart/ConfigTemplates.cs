@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MShell.Essentials
+﻿namespace MShell.Essentials
 {
     public class AppConfig
     {
@@ -21,7 +15,7 @@ namespace MShell.Essentials
         }
         public AppConfig()
         {
-            
+
         }
     }
     public class UserConfig
@@ -35,7 +29,7 @@ namespace MShell.Essentials
         }
         public UserConfig()
         {
-            
+
         }
     }
     public class LogsConfig

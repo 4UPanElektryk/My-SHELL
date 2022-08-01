@@ -1,11 +1,7 @@
-﻿using MShell.Integrations.User_Manager;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MShell.Essentials;
+using MShell.Integrations.User_Manager;
 using MShell.Properties;
-using MShell.Essentials;
+using System;
 
 namespace MShell.Commands.Cmds
 {
@@ -17,7 +13,7 @@ namespace MShell.Commands.Cmds
         }
         public override bool Execute(string[] args, string input, User user)
         {
-            Console.Clear();
+            #region Logo
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(@" __       __           ______  __                __ __ ");
             Console.WriteLine(@"/  \     /  |         /      \/  |              /  /  |");
@@ -31,20 +27,26 @@ namespace MShell.Commands.Cmds
             Console.WriteLine(@"            /  \__$$ |                                 ");
             Console.WriteLine(@"            $$    $$/                                  ");
             Console.WriteLine(@"             $$$$$$/                                   ");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Ver: " + Settings.Default["Version"].ToString());
-            for (int i = 0; i <= 15; i++)
+            #endregion
+            #region Colors
+            for (int i = 0; i < 16; i++)
             {
                 Console.BackgroundColor = Dual.IntToColor(i);
                 Console.Write("   ");
-                Console.ResetColor();
                 if (i == 7)
                 {
                     Console.WriteLine();
                 }
             }
-            Console.WriteLine();
             Console.ResetColor();
+            Console.WriteLine();
+            #endregion
+            #region Data
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Version: " + Settings.Default["Version"].ToString());
+            Console.WriteLine("Build date: " + Dual.GetCompilationDDMMString() + "." + Dual.GetCompilationYYYYString());
+            Console.ResetColor();
+            #endregion
             return true;
         }
     }

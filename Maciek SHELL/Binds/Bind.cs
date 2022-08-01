@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MShell.Binds
+﻿namespace MShell.Binds
 {
     public class Bind
     {
@@ -14,7 +8,7 @@ namespace MShell.Binds
         public string Path { get; set; }
         public Bind()
         {
-            
+
         }
     }
 }

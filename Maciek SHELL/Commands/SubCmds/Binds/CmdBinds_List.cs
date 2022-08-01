@@ -1,11 +1,7 @@
-﻿using MShell.Integrations.User_Manager;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MShell.Binds;
+﻿using MShell.Binds;
+using MShell.Integrations.User_Manager;
 using SimpleLogs4Net;
+using System;
 
 namespace MShell.Commands.SubCmds
 {
