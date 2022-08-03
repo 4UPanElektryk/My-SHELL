@@ -43,14 +43,14 @@ namespace MShell.Essentials
             {
                 Console.ForegroundColor = ConsoleColor.Green;
             }
-            Console.WriteLine("+----------------------+");
-            Console.WriteLine("|  Nano Editor  ©" + GetCompilationYYYYString() + "  |");
-            Console.WriteLine("|  Ver " + Settings.Default["Version"].ToString() + "   CL " + GetCompilationDDMMString() + "  |");
+            Console.WriteLine("┏━━━━━━━━━━━━━━━━━━━━━━┓");
+            Console.WriteLine("┃  Nano Editor  ©" + GetCompilationYYYYString() + "  ┃");
+            Console.WriteLine("┃  Ver " + Settings.Default["Version"].ToString() + "   CL " + GetCompilationDDMMString() + "  ┃");
             if (Program.Experimental)
             {
-                Console.WriteLine("|  Experimental  " + Settings.Default["Build"].ToString() + "  |");
+                Console.WriteLine("┃  Experimental  " + Settings.Default["Build"].ToString() + "  ┃");
             }
-            Console.WriteLine("+----------------------+");
+            Console.WriteLine("┗━━━━━━━━━━━━━━━━━━━━━━┛");
             Console.ForegroundColor = ConsoleColor.White;
         }
         public static void Watermark()
@@ -71,7 +71,7 @@ namespace MShell.Essentials
             {
                 Console.WriteLine("┃ Experimental " + Settings.Default["Build"].ToString() + " ┃");
             }
-            Console.WriteLine("┗━━━━━━━━━━━━━━━━━━━┛ ");
+            Console.WriteLine("┗━━━━━━━━━━━━━━━━━━━┛");
             Console.ForegroundColor = ConsoleColor.White;
         }
         #endregion

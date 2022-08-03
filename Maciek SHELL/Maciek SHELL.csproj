@@ -140,7 +140,6 @@
     <Compile Include="Essentials\Dual.cs" />
     <Compile Include="Essentials\Prompt.cs" />
     <Compile Include="Essentials\PreStart\RST.cs" />
-    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="LoggedProgram.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

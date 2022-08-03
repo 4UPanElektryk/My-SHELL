@@ -25,7 +25,7 @@ namespace MShell
 			cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
 			ramCounter = new PerformanceCounter("Memory", "Available MBytes");
 			cpuCounter.NextValue();
-			Console.Title = "Maciek Shell " + Settings.Default["Version"].ToString();
+			Console.Title = "My Shell " + Settings.Default["Version"].ToString();
             if (Experimental)
             {
                 Console.Title += " Experimental";
@@ -36,7 +36,7 @@ namespace MShell
             }
 			Console.ResetColor();
 			Console.Clear();
-			new MakeCrashLog("crash.log");
+			new MakeCrashLog(Config._LogsConfig.Path + "crash.log");
             try
             {
                 Dual.Watermark();
@@ -245,12 +245,12 @@ namespace MShell
                 Console.WriteLine(ex.StackTrace);
 				Console.WriteLine("Something went wrong");
 				MakeCrashLog.WriteLog(ex.Message,ex.Source,ex.StackTrace,inputs);
-                if (Debugger.IsAttached)
+                if (Config._AppConfig.DevMode)
 				{
 					Console.ForegroundColor = ConsoleColor.Yellow;
 					if (Dual.YesOrNO("Do You want to Continue with code?"))
 					{
-						User tempusr = new User(0, Guid.Empty, User.Type.User, "Temporary User", "");
+						User tempusr = new User(0, Guid.Empty, User.Type.SysAdmin, "Temporary User", "");
 						tempusr._Visible = false;
 						LoggedProgram.LoggedMain(tempusr);
 						Console.WriteLine("");
