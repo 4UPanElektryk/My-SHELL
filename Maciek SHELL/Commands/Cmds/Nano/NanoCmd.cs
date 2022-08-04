@@ -299,9 +299,7 @@ namespace MShell.Commands.Cmds.Nano
                             if (File.Exists(path))
                             {
                                 Console.ForegroundColor = ConsoleColor.Yellow;
-                                Console.Write("File already exis do you want to repalce it? Y | N >>");
-                                ConsoleKey Keyj = Console.ReadKey().Key;
-                                if (Keyj == ConsoleKey.Y)
+                                if (Dual.YesOrNO("File already exis do you want to repalce it? "))
                                 {
                                     Console.WriteLine("");
                                     File.Delete(path);
@@ -340,9 +338,7 @@ namespace MShell.Commands.Cmds.Nano
                             if (File.Exists(path))
                             {
                                 Console.ForegroundColor = ConsoleColor.Yellow;
-                                Console.Write("File already exis do you want to repalce it? Y | N >>");
-                                ConsoleKey Keyj = Console.ReadKey().Key;
-                                if (Keyj == ConsoleKey.Y)
+                                if (Dual.YesOrNO("File already exis do you want to repalce it? "))
                                 {
                                     Console.WriteLine("");
                                     File.Delete(path);
@@ -369,9 +365,7 @@ namespace MShell.Commands.Cmds.Nano
                     case "exit":
                     case "e":
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.Write("Are you sure you want to exit? Y | N >>");
-                        ConsoleKey Key = Console.ReadKey().Key;
-                        if (Key == ConsoleKey.Y)
+                        if (Dual.YesOrNO("Are you sure you want to exit? "))
                         {
                             Console.WriteLine("");
                             loop = false;
