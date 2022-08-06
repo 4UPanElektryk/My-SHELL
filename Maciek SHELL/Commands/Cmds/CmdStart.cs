@@ -10,7 +10,10 @@ namespace MShell.Commands.Cmds
 {
     class CmdStart : Cmd
     {
-        public CmdStart(string name) : base(name) { }
+        public CmdStart(string name) : base(name) 
+        {
+            description = "Executes the process written in args";
+        }
         public override bool Execute(string[] args, string input, User user)
         {
             string p = args[0] + " ";

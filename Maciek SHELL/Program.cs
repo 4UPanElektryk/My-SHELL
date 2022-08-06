@@ -11,20 +11,21 @@ namespace MShell
     class Program
     {
         static User loggedUser;
-        public static bool FoundUpdater;
-        public static bool Experimental;
+		public static bool FoundUpdater;
+		public static bool Experimental;
+		public static List<string> inputs;
         public static PerformanceCounter cpuCounter;
-        public static PerformanceCounter ramCounter;
-        public static Process currentProc;
-        static void Main(string[] args)
-        {
-            Experimental = true;
-            FoundUpdater = false;
-            currentProc = Process.GetCurrentProcess();
-            cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
-            ramCounter = new PerformanceCounter("Memory", "Available MBytes");
-            cpuCounter.NextValue();
-            Console.Title = "Maciek Shell " + Settings.Default["Version"].ToString();
+		public static PerformanceCounter ramCounter;
+		public static Process currentProc;
+		static void Main(string[] args)
+		{
+			Experimental = true;
+			FoundUpdater = false;
+			currentProc = Process.GetCurrentProcess();
+			cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
+			ramCounter = new PerformanceCounter("Memory", "Available MBytes");
+			cpuCounter.NextValue();
+			Console.Title = "My Shell " + Settings.Default["Version"].ToString();
             if (Experimental)
             {
                 Console.Title += " Experimental";
@@ -33,8 +34,9 @@ namespace MShell
             {
                 return;
             }
-            Console.ResetColor();
-            Console.Clear();
+			Console.ResetColor();
+			Console.Clear();
+			new MakeCrashLog(Config._LogsConfig.Path + "crash.log");
             try
             {
                 Dual.Watermark();
@@ -240,25 +242,27 @@ namespace MShell
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Error: " + ex.Message);
                 Console.WriteLine(ex.Source);
-                Console.WriteLine("Something went wrong");
+                Console.WriteLine(ex.StackTrace);
+				Console.WriteLine("Something went wrong");
+				MakeCrashLog.WriteLog(ex.Message,ex.Source,ex.StackTrace,inputs);
                 if (Config._AppConfig.DevMode)
-                {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    if (Dual.YesOrNO("Do You want to Continue with code?"))
-                    {
-                        User tempusr = new User(0, Guid.Empty, User.Type.SysAdmin, "Temporary User", "");
-                        tempusr._Visible = false;
-                        LoggedProgram.LoggedMain(tempusr);
-                        Console.WriteLine("");
-                    }
-                    else
-                    {
-                        Console.WriteLine("");
-                    }
-                }
-                Console.ReadKey();
-                Console.ForegroundColor = ConsoleColor.White;
-            }
+				{
+					Console.ForegroundColor = ConsoleColor.Yellow;
+					if (Dual.YesOrNO("Do You want to Continue with code?"))
+					{
+						User tempusr = new User(0, Guid.Empty, User.Type.SysAdmin, "Temporary User", "");
+						tempusr._Visible = false;
+						LoggedProgram.LoggedMain(tempusr);
+						Console.WriteLine("");
+					}
+					else
+					{
+						Console.WriteLine("");
+					}
+				}
+				Console.ReadKey();
+				Console.ForegroundColor = ConsoleColor.White;
+			}
 
         }
     }
