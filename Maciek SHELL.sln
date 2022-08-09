@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.31903.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maciek SHELL", "My SHELL\My SHELL.csproj", "{1E93AC15-A78D-4D51-BE79-8A34AEB5420B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "My SHELL", "My SHELL\My SHELL.csproj", "{1E93AC15-A78D-4D51-BE79-8A34AEB5420B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MShell User Menager", "..\MOS User Menager Integration\MOS User Menager Integration\MShell User Menager.csproj", "{9CD6F790-D5F2-4527-89B6-3AB8D5C99D48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MShellUpdater", "MyShellUpdater\MyShellUpdater.csproj", "{6AA49F0B-9614-4E8F-B5D5-8CB450E05957}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "My SHELL Updater", "MyShellUpdater\My SHELL Updater.csproj", "{6AA49F0B-9614-4E8F-B5D5-8CB450E05957}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
