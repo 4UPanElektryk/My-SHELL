@@ -3,6 +3,7 @@ using MShell.Integrations.User_Manager;
 using SimpleLogs4Net;
 using System;
 using System.IO;
+using MShell.Essentials;
 
 namespace MShell.Essentials
 {
@@ -45,6 +46,27 @@ namespace MShell.Essentials
                 Config.Reset();
                 Config.Save();
                 error_encounterd = true;
+            }
+            #endregion
+            #region Connection Test
+            TestMsg("Checking Internet Connection", MsgType.Normal);
+            string[] PingDestinations =
+            {
+                "google.com",
+                "github.com",
+                "stackoverflow.com"
+            };
+            foreach (string item in PingDestinations)
+            {
+                if (CheckUpdates.CheckConnection(item))
+                {
+                    TestMsg("Connection established with: " + item, MsgType.OK);
+                }
+                else
+                {
+                    TestMsg("Connection established with: " + item, MsgType.Warning);
+                    error_encounterd = true;
+                }
             }
             #endregion
             #region Dependecies Test

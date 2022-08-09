@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Net.NetworkInformation;
 using Newtonsoft.Json;
 using System.Text;
 using System.IO;
@@ -39,7 +38,6 @@ namespace MShell.Updater
                             Console.WriteLine("Your Version: " + version + "." + build);
                             Console.WriteLine("Server Version: " + updateFile.Version + "." + updateFile.BuildNumber);
                             Console.WriteLine("Found Newer Version");
-                            Console.ReadLine();
                             return 1;
                         }
                         else
@@ -59,17 +57,19 @@ namespace MShell.Updater
             {
                 if (args[0] == "help")
                 {
-                    Console.WriteLine("┏━━━━━━━━━━━━━━━━━━━━━━┓");
-                    Console.WriteLine("┃ Maciek Shell Updater ┃");
-                    Console.WriteLine("┗━━━━━━━━━━━━━━━━━━━━━━┛");
+                    Console.WriteLine("┏━━━━━━━━━━━━━━━━━━┓");
+                    Console.WriteLine("┃ My Shell Updater ┃");
+                    Console.WriteLine("┗━━━━━━━━━━━━━━━━━━┛");
                     Console.WriteLine("Use: ");
-                    Console.WriteLine("MShellUpdater -c <Version> <Build>");
-                    Console.WriteLine("MShellUpdater -update");
+                    Console.WriteLine("Updater.exe -c <Version> <Build>");
+                    Console.WriteLine("Updater.exe -cb <Version> <Build>");
+                    Console.WriteLine("Updater.exe -update");
+                    Console.WriteLine("Updater.exe -updatebeta");
                 }
                 Process[] process;
                 if (args[0].StartsWith("update"))
                 {
-                    Thread.Sleep(1000);
+                    Thread.Sleep(500);
                     process = Process.GetProcessesByName("MShell.exe");
                     foreach (Process item in process)
                     {
@@ -80,7 +80,7 @@ namespace MShell.Updater
                 {
                     string jsonfile = web.DownloadString(Url);
                     UpdateFile updateFile = JsonConvert.DeserializeObject<UpdateFile>(jsonfile);
-                    foreach (FilePath item in updateFile.Files)
+                    foreach (LinkPath item in updateFile.Files)
                     {
                         if (File.Exists(item._Path))
                         {
@@ -93,7 +93,7 @@ namespace MShell.Updater
                 {
                     string jsonfile = web.DownloadString(BetaUrl);
                     UpdateFile updateFile = JsonConvert.DeserializeObject<UpdateFile>(jsonfile);
-                    foreach (FilePath item in updateFile.Files)
+                    foreach (LinkPath item in updateFile.Files)
                     {
                         if (File.Exists(item._Path))
                         {
