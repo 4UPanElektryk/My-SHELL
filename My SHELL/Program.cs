@@ -11,6 +11,8 @@ namespace MyShell
     class Program
     {
         static User loggedUser;
+        public static bool IsUnix;
+        public static bool UseASCII;
 		public static bool FoundUpdater;
 		public static bool Experimental;
 		public static List<string> inputs;
@@ -30,10 +32,13 @@ namespace MyShell
             {
                 Console.Title += " Experimental";
             }
-            if (!RST.RunTest())
+            bool testpassed = RST.RunTest();
+            Console.ResetColor();
+            if (!testpassed)
             {
                 return;
             }
+            UseASCII = Config._AppConfig.UseAsciiOnly;
 			Console.ResetColor();
 			Console.Clear();
 			new MakeCrashLog(Config._LogsConfig.Path + "crash.log");

@@ -8,7 +8,14 @@ namespace MyShell.Essentials
         public static string ShowPropt(User user, string activedir)
         {
             Console.ResetColor();
-            Console.Write("┏[");
+            if (Program.UseASCII)
+            {
+                Console.Write("[");
+            }
+            else
+            {
+                Console.Write("┏[");
+            }
             if (user._State == User.Type.SysAdmin)
             {
                 Console.ForegroundColor = ConsoleColor.DarkGreen;
@@ -28,7 +35,14 @@ namespace MyShell.Essentials
             Console.Write(activedir);
             Console.ResetColor();
             Console.WriteLine("]");
-            Console.Write("┗❱");
+            if (Program.UseASCII)
+            {
+                Console.Write(">");
+            }
+            else
+            {
+                Console.Write("┗❱");
+            }
             return Console.ReadLine();
         }
     }

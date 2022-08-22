@@ -78,9 +78,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Downloads\ConsoleDraw-master\ConsoleDraw-master\Example Application\TEXT\Source\Text\bin\Release\ConsoleDraw.dll</HintPath>
     </Reference>
-    <Reference Include="MShell.Integrations.UserMenager, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\MOS User Menager Integration\MOS User Menager Integration\bin\Debug\netstandard2.0\MShell.Integrations.UserMenager.dll</HintPath>
+    <Reference Include="MyShell.Integrations.UserMenager">
+      <HintPath>..\..\MOS User Menager Integration\MOS User Menager Integration\bin\Release\netstandard2.0\MyShell.Integrations.UserMenager.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -145,6 +144,7 @@
     <Compile Include="Essentials\PreStart\Config.cs" />
     <Compile Include="Essentials\PreStart\ConfigTemplates.cs" />
     <Compile Include="Essentials\Dual.cs" />
+    <Compile Include="Essentials\PreStart\SysDetect.cs" />
     <Compile Include="Essentials\Prompt.cs" />
     <Compile Include="Essentials\PreStart\RST.cs" />
     <Compile Include="LoggedProgram.cs" />

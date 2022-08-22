@@ -5,12 +5,14 @@
         public bool AutoUpdate { get; set; }
         public bool UpdateToBeta { get; set; }
         public bool DevMode { get; set; }
+        public bool UseAsciiOnly { get; set; }
         public string BindFile { get; set; }
         public void Reset()
         {
             AutoUpdate = true;
             UpdateToBeta = false;
             DevMode = false;
+            UseAsciiOnly = false;
             BindFile = "binds.json";
         }
         public AppConfig()

@@ -13,7 +13,10 @@ namespace MyShell.Essentials
         #region Watermarks
         public static void LogWatermark()
         {
-            Console.OutputEncoding = Encoding.Unicode;
+            if (!Program.UseASCII)
+            {
+                Console.OutputEncoding = Encoding.Unicode;
+            }
             if (Program.Experimental)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
@@ -22,19 +25,36 @@ namespace MyShell.Essentials
             {
                 Console.ForegroundColor = ConsoleColor.Green;
             }
-            Console.WriteLine("┏━━━━━━━━━━━━━━━━━━━━━━━┓");
-            Console.WriteLine("┃ MySH Log Opener ©" + GetCompilationTime().Year + " ┃");
-            Console.WriteLine("┃ Ver   " + Settings.Default["Version"].ToString() + "   CL  " + GetCompilationDDMMString() + " ┃");
-            if (Program.Experimental)
+            if (Program.UseASCII)
             {
-                Console.WriteLine("┃ Experimental     " + Settings.Default["Build"].ToString() + " ┃");
+                Console.WriteLine("+-----------------------+");
+                Console.WriteLine("| MySH Log Opener ©" + GetCompilationTime().Year + " |");
+                Console.WriteLine("| Ver   " + Settings.Default["Version"].ToString() + "   CL  " + GetCompilationDDMMString() + " |");
+                if (Program.Experimental)
+                {
+                    Console.WriteLine("| Experimental     " + Settings.Default["Build"].ToString() + " |");
+                }
+                Console.WriteLine("+-----------------------+");
             }
-            Console.WriteLine("┗━━━━━━━━━━━━━━━━━━━━━━━┛");
+            else
+            {
+                Console.WriteLine("┏━━━━━━━━━━━━━━━━━━━━━━━┓");
+                Console.WriteLine("┃ MySH Log Opener ©" + GetCompilationTime().Year + " ┃");
+                Console.WriteLine("┃ Ver   " + Settings.Default["Version"].ToString() + "   CL  " + GetCompilationDDMMString() + " ┃");
+                if (Program.Experimental)
+                {
+                    Console.WriteLine("┃ Experimental     " + Settings.Default["Build"].ToString() + " ┃");
+                }
+                Console.WriteLine("┗━━━━━━━━━━━━━━━━━━━━━━━┛");
+            }
             Console.ForegroundColor = ConsoleColor.White;
         }
         public static void NanoWatermark()
         {
-            Console.OutputEncoding = Encoding.Unicode;
+            if (!Program.UseASCII)
+            {
+                Console.OutputEncoding = Encoding.Unicode;
+            }
             if (Program.Experimental)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
@@ -43,19 +63,32 @@ namespace MyShell.Essentials
             {
                 Console.ForegroundColor = ConsoleColor.Green;
             }
-            Console.WriteLine("┏━━━━━━━━━━━━━━━━━━━━━━┓");
-            Console.WriteLine("┃  Nano Editor  ©" + GetCompilationYYYYString() + "  ┃");
-            Console.WriteLine("┃  Ver " + Settings.Default["Version"].ToString() + "   CL " + GetCompilationDDMMString() + "  ┃");
-            if (Program.Experimental)
+            if (Program.UseASCII)
             {
-                Console.WriteLine("┃  Experimental  " + Settings.Default["Build"].ToString() + "  ┃");
+                Console.WriteLine("+----------------------+");
+                Console.WriteLine("|  Nano Editor  ©" + GetCompilationYYYYString() + "  |");
+                Console.WriteLine("|  Ver " + Settings.Default["Version"].ToString() + "   CL " + GetCompilationDDMMString() + "  |");
+                if (Program.Experimental)
+                {
+                    Console.WriteLine("|  Experimental  " + Settings.Default["Build"].ToString() + "  |");
+                }
+                Console.WriteLine("+----------------------+");
             }
-            Console.WriteLine("┗━━━━━━━━━━━━━━━━━━━━━━┛");
+            else
+            {
+                Console.WriteLine("┏━━━━━━━━━━━━━━━━━━━━━━┓");
+                Console.WriteLine("┃  Nano Editor  ©" + GetCompilationYYYYString() + "  ┃");
+                Console.WriteLine("┃  Ver " + Settings.Default["Version"].ToString() + "   CL " + GetCompilationDDMMString() + "  ┃");
+                if (Program.Experimental)
+                {
+                    Console.WriteLine("┃  Experimental  " + Settings.Default["Build"].ToString() + "  ┃");
+                }
+                Console.WriteLine("┗━━━━━━━━━━━━━━━━━━━━━━┛");
+            }
             Console.ForegroundColor = ConsoleColor.White;
         }
         public static void Watermark()
         {
-            Console.OutputEncoding = Encoding.Unicode;
             if (Program.Experimental)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
@@ -64,14 +97,29 @@ namespace MyShell.Essentials
             {
                 Console.ForegroundColor = ConsoleColor.Green;
             }
-            Console.WriteLine("┏━━━━━━━━━━━━━━━━━━━┓");
-            Console.WriteLine("┃ My SHELL    ©" + GetCompilationYYYYString() + " ┃");
-            Console.WriteLine("┃ Ver " + Settings.Default["Version"].ToString() + "  CL " + GetCompilationDDMMString() + " ┃");
-            if (Program.Experimental)
+            if (Program.UseASCII)
             {
-                Console.WriteLine("┃ Experimental " + Settings.Default["Build"].ToString() + " ┃");
+                Console.WriteLine("+-------------------+");
+                Console.WriteLine("| My SHELL    ©" + GetCompilationYYYYString() + " |");
+                Console.WriteLine("| Ver " + Settings.Default["Version"].ToString() + "  CL " + GetCompilationDDMMString() + " |");
+                if (Program.Experimental)
+                {
+                    Console.WriteLine("| Experimental " + Settings.Default["Build"].ToString() + " |");
+                }
+                Console.WriteLine("+-------------------+");
             }
-            Console.WriteLine("┗━━━━━━━━━━━━━━━━━━━┛");
+            else
+            {
+                Console.OutputEncoding = Encoding.Unicode;
+                Console.WriteLine("┏━━━━━━━━━━━━━━━━━━━┓");
+                Console.WriteLine("┃ My SHELL    ©" + GetCompilationYYYYString() + " ┃");
+                Console.WriteLine("┃ Ver " + Settings.Default["Version"].ToString() + "  CL " + GetCompilationDDMMString() + " ┃");
+                if (Program.Experimental)
+                {
+                    Console.WriteLine("┃ Experimental " + Settings.Default["Build"].ToString() + " ┃");
+                }
+                Console.WriteLine("┗━━━━━━━━━━━━━━━━━━━┛");
+            }
             Console.ForegroundColor = ConsoleColor.White;
         }
         #endregion
@@ -169,7 +217,7 @@ namespace MyShell.Essentials
             return path;
         }
         #endregion
-        #region colors
+        #region Colors
         public static ConsoleColor IntToColor(int n)
         {
             ConsoleColor color;
@@ -344,6 +392,10 @@ namespace MyShell.Essentials
             else
             {
                 actualpath = LoggedProgram.DIR + actualpath;
+            }
+            if (Program.IsUnix)
+            {
+                actualpath = actualpath.Replace("\\","/");
             }
             return actualpath;
         }
