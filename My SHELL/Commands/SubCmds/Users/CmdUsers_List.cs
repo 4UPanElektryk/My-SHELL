@@ -1,8 +1,8 @@
-﻿using MShell.Integrations.User_Manager;
+﻿using MyShell.Integrations.User_Manager;
 using System;
 using System.Collections.Generic;
 
-namespace MShell.Commands.SubCmds
+namespace MyShell.Commands.SubCmds
 {
     public class CmdUsers_List : SubCmd
     {

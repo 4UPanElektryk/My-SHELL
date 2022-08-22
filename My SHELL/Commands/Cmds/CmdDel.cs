@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MShell.Commands.SubCmds;
+using MyShell.Commands.SubCmds;
 
-namespace MShell.Commands.Cmds
+namespace MyShell.Commands.Cmds
 {
     class CmdDel : Cmd
     {

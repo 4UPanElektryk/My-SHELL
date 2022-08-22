@@ -1,10 +1,10 @@
-﻿using MShell.Essentials;
-using MShell.Integrations.User_Manager;
-using MShell.Properties;
+﻿using MyShell.Essentials;
+using MyShell.Integrations.User_Manager;
+using MyShell.Properties;
 using System;
 using System.Threading;
 
-namespace MShell.Commands.SubCmds
+namespace MyShell.Commands.SubCmds
 {
     public class CmdStatus_Live : SubCmd
     {

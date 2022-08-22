@@ -1,11 +1,10 @@
-﻿using MShell.Binds;
-using MShell.Commands.Cmds;
-using MShell.Commands.Cmds.Nano;
-using MShell.Essentials;
-using MShell.Integrations.User_Manager;
+﻿using MyShell.Binds;
+using MyShell.Commands.Cmds;
+using MyShell.Essentials;
+using MyShell.Integrations.User_Manager;
 using System.Collections.Generic;
 
-namespace MShell.Commands
+namespace MyShell.Commands
 {
     class CommandMenager
     {
@@ -22,11 +21,11 @@ namespace MShell.Commands
                 new CmdLogoff("logoff"),
                 new CmdLogs("logs"),
                 new CmdMKDir("mkdir"),
-                new NanoCmd("nano"),
                 new CmdUsers("user"),
                 new CmdStart("start"),
                 new CmdStatus("status"),
                 new CmdBinds("binds"),
+                new CmdText("text"),
             };
             if (Config._AppConfig.DevMode)
             {

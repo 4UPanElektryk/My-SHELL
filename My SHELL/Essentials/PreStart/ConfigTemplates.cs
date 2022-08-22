@@ -1,4 +1,4 @@
-﻿namespace MShell.Essentials
+﻿namespace MyShell.Essentials
 {
     public class AppConfig
     {

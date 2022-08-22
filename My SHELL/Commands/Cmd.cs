@@ -1,7 +1,7 @@
-﻿using MShell.Integrations.User_Manager;
+﻿using MyShell.Integrations.User_Manager;
 using System.Collections.Generic;
 
-namespace MShell.Commands
+namespace MyShell.Commands
 {
     class Cmd
     {

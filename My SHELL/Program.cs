@@ -1,12 +1,12 @@
-﻿using MShell.Essentials;
-using MShell.Integrations.User_Manager;
-using MShell.Properties;
+﻿using MyShell.Essentials;
+using MyShell.Integrations.User_Manager;
+using MyShell.Properties;
 using SimpleLogs4Net;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System;
 
-namespace MShell
+namespace MyShell
 {
     class Program
     {
@@ -19,7 +19,7 @@ namespace MShell
 		public static Process currentProc;
 		static void Main(string[] args)
 		{
-			Experimental = true;
+            Experimental = true;
 			FoundUpdater = false;
 			currentProc = Process.GetCurrentProcess();
 			cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");

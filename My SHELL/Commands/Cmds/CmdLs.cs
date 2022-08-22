@@ -1,9 +1,9 @@
-﻿using MShell.Essentials;
-using MShell.Integrations.User_Manager;
+﻿using MyShell.Essentials;
+using MyShell.Integrations.User_Manager;
 using System;
 using System.IO;
 
-namespace MShell.Commands.Cmds
+namespace MyShell.Commands.Cmds
 {
     class CmdLs : Cmd
     {

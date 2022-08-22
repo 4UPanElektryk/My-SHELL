@@ -1,4 +1,4 @@
-﻿using MShell.Integrations.User_Manager;
+﻿using MyShell.Integrations.User_Manager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,8 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using SimpleLogs4Net;
-using MShell.Essentials;
-namespace MShell.Commands.SubCmds
+using MyShell.Essentials;
+namespace MyShell.Commands.SubCmds
 {
     class CmdDel_File : SubCmd
     {

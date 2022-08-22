@@ -2,7 +2,7 @@
 using System;
 using System.IO;
 
-namespace MShell.Essentials
+namespace MyShell.Essentials
 {
     public class OutputAndInput
     {

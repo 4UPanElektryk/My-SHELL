@@ -1,11 +1,11 @@
-﻿using MShell.Essentials;
-using MShell.Integrations.User_Manager;
+﻿using MyShell.Essentials;
+using MyShell.Integrations.User_Manager;
 using SimpleLogs4Net;
 using System;
 using System.IO;
 using System.Linq;
 
-namespace MShell.Commands.Cmds
+namespace MyShell.Commands.Cmds
 {
     class CmdCD : Cmd
     {

@@ -1,10 +1,10 @@
-﻿using MShell.Commands;
-using MShell.Essentials;
-using MShell.Integrations.User_Manager;
+﻿using MyShell.Commands;
+using MyShell.Essentials;
+using MyShell.Integrations.User_Manager;
 using SimpleLogs4Net;
 using System;
 using System.Collections.Generic;
-namespace MShell
+namespace MyShell
 {
 	class LoggedProgram
 	{

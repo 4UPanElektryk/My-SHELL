@@ -1,6 +1,6 @@
-﻿using MShell.Commands;
-using MShell.Essentials;
-using MShell.Integrations.User_Manager;
+﻿using MyShell.Commands;
+using MyShell.Essentials;
+using MyShell.Integrations.User_Manager;
 using Newtonsoft.Json;
 using SimpleLogs4Net;
 using System;
@@ -9,7 +9,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
-namespace MShell.Binds
+namespace MyShell.Binds
 {
     public class BindManager
     {

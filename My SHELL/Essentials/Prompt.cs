@@ -1,7 +1,7 @@
-﻿using MShell.Integrations.User_Manager;
+﻿using MyShell.Integrations.User_Manager;
 using System;
 
-namespace MShell.Essentials
+namespace MyShell.Essentials
 {
     class Prompt
     {

@@ -1,6 +1,6 @@
-﻿using MShell.Commands.SubCmds;
+﻿using MyShell.Commands.SubCmds;
 
-namespace MShell.Commands.Cmds
+namespace MyShell.Commands.Cmds
 {
     class CmdBinds : Cmd
     {

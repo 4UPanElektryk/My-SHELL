@@ -1,14 +1,14 @@
-﻿using MShell.Integrations.User_Manager;
+﻿using MyShell.Integrations.User_Manager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MShell.Essentials;
+using MyShell.Essentials;
 using System.IO;
 using SimpleLogs4Net;
 
-namespace MShell.Commands.SubCmds
+namespace MyShell.Commands.SubCmds
 {
     class CmdDel_Dir : SubCmd
     {

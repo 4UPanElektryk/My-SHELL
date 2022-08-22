@@ -7,7 +7,7 @@ using System.IO;
 using SimpleLogs4Net;
 using Newtonsoft.Json;
 
-namespace MShell.Essentials
+namespace MyShell.Essentials
 {
 	public class MakeCrashLog
 	{

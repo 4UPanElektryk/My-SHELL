@@ -1,10 +1,10 @@
-﻿using MShell.Properties;
+﻿using MyShell.Properties;
 using System;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Diagnostics;
 
-namespace MShell.Essentials
+namespace MyShell.Essentials
 {
     public class CheckUpdates
     {

@@ -7,7 +7,7 @@ using System.Net;
 using System.Threading;
 using System.Diagnostics;
 
-namespace MShell.Updater
+namespace MyShell.Updater
 {
     class Program
     {

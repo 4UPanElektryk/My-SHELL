@@ -1,6 +1,6 @@
-﻿using MShell.Integrations.User_Manager;
+﻿using MyShell.Integrations.User_Manager;
 
-namespace MShell.Commands
+namespace MyShell.Commands
 {
     public class SubCmd
     {

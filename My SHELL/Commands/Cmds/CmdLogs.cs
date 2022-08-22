@@ -1,5 +1,5 @@
-﻿using MShell.Commands.SubCmds;
-namespace MShell.Commands.Cmds
+﻿using MyShell.Commands.SubCmds;
+namespace MyShell.Commands.Cmds
 {
     class CmdLogs : Cmd
     {

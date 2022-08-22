@@ -1,9 +1,9 @@
-﻿using MShell.Binds;
-using MShell.Integrations.User_Manager;
+﻿using MyShell.Binds;
+using MyShell.Integrations.User_Manager;
 using SimpleLogs4Net;
 using System;
 
-namespace MShell.Commands.SubCmds
+namespace MyShell.Commands.SubCmds
 {
     class CmdBinds_List : SubCmd
     {

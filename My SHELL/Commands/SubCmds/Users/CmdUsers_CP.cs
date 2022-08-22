@@ -1,8 +1,8 @@
-﻿using MShell.Essentials;
-using MShell.Integrations.User_Manager;
+﻿using MyShell.Essentials;
+using MyShell.Integrations.User_Manager;
 using System;
 
-namespace MShell.Commands.SubCmds
+namespace MyShell.Commands.SubCmds
 {
     public class CmdUsers_CP : SubCmd
     {

@@ -1,4 +1,4 @@
-﻿namespace MShell.Binds
+﻿namespace MyShell.Binds
 {
     public class Bind
     {

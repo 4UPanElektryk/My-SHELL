@@ -1,11 +1,11 @@
-﻿using MShell.Binds;
-using MShell.Integrations.User_Manager;
+﻿using MyShell.Binds;
+using MyShell.Integrations.User_Manager;
 using SimpleLogs4Net;
 using System;
 using System.IO;
-using MShell.Essentials;
+using MyShell.Essentials;
 
-namespace MShell.Essentials
+namespace MyShell.Essentials
 {
     /// <summary>
     /// Run Self Test

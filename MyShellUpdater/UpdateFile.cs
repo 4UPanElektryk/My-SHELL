@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MShell.Updater
+namespace MyShell.Updater
 {
     public class UpdateFile
     {

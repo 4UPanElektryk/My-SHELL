@@ -1,9 +1,9 @@
-﻿using MShell.Essentials;
-using MShell.Integrations.User_Manager;
+﻿using MyShell.Essentials;
+using MyShell.Integrations.User_Manager;
 using SimpleLogs4Net;
 using System;
 
-namespace MShell.Commands.SubCmds
+namespace MyShell.Commands.SubCmds
 {
     class CmdLogs_State : SubCmd
     {

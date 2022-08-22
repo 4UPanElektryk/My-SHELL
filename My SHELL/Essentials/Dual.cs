@@ -1,4 +1,4 @@
-﻿using MShell.Properties;
+﻿using MyShell.Properties;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace MShell.Essentials
+namespace MyShell.Essentials
 {
     public static class Dual
     {
