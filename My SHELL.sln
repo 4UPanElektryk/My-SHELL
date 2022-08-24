@@ -5,7 +5,7 @@ VisualStudioVersion = 17.1.31903.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "My SHELL", "My SHELL\My SHELL.csproj", "{1E93AC15-A78D-4D51-BE79-8A34AEB5420B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MShell User Menager", "..\MOS User Menager Integration\MOS User Menager Integration\MShell User Menager.csproj", "{9CD6F790-D5F2-4527-89B6-3AB8D5C99D48}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "My SHELL User Menager", "..\MySH-User-Manager\My SHELL User Menager\My SHELL User Menager.csproj", "{9CD6F790-D5F2-4527-89B6-3AB8D5C99D48}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "My SHELL Updater", "MyShellUpdater\My SHELL Updater.csproj", "{6AA49F0B-9614-4E8F-B5D5-8CB450E05957}"
 EndProject
@@ -33,5 +33,10 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AE39D1FC-C3CF-41A9-873A-BBF37F8C9ED0}
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = PrefixedHierarchical
 	EndGlobalSection
 EndGlobal

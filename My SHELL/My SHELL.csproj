@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1E93AC15-A78D-4D51-BE79-8A34AEB5420B}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>MShell</RootNamespace>
-    <AssemblyName>MShell</AssemblyName>
+    <RootNamespace>MyShell</RootNamespace>
+    <AssemblyName>MyShell</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
@@ -30,7 +30,6 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -74,13 +73,6 @@
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ConsoleDraw, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Downloads\ConsoleDraw-master\ConsoleDraw-master\Example Application\TEXT\Source\Text\bin\Release\ConsoleDraw.dll</HintPath>
-    </Reference>
-    <Reference Include="MyShell.Integrations.UserMenager">
-      <HintPath>..\..\MOS User Menager Integration\MOS User Menager Integration\bin\Release\netstandard2.0\MyShell.Integrations.UserMenager.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -94,12 +86,14 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="Text, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Downloads\ConsoleDraw-master\ConsoleDraw-master\Example Application\TEXT\Source\Text\bin\Release\Text.exe</HintPath>
+    <Reference Include="CoolConsole">
+      <HintPath>..\packages\CoolConsole.1.0.0\lib\netstandard2.0\CoolConsole.dll</HintPath>
     </Reference>
-    <Reference Include="Updater">
-      <HintPath>..\..\MShellUpdater\MShellUpdater\bin\Release\Updater.exe</HintPath>
+    <Reference Include="ConsoleDraw">
+      <HintPath>..\ConsoleDraw.dll</HintPath>
+    </Reference>
+    <Reference Include="TEXT">
+      <HintPath>..\TEXT.exe</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +149,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Commands\Cmds\CmdConfig.cs" />
+    <Compile Include="Commands\SubCmds\Config\CmdConfig_Menu.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.editorconfig">
@@ -184,5 +180,18 @@
     <Content Include="Images\document-console-icon.ico" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\MySH-User-Manager\My SHELL User Menager\My SHELL User Menager.csproj">
+      <Project>{9CD6F790-D5F2-4527-89B6-3AB8D5C99D48}</Project>
+      <Name>My SHELL User Menager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyShellUpdater\My SHELL Updater.csproj">
+      <Project>{6AA49F0B-9614-4E8F-B5D5-8CB450E05957}</Project>
+      <Name>My SHELL Updater</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Commands\SubCmds\Config\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

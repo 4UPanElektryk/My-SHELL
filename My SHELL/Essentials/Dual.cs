@@ -384,14 +384,18 @@ namespace MyShell.Essentials
         }
         public static string GetThePath(string path)
         {
-            string actualpath = path.Replace("~\\", AppDomain.CurrentDomain.BaseDirectory);
-            if (actualpath.Contains(':'))
+            string actualpath = path;
+            if (!Program.IsUnix)
             {
+                actualpath = path.Replace("~\\", AppDomain.CurrentDomain.BaseDirectory);
+                if (actualpath.Contains(':'))
+                {
 
-            }
-            else
-            {
-                actualpath = LoggedProgram.DIR + actualpath;
+                }
+                else
+                {
+                    actualpath = LoggedProgram.DIR + actualpath;
+                }
             }
             if (Program.IsUnix)
             {

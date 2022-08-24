@@ -18,6 +18,7 @@ namespace MyShell.Commands.Cmds
             bool action = true;
             string path = Dual.TrimStart(input, args[0] + " ");
             path = path.Replace("~\\", AppDomain.CurrentDomain.BaseDirectory);
+            Console.WriteLine(path);
             if (path != "..")
             {
                 if (path.Contains(':'))
@@ -44,7 +45,14 @@ namespace MyShell.Commands.Cmds
                                 paths = Dual.TrimStart(item, LoggedProgram.DIR);
                             }
                         }
-                        LoggedProgram.DIR = LoggedProgram.DIR + paths + "\\";
+                        if (Program.IsUnix)
+                        {
+                            LoggedProgram.DIR = LoggedProgram.DIR + paths + "/";
+                        }
+                        else
+                        {
+                            LoggedProgram.DIR = LoggedProgram.DIR + paths + "\\";
+                        }
                         Log.AddEvent(new Event("User action: Directory Change - " + LoggedProgram.DIR, Event.Type.Informtion, DateTime.Now));
                     }
                     else
@@ -56,7 +64,15 @@ namespace MyShell.Commands.Cmds
             }
             else
             {
-                string[] d = LoggedProgram.DIR.Split('\\');
+                string[] d;
+                if (Program.IsUnix)
+                {
+                    d = LoggedProgram.DIR.Split('/');
+                }
+                else
+                {
+                    d = LoggedProgram.DIR.Split('\\');
+                }
                 string nd = "";
                 int i = 1;
                 foreach (string item in d)
@@ -74,7 +90,14 @@ namespace MyShell.Commands.Cmds
                         }
                         else
                         {
-                            nd = nd + item + "\\";
+                            if (Program.IsUnix)
+                            {
+                                nd = nd + item + "/";
+                            }
+                            else
+                            {
+                                nd = nd + item + "\\";
+                            }
                         }
                     }
                 }

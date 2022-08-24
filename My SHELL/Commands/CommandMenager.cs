@@ -26,10 +26,11 @@ namespace MyShell.Commands
                 new CmdStatus("status"),
                 new CmdBinds("binds"),
                 new CmdText("text"),
+                new CmdNeofetch("neofetch"),
+                new CmdConfig("config"),
             };
             if (Config._AppConfig.DevMode)
             {
-                CmdList.Add(new CmdNeofetch("neofetch"));
                 CmdList.Add(new CmdTest("test"));
             }
         }
