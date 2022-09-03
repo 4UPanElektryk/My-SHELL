@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MyShell.Commands.SubCmds;
+using MyShell.Commands.SubCmds.Del;
 
 namespace MyShell.Commands.Cmds
 {

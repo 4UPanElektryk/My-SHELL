@@ -3,7 +3,7 @@ using MyShell.Integrations.User_Manager;
 using SimpleLogs4Net;
 using System;
 
-namespace MyShell.Commands.SubCmds
+namespace MyShell.Commands.SubCmds.Logs
 {
     class CmdLogs_State : SubCmd
     {
@@ -17,9 +17,9 @@ namespace MyShell.Commands.SubCmds
             {
                 if (bool.TryParse(args[0], out bool result))
                 {
-                    Config._LogsConfig.Enabled = result;
-                    Config.Save();
-                    Config.Load();
+                    Essentials.Config._LogsConfig.Enabled = result;
+                    Essentials.Config.Save();
+                    Essentials.Config.Load();
                     Log.ChangeEnable(Config._LogsConfig.Enabled);
                     if (Config._LogsConfig.Enabled)
                     {
@@ -36,7 +36,7 @@ namespace MyShell.Commands.SubCmds
                 if (user._State == User.Type.SysAdmin)
                 {
                     Log.ChangeEnable(Config._LogsConfig.Enabled);
-                    if (Config._LogsConfig.Enabled)
+                    if (Essentials.Config._LogsConfig.Enabled)
                     {
                         Dual.Msg("Logs are enabled", ConsoleColor.Yellow);
                     }

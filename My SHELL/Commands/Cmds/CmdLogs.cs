@@ -1,4 +1,4 @@
-﻿using MyShell.Commands.SubCmds;
+﻿using MyShell.Commands.SubCmds.Logs;
 namespace MyShell.Commands.Cmds
 {
     class CmdLogs : Cmd

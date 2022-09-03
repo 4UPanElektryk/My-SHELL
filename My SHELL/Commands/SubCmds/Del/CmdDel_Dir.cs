@@ -8,7 +8,7 @@ using MyShell.Essentials;
 using System.IO;
 using SimpleLogs4Net;
 
-namespace MyShell.Commands.SubCmds
+namespace MyShell.Commands.SubCmds.Del
 {
     class CmdDel_Dir : SubCmd
     {

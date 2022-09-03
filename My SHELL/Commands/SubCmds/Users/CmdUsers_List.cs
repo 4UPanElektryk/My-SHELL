@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace MyShell.Commands.SubCmds
+namespace MyShell.Commands.SubCmds.Users
 {
     public class CmdUsers_List : SubCmd
     {

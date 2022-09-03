@@ -3,7 +3,7 @@ using MyShell.Integrations.User_Manager;
 using SimpleLogs4Net;
 using System;
 
-namespace MyShell.Commands.SubCmds
+namespace MyShell.Commands.SubCmds.Binds
 {
     class CmdBinds_List : SubCmd
     {

@@ -4,7 +4,7 @@ using CoolConsole.MenuItemTemplate;
 using MyShell.Essentials;
 using MyShell.Integrations.User_Manager;
 
-namespace MyShell.Commands.SubCmds
+namespace MyShell.Commands.SubCmds.Config
 {
     public class CmdConfig_Menu : SubCmd
     {
@@ -15,9 +15,9 @@ namespace MyShell.Commands.SubCmds
         public override bool Execute(string[] args, string input, User user)
         {
             bool save = false;
-            AppConfig appConfig = Config._AppConfig;
-            UserConfig userConfig = Config._UserConfig;
-            LogsConfig logsConfig = Config._LogsConfig;
+            AppConfig appConfig = Essentials.Config._AppConfig;
+            UserConfig userConfig = Essentials.Config._UserConfig;
+            LogsConfig logsConfig = Essentials.Config._LogsConfig;
             bool loop = true;
             do
             {
@@ -38,10 +38,10 @@ namespace MyShell.Commands.SubCmds
             } while (loop);
             if (save)
             {
-                Config._AppConfig = appConfig;
-                Config._UserConfig = userConfig;
-                Config._LogsConfig = logsConfig;
-                Config.Save();
+                Essentials.Config._AppConfig = appConfig;
+                Essentials.Config._UserConfig = userConfig;
+                Essentials.Config._LogsConfig = logsConfig;
+                Essentials.Config.Save();
             }
             return true;
         }

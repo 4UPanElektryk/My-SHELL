@@ -1,6 +1,7 @@
 ﻿using MyShell.Essentials;
 using MyShell.Integrations.User_Manager;
 using System;
+using CoolConsole.Aditonal;
 
 namespace MyShell.Commands.Cmds
 {
@@ -16,7 +17,8 @@ namespace MyShell.Commands.Cmds
             {
                 for (int i = 0; i <= 15; i++)
                 {
-                    Dual.ProgressBar(50, Dual.IntToColor(i));
+
+                    ProgressBar.show(50, Dual.IntToColor(i));
                     Dual.ProgressBar(50, Dual.IntToColor(i), false);
                     Dual.Msg("Test Message For Color Nr. " + i, Dual.IntToColor(i));
                     Dual.Msg("Test Message For Color Nr. " + i, ConsoleColor.White, Dual.IntToColor(i));

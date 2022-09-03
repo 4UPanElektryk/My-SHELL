@@ -2,7 +2,7 @@
 using MyShell.Integrations.User_Manager;
 using System;
 
-namespace MyShell.Commands.SubCmds
+namespace MyShell.Commands.SubCmds.Users
 {
     public class CmdUsers_Del : SubCmd
     {

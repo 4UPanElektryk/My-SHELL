@@ -1,4 +1,4 @@
-﻿using MyShell.Commands.SubCmds;
+﻿using MyShell.Commands.SubCmds.Status;
 
 namespace MyShell.Commands.Cmds
 {

@@ -3,7 +3,7 @@ using MyShell.Integrations.User_Manager;
 using System;
 using System.Linq;
 
-namespace MyShell.Commands.SubCmds
+namespace MyShell.Commands.SubCmds.Users
 {
     public class CmdUsers_Add : SubCmd
     {
