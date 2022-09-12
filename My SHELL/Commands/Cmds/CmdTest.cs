@@ -18,8 +18,7 @@ namespace MyShell.Commands.Cmds
                 for (int i = 0; i <= 15; i++)
                 {
 
-                    ProgressBar.show(50, Dual.IntToColor(i));
-                    Dual.ProgressBar(50, Dual.IntToColor(i), false);
+                    ProgressBar.ShowColor(1,2, Dual.IntToColor(i),50,true);
                     Dual.Msg("Test Message For Color Nr. " + i, Dual.IntToColor(i));
                     Dual.Msg("Test Message For Color Nr. " + i, ConsoleColor.White, Dual.IntToColor(i));
                 }

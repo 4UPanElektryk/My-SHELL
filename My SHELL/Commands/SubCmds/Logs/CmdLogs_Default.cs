@@ -15,7 +15,7 @@ namespace MyShell.Commands.SubCmds.Logs
         {
             if (args.Length == 1)
             {
-                foreach (string item in Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + Config._LogsConfig.Path))
+                foreach (string item in Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + Essentials.Config._LogsConfig.Path))
                 {
                     if (item.EndsWith(".log"))
                     {

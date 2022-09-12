@@ -21,7 +21,7 @@ namespace MyShell.Commands.SubCmds.Logs
                 int path = 0;
                 bool no = int.TryParse(Console.ReadLine(), out path);
                 Console.WriteLine("");
-                string p = AppDomain.CurrentDomain.BaseDirectory + Config._LogsConfig.Path + Config._LogsConfig.Prefix + path.ToString() + ".log";
+                string p = AppDomain.CurrentDomain.BaseDirectory + Essentials.Config._LogsConfig.Path + Essentials.Config._LogsConfig.Prefix + path.ToString() + ".log";
                 try
                 {
                     string[] _file = File.ReadAllLines(@p);

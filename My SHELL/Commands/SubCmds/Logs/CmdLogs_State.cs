@@ -20,8 +20,8 @@ namespace MyShell.Commands.SubCmds.Logs
                     Essentials.Config._LogsConfig.Enabled = result;
                     Essentials.Config.Save();
                     Essentials.Config.Load();
-                    Log.ChangeEnable(Config._LogsConfig.Enabled);
-                    if (Config._LogsConfig.Enabled)
+                    Log.ChangeEnable(Essentials.Config._LogsConfig.Enabled);
+                    if (Essentials.Config._LogsConfig.Enabled)
                     {
                         Dual.Msg("Logs are now enabled", ConsoleColor.Yellow);
                     }
@@ -35,7 +35,7 @@ namespace MyShell.Commands.SubCmds.Logs
             {
                 if (user._State == User.Type.SysAdmin)
                 {
-                    Log.ChangeEnable(Config._LogsConfig.Enabled);
+                    Log.ChangeEnable(Essentials.Config._LogsConfig.Enabled);
                     if (Essentials.Config._LogsConfig.Enabled)
                     {
                         Dual.Msg("Logs are enabled", ConsoleColor.Yellow);

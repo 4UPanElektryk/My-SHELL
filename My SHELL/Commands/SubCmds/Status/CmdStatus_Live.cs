@@ -3,6 +3,7 @@ using MyShell.Integrations.User_Manager;
 using MyShell.Properties;
 using System;
 using System.Threading;
+using CoolConsole.Aditonal;
 
 namespace MyShell.Commands.SubCmds.Status
 {
@@ -22,7 +23,7 @@ namespace MyShell.Commands.SubCmds.Status
             Console.WriteLine("Version: " + Settings.Default["Version"].ToString());
             Console.WriteLine("Status: Running");
             float CPUUsageProcatage = Program.cpuCounter.NextValue();
-            //Cpu Counter
+            #region CPU Counter
             Console.WriteLine("CPU Usage:");
             ConsoleColor color = ConsoleColor.Green;
             if (CPUUsageProcatage > 50)
@@ -33,9 +34,9 @@ namespace MyShell.Commands.SubCmds.Status
             {
                 color = ConsoleColor.Red;
             }
-            Dual.ProgressBar(CPUUsageProcatage, color, false);
-            //End CPU bar
-            //RAM bar
+            ProgressBar.ShowColor((int)CPUUsageProcatage,100, color,50, true);
+            #endregion
+            #region RAM Counter
             float RAMCurentUsage = (int)Program.currentProc.WorkingSet64 / 1024 / 1024;
             float RAMMaxUsage = (int)Program.currentProc.VirtualMemorySize64 / 1024 / 1024;
             float RAMUsageProcatage = (RAMCurentUsage / RAMMaxUsage) * 100;
@@ -49,8 +50,8 @@ namespace MyShell.Commands.SubCmds.Status
             {
                 color = ConsoleColor.Red;
             }
-            Dual.ProgressBar(RAMUsageProcatage, color, false);
-            //End of RAM bar
+            ProgressBar.ShowColor((int)RAMUsageProcatage, 100, color, 50, true);
+            #endregion
         }
 
         public override bool Execute(string[] args, string input, User user)

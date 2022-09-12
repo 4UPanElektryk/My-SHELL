@@ -87,6 +87,7 @@ namespace MyShell.Commands.SubCmds.Config
                 Essentials.Config.Save();
             }
             catch { }
+            Essentials.Config.Save();
             Console.WriteLine("Invalid info");
             return true;
         }

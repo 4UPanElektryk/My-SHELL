@@ -1,4 +1,5 @@
-﻿using MyShell.Essentials;
+﻿using CoolConsole.Aditonal;
+using MyShell.Essentials;
 using MyShell.Integrations.User_Manager;
 using MyShell.Properties;
 using SimpleLogs4Net;
@@ -29,7 +30,7 @@ namespace MyShell.Commands.SubCmds.Status
             {
                 color = ConsoleColor.Red;
             }
-            Dual.ProgressBar(CPUUsageProcatage, color, false);
+            ProgressBar.ShowColor((int)CPUUsageProcatage, 100, color, 50, true);
             //End CPU bar
             //RAM bar
             float RAMCurentUsage = (int)Program.currentProc.WorkingSet64 / 1024 / 1024;
@@ -45,7 +46,7 @@ namespace MyShell.Commands.SubCmds.Status
             {
                 color = ConsoleColor.Red;
             }
-            Dual.ProgressBar(RAMUsageProcatage, color, false);
+            ProgressBar.ShowColor((int)RAMUsageProcatage, 100, color, 50, true);
             //End of RAM bar
             Log.Write("Ram Usage: " + RAMUsageProcatage + "% Cpu Usage: " + CPUUsageProcatage + "%");
             return true;
