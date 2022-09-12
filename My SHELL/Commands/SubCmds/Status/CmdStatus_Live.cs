@@ -4,7 +4,7 @@ using MyShell.Properties;
 using System;
 using System.Threading;
 
-namespace MyShell.Commands.SubCmds
+namespace MyShell.Commands.SubCmds.Status
 {
     public class CmdStatus_Live : SubCmd
     {

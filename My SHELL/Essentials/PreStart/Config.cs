@@ -6,7 +6,7 @@ namespace MyShell.Essentials
 {
     public class OutputAndInput
     {
-        public AppConfig Aplication { get; set; }
+        public AppConfig Application { get; set; }
         public UserConfig UserController { get; set; }
         public LogsConfig Logs { get; set; }
     }
@@ -36,7 +36,7 @@ namespace MyShell.Essentials
                 OutputAndInput re = JsonConvert.DeserializeObject<OutputAndInput>(outputstring);
                 if (re != null)
                 {
-                    _AppConfig = re.Aplication;
+                    _AppConfig = re.Application;
                     _UserConfig = re.UserController;
                     _LogsConfig = re.Logs;
                 }
@@ -57,7 +57,7 @@ namespace MyShell.Essentials
         {
             OutputAndInput outputAndInput = new OutputAndInput()
             {
-                Aplication = _AppConfig,
+                Application = _AppConfig,
                 UserController = _UserConfig,
                 Logs = _LogsConfig
             };

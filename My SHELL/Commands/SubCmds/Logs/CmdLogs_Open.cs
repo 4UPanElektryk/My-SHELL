@@ -3,7 +3,7 @@ using MyShell.Integrations.User_Manager;
 using System;
 using System.IO;
 
-namespace MyShell.Commands.SubCmds
+namespace MyShell.Commands.SubCmds.Logs
 {
     class CmdLogs_Open : SubCmd
     {

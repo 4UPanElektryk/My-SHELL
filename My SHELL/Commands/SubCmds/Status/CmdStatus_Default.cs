@@ -4,7 +4,7 @@ using MyShell.Properties;
 using SimpleLogs4Net;
 using System;
 
-namespace MyShell.Commands.SubCmds
+namespace MyShell.Commands.SubCmds.Status
 {
     public class CmdStatus_Default : SubCmd
     {

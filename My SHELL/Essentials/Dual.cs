@@ -326,7 +326,7 @@ namespace MyShell.Essentials
             }
         }
         #endregion
-        public static void ProgressBar(float percent, ConsoleColor color, bool normal = true, int width = 50)
+        /*public static void ProgressBar(float percent, ConsoleColor color, bool normal = true, int width = 50)
         {
             int g = 100 / width;
             int i = (int)Math.Floor(percent / g);
@@ -369,7 +369,7 @@ namespace MyShell.Essentials
             Console.Write(Math.Round(percent));
             Console.WriteLine("%");
             Console.ResetColor();
-        }
+        }*/
         public static string[] DeleteNullAndEmptyItems(string[] inputstring)
         {
             List<string> strings = new List<string>();

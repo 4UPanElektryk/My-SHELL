@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.IO;
 using SimpleLogs4Net;
 using MyShell.Essentials;
-namespace MyShell.Commands.SubCmds
+namespace MyShell.Commands.SubCmds.Del
 {
     class CmdDel_File : SubCmd
     {

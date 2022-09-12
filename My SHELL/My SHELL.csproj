@@ -115,6 +115,7 @@
     <Compile Include="Commands\Cmds\CmdStatus.cs" />
     <Compile Include="Commands\SubCmds\Binds\CmdBinds_Add.cs" />
     <Compile Include="Commands\SubCmds\Binds\CmdBinds_List.cs" />
+    <Compile Include="Commands\SubCmds\Config\CmdConfig_RawEdit.cs" />
     <Compile Include="Commands\SubCmds\Del\CmdDel_Dir.cs" />
     <Compile Include="Commands\SubCmds\Del\CmdDel_File.cs" />
     <Compile Include="Commands\SubCmds\Logs\CmdLogs_Default.cs" />
@@ -190,8 +191,6 @@
       <Name>My SHELL Updater</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Commands\SubCmds\Config\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

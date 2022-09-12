@@ -5,7 +5,7 @@ using SimpleLogs4Net;
 using System;
 using System.IO;
 
-namespace MyShell.Commands.SubCmds
+namespace MyShell.Commands.SubCmds.Binds
 {
     class CmdBinds_Add : SubCmd
     {

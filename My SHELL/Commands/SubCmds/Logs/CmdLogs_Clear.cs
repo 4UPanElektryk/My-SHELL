@@ -4,7 +4,7 @@ using SimpleLogs4Net;
 using System;
 using System.IO;
 
-namespace MyShell.Commands.SubCmds
+namespace MyShell.Commands.SubCmds.Logs
 {
     public class CmdLogs_Clear : SubCmd
     {
@@ -23,7 +23,7 @@ namespace MyShell.Commands.SubCmds
                 if (Dual.YesOrNO("Do you want to delete logs?"))
                 {
                     Console.WriteLine();
-                    foreach (string item in Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + Config._LogsConfig.Path))
+                    foreach (string item in Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + Essentials.Config._LogsConfig.Path))
                     {
                         if (item.EndsWith(".log"))
                         {
