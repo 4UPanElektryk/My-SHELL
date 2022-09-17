@@ -32,7 +32,7 @@ namespace MyShell.Essentials
                     Trace = trace,
                     CommandsLeadingToCrash = commands
                 };
-                log.Config = new OutputAndInput() { Aplication = Config._AppConfig, UserController = Config._UserConfig, Logs = Config._LogsConfig };
+                log.Config = new OutputAndInput() { Application = Config._AppConfig, UserController = Config._UserConfig, Logs = Config._LogsConfig };
 
                 if (Config._LogsConfig.Enabled)
                 {
