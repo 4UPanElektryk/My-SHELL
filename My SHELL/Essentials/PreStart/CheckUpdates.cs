@@ -9,14 +9,18 @@ namespace MyShell.Essentials
     public class CheckUpdates
     {
         static string UpadaterName = "Updater.exe";
+        static string[] UpdatedServers = 
+        {
+            ""
+        };
         public static bool CheckConnection(string IPorHostName)
         {
             Ping pingSender = new Ping();
             PingOptions options = new PingOptions();
             options.DontFragment = true;
             string data = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            int timeout = 200;
             byte[] buffer = Encoding.ASCII.GetBytes(data);
-            int timeout = 120;
             PingReply reply = pingSender.Send(IPorHostName, timeout, buffer, options);
             return reply.Status == IPStatus.Success;
         }

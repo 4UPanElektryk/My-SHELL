@@ -15,7 +15,7 @@ namespace MyShell.Essentials
         {
             if (!Program.UseASCII)
             {
-                Console.OutputEncoding = Encoding.Unicode;
+                Console.OutputEncoding = Encoding.UTF8;
             }
             if (Program.Experimental)
             {
@@ -53,7 +53,7 @@ namespace MyShell.Essentials
         {
             if (!Program.UseASCII)
             {
-                Console.OutputEncoding = Encoding.Unicode;
+                Console.OutputEncoding = Encoding.UTF8;
             }
             if (Program.Experimental)
             {
@@ -110,7 +110,7 @@ namespace MyShell.Essentials
             }
             else
             {
-                Console.OutputEncoding = Encoding.Unicode;
+                Console.OutputEncoding = Encoding.UTF8;
                 Console.WriteLine("┏━━━━━━━━━━━━━━━━━━━┓");
                 Console.WriteLine("┃ My SHELL    ©" + GetCompilationYYYYString() + " ┃");
                 Console.WriteLine("┃ Ver " + Settings.Default["Version"].ToString() + "  CL " + GetCompilationDDMMString() + " ┃");
