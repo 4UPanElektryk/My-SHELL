@@ -24,7 +24,7 @@ namespace MyShell
 				bool action = false;
 				string input = Prompt.ShowPropt(user, ShowDIR);
                 Program.inputs.Add(input);
-				Log.AddEvent(new Event("User Action - Input From User ID:" + user._Id + " Input: " + input, Event.Type.Normal, DateTime.Now));
+				Log.AddEvent(new Event("User Action - Input From User ID:" + user._Id + " Input: " + input, Event.Type.Normal));
 				action = commandMenager.ExecuteCommand(input, user);
 				if (!action)
 				{

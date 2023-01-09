@@ -9,7 +9,7 @@ namespace MyShell.Essentials
     public class CheckUpdates
     {
         static string UpadaterName = "Updater.exe";
-        static string[] UpdatedServers = 
+        static string[] UpdateServers = 
         {
             ""
         };
