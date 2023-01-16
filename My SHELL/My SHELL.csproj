@@ -112,7 +112,7 @@
     <Compile Include="Commands\Cmds\CmdStart.cs" />
     <Compile Include="Commands\Cmds\CmdTest.cs" />
     <Compile Include="Commands\Cmds\CmdText.cs" />
-    <Compile Include="Commands\Cmds\CmdStatus.cs" />
+    <Compile Include="Commands\Cmds\CmdInfo.cs" />
     <Compile Include="Commands\SubCmds\Binds\CmdBinds_Add.cs" />
     <Compile Include="Commands\SubCmds\Binds\CmdBinds_List.cs" />
     <Compile Include="Commands\SubCmds\Config\CmdConfig_RawEdit.cs" />
@@ -121,8 +121,8 @@
     <Compile Include="Commands\SubCmds\Logs\CmdLogs_Default.cs" />
     <Compile Include="Commands\SubCmds\Logs\CmdLogs_Open.cs" />
     <Compile Include="Commands\SubCmds\Logs\CmdLogs_State.cs" />
-    <Compile Include="Commands\SubCmds\Status\CmdStatus_Default.cs" />
-    <Compile Include="Commands\SubCmds\Status\CmdStatus_Live.cs" />
+    <Compile Include="Commands\SubCmds\Status\CmdInfo_Default.cs" />
+    <Compile Include="Commands\SubCmds\Status\CmdInfo_Live.cs" />
     <Compile Include="Commands\SubCmds\Error_SubCmdNotFound.cs" />
     <Compile Include="Commands\SubCmds\Logs\CmdLogs_Clear.cs" />
     <Compile Include="Commands\SubCmds\Users\CmdUsers_Add.cs" />

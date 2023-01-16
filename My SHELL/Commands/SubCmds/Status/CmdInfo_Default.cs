@@ -7,9 +7,9 @@ using System;
 
 namespace MyShell.Commands.SubCmds.Status
 {
-    public class CmdStatus_Default : SubCmd
+    public class CmdInfo_Default : SubCmd
     {
-        public CmdStatus_Default(string name) : base(name)
+        public CmdInfo_Default(string name) : base(name)
         {
             _IsDefault = true;
         }

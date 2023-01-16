@@ -21,8 +21,15 @@ namespace MyShell.Essentials
             string data = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
             int timeout = 200;
             byte[] buffer = Encoding.ASCII.GetBytes(data);
-            PingReply reply = pingSender.Send(IPorHostName, timeout, buffer, options);
-            return reply.Status == IPStatus.Success;
+            try
+            {
+                PingReply reply = pingSender.Send(IPorHostName, timeout, buffer, options);
+                return reply.Status == IPStatus.Success;
+            }
+            catch
+            {
+                return false;
+            }
         }
         public static bool CheckForUpdates()
         {

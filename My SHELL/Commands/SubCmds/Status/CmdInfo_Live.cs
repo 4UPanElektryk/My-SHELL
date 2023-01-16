@@ -4,21 +4,24 @@ using MyShell.Properties;
 using System;
 using System.Threading;
 using CoolConsole.Aditonal;
+using System.Security.Cryptography.X509Certificates;
+using ConsoleDraw;
 
 namespace MyShell.Commands.SubCmds.Status
 {
-    public class CmdStatus_Live : SubCmd
+    public class CmdInfo_Live : SubCmd
     {
         Timer RefreshTimer;
-        public CmdStatus_Live(string name) : base(name)
+        int x, y;
+        public CmdInfo_Live(string name) : base(name)
         {
             _Help = "Shows live status";
         }
 
         private void Refresh(object state)
         {
-            Console.Clear();
-            Dual.Watermark();
+            Console.CursorLeft = x;
+            Console.CursorTop = y;
             Console.WriteLine("Maciek Shell");
             Console.WriteLine("Version: " + Settings.Default["Version"].ToString());
             Console.WriteLine("Status: Running");
@@ -40,7 +43,7 @@ namespace MyShell.Commands.SubCmds.Status
             float RAMCurentUsage = (int)Program.currentProc.WorkingSet64 / 1024 / 1024;
             float RAMMaxUsage = (int)Program.currentProc.VirtualMemorySize64 / 1024 / 1024;
             float RAMUsageProcatage = (RAMCurentUsage / RAMMaxUsage) * 100;
-            Console.WriteLine("RAM Usage: " + RAMCurentUsage + "MB" + "/" + RAMMaxUsage + "MB");
+            Console.WriteLine("Alocated RAM Usage: " + RAMCurentUsage + "MB" + "/" + RAMMaxUsage + "MB");
             color = ConsoleColor.Green;
             if (RAMUsageProcatage > 50)
             {
@@ -57,7 +60,8 @@ namespace MyShell.Commands.SubCmds.Status
         public override bool Execute(string[] args, string input, User user)
         {
             Console.CursorVisible = false;
-            Console.Clear();
+            x = Console.CursorLeft;
+            y = Console.CursorTop;
             RefreshTimer = new Timer(Refresh, null, 0, 1000);
             Console.CursorTop += 7;
             Dual.AwaitingEnter();

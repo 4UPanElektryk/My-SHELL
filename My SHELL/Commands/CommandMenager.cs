@@ -23,7 +23,7 @@ namespace MyShell.Commands
                 new CmdMKDir("mkdir"),
                 new CmdUsers("user"),
                 new CmdStart("start"),
-                new CmdStatus("status"),
+                new CmdInfo("info"),
                 new CmdBinds("binds"),
                 new CmdText("text"),
                 new CmdNeofetch("neofetch"),
