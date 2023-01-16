@@ -7,7 +7,7 @@ using CoolConsole.Aditonal;
 using System.Security.Cryptography.X509Certificates;
 using ConsoleDraw;
 
-namespace MyShell.Commands.SubCmds.Status
+namespace MyShell.Commands.SubCmds.Info
 {
     public class CmdInfo_Live : SubCmd
     {

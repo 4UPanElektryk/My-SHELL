@@ -3,6 +3,7 @@ using MyShell.Commands.Cmds;
 using MyShell.Essentials;
 using MyShell.Integrations.User_Manager;
 using System.Collections.Generic;
+using System;
 
 namespace MyShell.Commands
 {
@@ -37,6 +38,7 @@ namespace MyShell.Commands
         public bool ExecuteCommand(string input, User user)
         {
             string[] args = input.Split(' ');
+            args = Dual.DeleteNullAndEmptyItems(args);
             foreach (Cmd item in CmdList)
             {
                 if (item._Name == args[0].ToLower())

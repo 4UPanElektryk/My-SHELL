@@ -16,7 +16,7 @@ namespace MShell.Updater
         static int Main(string[] args)
         {
             WebClient web = new WebClient();
-            Console.OutputEncoding = Encoding.Unicode;
+            Console.OutputEncoding = Encoding.UTF8;
             if (args.Length == 3)
             {
                 if (args[0].StartsWith("-c"))

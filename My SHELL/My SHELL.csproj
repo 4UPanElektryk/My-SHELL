@@ -109,6 +109,7 @@
     <Compile Include="Commands\Cmds\CmdLogs.cs" />
     <Compile Include="Commands\Cmds\CmdMKDir.cs" />
     <Compile Include="Commands\Cmds\CmdNeofetch.cs" />
+    <Compile Include="Commands\Cmds\CmdSPM.cs" />
     <Compile Include="Commands\Cmds\CmdStart.cs" />
     <Compile Include="Commands\Cmds\CmdTest.cs" />
     <Compile Include="Commands\Cmds\CmdText.cs" />
@@ -121,8 +122,8 @@
     <Compile Include="Commands\SubCmds\Logs\CmdLogs_Default.cs" />
     <Compile Include="Commands\SubCmds\Logs\CmdLogs_Open.cs" />
     <Compile Include="Commands\SubCmds\Logs\CmdLogs_State.cs" />
-    <Compile Include="Commands\SubCmds\Status\CmdInfo_Default.cs" />
-    <Compile Include="Commands\SubCmds\Status\CmdInfo_Live.cs" />
+    <Compile Include="Commands\SubCmds\Info\CmdInfo_Default.cs" />
+    <Compile Include="Commands\SubCmds\Info\CmdInfo_Live.cs" />
     <Compile Include="Commands\SubCmds\Error_SubCmdNotFound.cs" />
     <Compile Include="Commands\SubCmds\Logs\CmdLogs_Clear.cs" />
     <Compile Include="Commands\SubCmds\Users\CmdUsers_Add.cs" />
@@ -136,8 +137,8 @@
     <Compile Include="Commands\Cmd.cs" />
     <Compile Include="Essentials\MakeCrashLog.cs" />
     <Compile Include="Essentials\PreStart\CheckUpdates.cs" />
-    <Compile Include="Essentials\PreStart\Config.cs" />
-    <Compile Include="Essentials\PreStart\ConfigTemplates.cs" />
+    <Compile Include="Essentials\Config.cs" />
+    <Compile Include="Essentials\ConfigTemplates.cs" />
     <Compile Include="Essentials\Dual.cs" />
     <Compile Include="Essentials\PreStart\SysDetect.cs" />
     <Compile Include="Essentials\Prompt.cs" />
@@ -180,7 +181,9 @@
   <ItemGroup>
     <Content Include="Images\document-console-icon.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Commands\SubCmds\SPM\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MySH-User-Manager\My SHELL User Menager\My SHELL User Menager.csproj">
       <Project>{9CD6F790-D5F2-4527-89B6-3AB8D5C99D48}</Project>
