@@ -19,12 +19,12 @@ namespace MyShell.Commands.Cmds
             if (!Directory.Exists(LoggedProgram.DIR + path))
             {
                 Directory.CreateDirectory(LoggedProgram.DIR + path);
-                Log.AddEvent(new Event("User action: Directory Created - " + LoggedProgram.DIR + path, Event.Type.Informtion, DateTime.Now));
+                Log.AddEvent(new Event("User action: Directory Created - " + LoggedProgram.DIR + path, Event.Type.Informtion));
                 action = true;
             }
             else
             {
-                Log.AddEvent(new Event("User action: Directory Can not be created ,Rason: Directory already Exist - " + LoggedProgram.DIR + path, Event.Type.Informtion, DateTime.Now));
+                Log.AddEvent(new Event("User action: Directory Can not be created ,Rason: Directory already Exist - " + LoggedProgram.DIR + path, Event.Type.Informtion));
                 Dual.Msg("Directory Can not be created, Rason: Directory already Exist", ConsoleColor.Red);
                 action = true;
             }

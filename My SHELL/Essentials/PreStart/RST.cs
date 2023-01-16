@@ -71,8 +71,7 @@ namespace MyShell.Essentials
 			string[] PingDestinations =
 			{
 				"google.com",
-				"github.com",
-				"stackoverflow.com"
+				"github.com"
 			};
 			foreach (string item in PingDestinations)
 			{
