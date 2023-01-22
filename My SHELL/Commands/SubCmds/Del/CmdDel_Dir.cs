@@ -23,7 +23,7 @@ namespace MyShell.Commands.SubCmds.Del
             if (!Directory.Exists(path))
             {
                 Dual.Msg("Directory does not exists", ConsoleColor.Red);
-                Log.Write("User: " + user._Id + " Attempted deltion of not existant directory: " + path, Event.Type.Informtion);
+                Log.Write("User: " + user._Id + " Attempted deltion of not existant directory: " + path, EType.Informtion);
                 return true;
             }
             if (!Dual.YesOrNO("Are you sure you want to Delete this directory"))
@@ -34,11 +34,11 @@ namespace MyShell.Commands.SubCmds.Del
             {
                 Directory.Delete(path);
                 Dual.Msg("Directory deleted", ConsoleColor.Green);
-                Log.Write("User: " + user._Id + " Deleted directory: " + path, Event.Type.Informtion);
+                Log.Write("User: " + user._Id + " Deleted directory: " + path, EType.Informtion);
             }
             catch (Exception error)
             {
-                Log.Write(error.Message, Event.Type.Error);
+                Log.Write(error.Message, EType.Error);
             }
             return true;
         }

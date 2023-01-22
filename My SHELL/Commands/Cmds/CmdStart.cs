@@ -16,8 +16,7 @@ namespace MyShell.Commands.Cmds
         }
         public override bool Execute(string[] args, string input, User user)
         {
-            string p = args[0] + " ";
-            string path = Dual.TrimStart(input, p);
+            string path = input.Substring(_Name.Length+1);
             bool action = false;
             if (path.Contains(':'))
             {
@@ -25,12 +24,12 @@ namespace MyShell.Commands.Cmds
                 {
                     action = true;
                     Process.Start(path);
-                    Log.AddEvent(new Event("User Action by " + user._Id + " - Start: Action Succesful:" + path, Event.Type.Informtion, DateTime.Now));
+                    Log.AddEvent(new Event("User Action by " + user._Id + " - Start: Action Succesful:" + path, EType.Informtion, DateTime.Now));
                 }
                 else
                 {
                     Dual.Msg("File Not Found", ConsoleColor.Red);
-                    Log.AddEvent(new Event("User Action by " + user._Id + " - Start: File Not Found:" + path, Event.Type.Warning, DateTime.Now));
+                    Log.AddEvent(new Event("User Action by " + user._Id + " - Start: File Not Found:" + path, EType.Warning, DateTime.Now));
                     action = true;
                 }
             }
@@ -40,12 +39,12 @@ namespace MyShell.Commands.Cmds
                 {
                     action = true;
                     Process.Start(LoggedProgram.DIR + path);
-                    Log.AddEvent(new Event("User Action by " + user._Id + " - Start: Action Succesful:" + LoggedProgram.DIR + path, Event.Type.Informtion, DateTime.Now));
+                    Log.AddEvent(new Event("User Action by " + user._Id + " - Start: Action Succesful:" + LoggedProgram.DIR + path, EType.Informtion, DateTime.Now));
                 }
                 else
                 {
                     Dual.Msg("File Not Found", ConsoleColor.Red);
-                    Log.AddEvent(new Event("User Action by " + user._Id + " - Start: File Not Found:" + LoggedProgram.DIR + path, Event.Type.Warning, DateTime.Now));
+                    Log.AddEvent(new Event("User Action by " + user._Id + " - Start: File Not Found:" + LoggedProgram.DIR + path, EType.Warning, DateTime.Now));
                     action = true;
                 }
             }

@@ -16,7 +16,7 @@ namespace MyShell.Commands.Cmds
         public override bool Execute(string[] args, string input, User user)
         {
             bool action = true;
-            string path = Dual.TrimStart(input, args[0] + " ");
+            string path = input.Substring(_Name.Length+1);
             path = path.Replace("~\\", AppDomain.CurrentDomain.BaseDirectory);
             Console.WriteLine(path);
             if (path != "..")
@@ -26,7 +26,7 @@ namespace MyShell.Commands.Cmds
                     if (Directory.Exists(path))
                     {
                         LoggedProgram.DIR = path;
-                        Log.AddEvent(new Event("User action: Directory Change - " + LoggedProgram.DIR, Event.Type.Informtion, DateTime.Now));
+                        Log.AddEvent(new Event("User action: Directory Change - " + LoggedProgram.DIR, EType.Informtion, DateTime.Now));
                     }
                     else
                     {
@@ -40,9 +40,9 @@ namespace MyShell.Commands.Cmds
                         string paths = path;
                         foreach (string item in Directory.GetDirectories(LoggedProgram.DIR))
                         {
-                            if (Dual.TrimStart(item, LoggedProgram.DIR).ToLower() == path.ToLower())
+                            if (item.Substring(LoggedProgram.DIR.Length).ToLower() == path.ToLower())
                             {
-                                paths = Dual.TrimStart(item, LoggedProgram.DIR);
+                                paths = item.Substring(LoggedProgram.DIR.Length);
                             }
                         }
                         if (Program.IsUnix)
@@ -53,7 +53,7 @@ namespace MyShell.Commands.Cmds
                         {
                             LoggedProgram.DIR = LoggedProgram.DIR + paths + "\\";
                         }
-                        Log.AddEvent(new Event("User action: Directory Change - " + LoggedProgram.DIR, Event.Type.Informtion, DateTime.Now));
+                        Log.AddEvent(new Event("User action: Directory Change - " + LoggedProgram.DIR, EType.Informtion, DateTime.Now));
                     }
                     else
                     {
@@ -104,7 +104,7 @@ namespace MyShell.Commands.Cmds
                 if (Directory.Exists(nd))
                 {
                     LoggedProgram.DIR = nd;
-                    Log.AddEvent(new Event("User action: Directory Change - " + LoggedProgram.DIR, Event.Type.Informtion, DateTime.Now));
+                    Log.AddEvent(new Event("User action: Directory Change - " + LoggedProgram.DIR, EType.Informtion, DateTime.Now));
                 }
             }
             return action;

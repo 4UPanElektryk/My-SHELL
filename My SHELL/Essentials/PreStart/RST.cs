@@ -65,9 +65,9 @@ namespace MyShell.Essentials
 			{
                 TestMsg("Windows based System", MsgType.OK);
             }
-			#endregion
-			#region Connection Test
-			TestMsg("Checking Internet Connection", MsgType.Normal);
+            #endregion
+            #region Connection Test
+            TestMsg("Checking Internet Connection", MsgType.Normal);
 			string[] PingDestinations =
 			{
 				"google.com",
@@ -97,12 +97,22 @@ namespace MyShell.Essentials
 				TestMsg("Updater.exe not found", MsgType.Error);
 				error_encounterd = true;
 			}
-			#endregion
-			#region Log Initializaion
-			try
+			if (File.Exists("SPM.exe"))
+            {
+                TestMsg("SPM.exe found", MsgType.OK);
+                Program.FoundUpdater = true;
+            }
+            else
+            {
+                TestMsg("SPM.exe not found", MsgType.Error);
+                error_encounterd = true;
+            }
+            #endregion
+            #region Log Initializaion
+            try
 			{
 				TestMsg("Atempting Log initialization", MsgType.Normal);
-				new Log(Config._LogsConfig.Path, Config._LogsConfig.Enabled, Config._LogsConfig.Prefix);
+				new Log(Config._LogsConfig.Path, Config._LogsConfig.Enabled ? OutputStream.File : OutputStream.None, Config._LogsConfig.Prefix);
 				TestMsg("Log initialization Succeded", MsgType.OK);
 			}
 			catch (Exception ex)
@@ -184,7 +194,7 @@ namespace MyShell.Essentials
 			if (error_encounterd)
 			{
 				Console.ForegroundColor = ConsoleColor.Yellow;
-				return Dual.YesOrNO("Errors has been encountered. \nAre you sure you want to continue?");
+				return Dual.YesOrNO("Errors has been encountered. \nSome commands may be disabled or not finction correctly.\nAre you sure you want to continue?");
 			}
 			else
 			{

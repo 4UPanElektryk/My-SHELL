@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using CoolConsole;
-using CoolConsole.MenuItemTemplate;
+using CoolConsole.MenuItems;
 using MyShell.Essentials;
 using MyShell.Integrations.User_Manager;
 
@@ -55,8 +55,8 @@ namespace MyShell.Commands.SubCmds.Config
                 new MenuItem("Continue")
             };
             ReturnCode returnCode = Menu.Show(items);
-            user.File = returnCode.Textboxes[0]._Text;
-            user.FileBackup = returnCode.Textboxes[1]._Text;
+            user.File = returnCode.Textboxes[0]._Value;
+            user.FileBackup = returnCode.Textboxes[1]._Value;
             return user;
         }
         public AppConfig GetAppConfig(AppConfig app)
@@ -71,11 +71,11 @@ namespace MyShell.Commands.SubCmds.Config
                 new MenuItem("Continue")
             };
             ReturnCode returnCode = Menu.Show(items);
-            app.AutoUpdate = returnCode.Checkboxes[0]._Checked;
-            app.UpdateToBeta = returnCode.Checkboxes[1]._Checked;
-            app.DevMode = returnCode.Checkboxes[2]._Checked;
-            app.UseAsciiOnly = returnCode.Checkboxes[3]._Checked;
-            app.BindFile = returnCode.Textboxes[0]._Text;
+            app.AutoUpdate = returnCode.Checkboxes[0]._Value;
+            app.UpdateToBeta = returnCode.Checkboxes[1]._Value;
+            app.DevMode = returnCode.Checkboxes[2]._Value;
+            app.UseAsciiOnly = returnCode.Checkboxes[3]._Value;
+            app.BindFile = returnCode.Textboxes[0]._Value;
             return app;
         }
         public LogsConfig GetLogsConfig(LogsConfig logs)
@@ -88,9 +88,9 @@ namespace MyShell.Commands.SubCmds.Config
                 new MenuItem("Continue")
             };
             ReturnCode returnCode = Menu.Show(items);
-            logs.Prefix = returnCode.Textboxes[0]._Text;
-            logs.Path = returnCode.Textboxes[1]._Text;
-            logs.Enabled = returnCode.Checkboxes[0]._Checked;
+            logs.Prefix = returnCode.Textboxes[0]._Value;
+            logs.Path = returnCode.Textboxes[1]._Value;
+            logs.Enabled = returnCode.Checkboxes[0]._Value;
             return logs;
         }
     }

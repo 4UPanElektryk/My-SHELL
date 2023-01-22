@@ -141,16 +141,21 @@ namespace MyShell.Essentials
             int x = Console.CursorLeft;
             int y = Console.CursorTop;
             int l = 0;
-            foreach (string item in text)
+            List<string> ntext = new List<string>(text);
+            for (int i = 0; i < text.Length; i++)
             {
-                if (l < item.Length)
+                if (l < text[i].Length)
                 {
-                    l = item.Length;
+                    l = text[i].Length;
                 }
             }
             int m = (Console.WindowWidth / 2) - ((l + 2) / 2);
-            int jl = (Console.WindowHeight / 2) - ((text.Length + 2) / 2);
-            int line = jl;
+            if (m < 0)
+            {
+                Console.WindowWidth = (l + 4);
+            }
+            m = (Console.WindowWidth / 2) - ((l + 2) / 2);
+            int line = (Console.WindowHeight / 2) - ((text.Length + 2) / 2);
             Console.SetCursorPosition(m, line);
             Console.Write("+");
             for (int i = 0; i < l + 2; i++)
@@ -179,42 +184,9 @@ namespace MyShell.Essentials
             Console.WriteLine("+");
             line++;
             Console.SetCursorPosition(m, line);
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ResetColor();
             Console.SetCursorPosition(x, y);
-        }
-        #endregion
-        #region Trim strings
-        public static string TrimStart(string text, string trimText)
-        {
-            string p = trimText;
-            string path = "";
-            int startfrom = p.Length;
-            int j = 0;
-            foreach (char item in text.ToArray())
-            {
-                j++;
-                if (j > startfrom)
-                {
-                    path = path + item;
-                }
-            }
-            return path;
-        }
-        public static string TrimEnd(string text, int chars)
-        {
-            string path = "";
-            int startfrom = text.Length - chars;
-            int j = 0;
-            foreach (char item in text.ToArray())
-            {
-                j++;
-                if (j <= startfrom)
-                {
-                    path = path + item;
-                }
-            }
-            return path;
+            Console.ReadKey(true);
         }
         #endregion
         #region Colors

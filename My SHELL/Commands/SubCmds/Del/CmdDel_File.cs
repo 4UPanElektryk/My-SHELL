@@ -22,7 +22,7 @@ namespace MyShell.Commands.SubCmds.Del
             if (!File.Exists(path))
             {
                 Dual.Msg("File does not exists", ConsoleColor.Red);
-                Log.Write("User: " + user._Id + " Attempted deltion of not existant File: " + path, Event.Type.Informtion);
+                Log.Write("User: " + user._Id + " Attempted deltion of not existant File: " + path, EType.Informtion);
                 return true;
             }
             if (!Dual.YesOrNO("Are you sure you want to Delete this file"))
@@ -33,11 +33,11 @@ namespace MyShell.Commands.SubCmds.Del
             {
                 File.Delete(path);
                 Dual.Msg("File deleted", ConsoleColor.Green);
-                Log.Write("User: " + user._Id + " File: " + path, Event.Type.Informtion);
+                Log.Write("User: " + user._Id + " File: " + path, EType.Informtion);
             }
             catch (Exception error)
             {
-                Log.Write(error.Message, Event.Type.Error);
+                Log.Write(error.Message, EType.Error);
             }
             return true;
         }

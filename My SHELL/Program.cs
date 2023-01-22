@@ -56,7 +56,7 @@ namespace MyShell
                     string input = Console.ReadLine().ToLower();
                     string[] TInput = input.Split(' ');
                     int nbt = TInput.Length;
-                    Log.AddEvent(new Event("User Action - Input: " + input, Event.Type.Normal, DateTime.Now));
+                    Log.AddEvent(new Event("User Action - Input: " + input, EType.Normal, DateTime.Now));
                     switch (TInput[0])
                     {
                         case "update":
@@ -73,7 +73,7 @@ namespace MyShell
                             {
                                 if (TInput[1] == "-user")
                                 {
-                                    Log.AddEvent(new Event("User Action - Help Opened: Help Sub -user", Event.Type.Normal, DateTime.Now));
+                                    Log.AddEvent(new Event("User Action - Help Opened: Help Sub -user", EType.Normal, DateTime.Now));
                                     action = true;
                                     Console.WriteLine("User");
                                     Console.WriteLine("-login for login");
@@ -95,7 +95,7 @@ namespace MyShell
                         case "note":
                         case "notepad":
                             action = true;
-                            Log.AddEvent(new Event("User Action: Notepad oppening", Event.Type.Normal, DateTime.Now));
+                            Log.AddEvent(new Event("User Action: Notepad oppening", EType.Normal, DateTime.Now));
                             Process.Start("note.exe");
                             break;
 
@@ -243,12 +243,16 @@ namespace MyShell
             }
             catch (Exception ex)
             {
-                Log.AddEvent(new Event("Aplication Crashed Message: " + ex.Message, Event.Type.Critical_Error, DateTime.Now));
+                Log.AddEvent(new Event("Aplication Crashed Message: " + ex.Message, EType.Critical_Error, DateTime.Now));
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Error: " + ex.Message);
-                Console.WriteLine(ex.Source);
-                Console.WriteLine(ex.StackTrace);
-				Console.WriteLine("Something went wrong");
+                string[] strings =
+                {
+                    "Error: " + ex.Message,
+                    ex.Source,
+                    ex.StackTrace,
+                    "Something went wrong"
+                };
+                Dual.ShowMsg(strings, ConsoleColor.White, ConsoleColor.Red);
 				MakeCrashLog.WriteLog(ex.Message,ex.Source,ex.StackTrace,inputs);
                 if (Config._AppConfig.DevMode)
 				{

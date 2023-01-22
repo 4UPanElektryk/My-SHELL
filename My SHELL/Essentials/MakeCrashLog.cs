@@ -42,8 +42,8 @@ namespace MyShell.Essentials
                     {
                         if (item.StartsWith(startpath))
                         {
-                            string fin = Dual.TrimStart(item, Config._LogsConfig.Path + Config._LogsConfig.Prefix);
-                            fin = Dual.TrimEnd(fin, 4);
+                            string fin = item.Substring(Config._LogsConfig.Path.Length + Config._LogsConfig.Prefix.Length);
+                            fin = fin.Substring(0,fin.Length-4);
                             int g = int.Parse(fin);
                             if (g > i)
                             {

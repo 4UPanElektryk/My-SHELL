@@ -43,7 +43,7 @@ namespace MyShell.Commands.SubCmds.Binds
                 Path = path,
                 Args = i
             };
-            Log.Write("Added bind by User " + user._Id, Event.Type.Informtion);
+            Log.Write("Added bind by User " + user._Id, EType.Informtion);
             BindManager.AddBind(bind);
             return true;
         }

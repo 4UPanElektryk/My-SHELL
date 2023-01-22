@@ -112,7 +112,7 @@ namespace MyShell.Binds
             {
                 Dual.Msg(ex.Message, ConsoleColor.Red);
                 Dual.Msg(ex.Source, ConsoleColor.Red);
-                Log.Write("Exeption Encountered while executing bind: At line: " + lastline + " Message: \"" + ex.Message, Event.Type.Error);
+                Log.Write("Exeption Encountered while executing bind: At line: " + lastline + " Message: \"" + ex.Message, EType.Error);
             }
             return true;
         }
