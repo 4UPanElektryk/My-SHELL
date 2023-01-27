@@ -25,7 +25,7 @@ namespace SimplePkgMgr.InstallScriptRuntime
             {
                 if (!item.StartsWith("//"))
                 {
-                    string[] args = item.Split("//".ToArray, StringSplitOptions.RemoveEmptyEntries);
+                    string[] args = item.Split("\"".ToArray(), StringSplitOptions.RemoveEmptyEntries);
                     foreach (Cmd item2 in cmds)
                     {
                         if (item.ToLower().StartsWith(item2.Name))

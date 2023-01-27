@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using SimplePkgMgr.Templates;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -32,7 +34,16 @@ namespace SimplePkgMgr
         public bool AddRepo(string uri)
         {
             WebClient client = new WebClient();
-            client.DownloadFile(uri,TempDir+"repo.dat");
+            TRepo repo = null;
+            try
+            {
+                repo = JsonConvert.DeserializeObject<TRepo>(client.DownloadString(uri));
+            }
+            catch
+            {
+                return false;
+            }
+            repo.
             return true;
         }
     }
