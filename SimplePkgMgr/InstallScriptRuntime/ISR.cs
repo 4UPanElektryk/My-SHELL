@@ -9,10 +9,10 @@ using SimplePkgMgr.InstallScriptRuntime.IntegratedFunctions;
 
 namespace SimplePkgMgr.InstallScriptRuntime
 {
-    public  class Runner
+    public  class ISR
     {
         public static List<Cmd> cmds;
-        public Runner() 
+        public ISR() 
         {
             cmds = new List<Cmd> 
             {
