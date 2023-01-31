@@ -22,9 +22,9 @@ namespace SimplePkgMgr
             {
                 try
                 {
-                    
+                    Repolocs = JsonConvert.DeserializeObject<Dictionary<string,string>>(File.ReadAllText(RepoDBFile))
                 }
-                catch (Exception)
+                catch
                 {
 
                     throw;
