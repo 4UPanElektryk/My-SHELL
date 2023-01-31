@@ -51,6 +51,8 @@
   <ItemGroup>
     <Compile Include="InstallScriptRuntime\Cmd.cs" />
     <Compile Include="InstallScriptRuntime\IntegratedFunctions\CmdGet.cs" />
+    <Compile Include="InstallScriptRuntime\IntegratedFunctions\CmdMkDir.cs" />
+    <Compile Include="InstallScriptRuntime\IntegratedFunctions\CmdMV.cs" />
     <Compile Include="InstallScriptRuntime\ISR.cs" />
     <Compile Include="PkgMgr.cs" />
     <Compile Include="Program.cs" />
