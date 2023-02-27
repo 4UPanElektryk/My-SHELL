@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "My SHELL User Menager", "..
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "My SHELL Updater", "MyShellUpdater\My SHELL Updater.csproj", "{6AA49F0B-9614-4E8F-B5D5-8CB450E05957}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplePkgMgr", "SimplePkgMgr\SimplePkgMgr.csproj", "{5DBA31EA-43B2-4F84-B7BD-837CFE2CC8E0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplePkgMgr", "..\SimplePkgMgr\SimplePkgMgr.csproj", "{5DBA31EA-43B2-4F84-B7BD-837CFE2CC8E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
