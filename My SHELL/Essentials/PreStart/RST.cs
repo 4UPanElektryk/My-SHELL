@@ -3,8 +3,8 @@ using MyShell.Integrations.User_Manager;
 using SimpleLogs4Net;
 using System;
 using System.IO;
-using MyShell.Essentials;
 using MyShell.Essentials.PreStart;
+using System.Collections.Generic;
 
 namespace MyShell.Essentials
 {
@@ -20,6 +20,7 @@ namespace MyShell.Essentials
 			Warning,
 			Error,
 		}
+		private static Dictionary<MsgType, EType> _types = new Dictionary<MsgType, EType>();
 		public static bool RunTest()
 		{
 			bool error_encounterd = false;
@@ -112,7 +113,7 @@ namespace MyShell.Essentials
             try
 			{
 				TestMsg("Atempting Log initialization", MsgType.Normal);
-				new Log(Config._LogsConfig.Path, Config._LogsConfig.Enabled ? OutputStream.File : OutputStream.None, Config._LogsConfig.Prefix);
+				new LogConfiguration(Config._LogsConfig.Path, Config._LogsConfig.Enabled ? OutputStream.File : OutputStream.None, Config._LogsConfig.Prefix);
 				TestMsg("Log initialization Succeded", MsgType.OK);
 			}
 			catch (Exception ex)
@@ -204,29 +205,14 @@ namespace MyShell.Essentials
 		}
 		private static void TestMsg(string message, MsgType type)
 		{
-			Console.ResetColor();
-			Console.Write("[");
-			ConsoleColor color;
-			if (type == MsgType.OK)
+			if (_types.Count == 0)
 			{
-                color = ConsoleColor.Green;
+				_types.Add(MsgType.OK,EType.Normal);
+				_types.Add(MsgType.Normal,EType.Informtion);
+				_types.Add(MsgType.Warning,EType.Warning);
+				_types.Add(MsgType.Error,EType.Error);
 			}
-			else if (type == MsgType.Normal)
-			{
-                color = ConsoleColor.Blue;
-			}
-			else if (type == MsgType.Warning)
-			{
-                color = ConsoleColor.Yellow;
-			}
-			else
-			{
-                color = ConsoleColor.Red;
-			}
-			Console.ForegroundColor = color;
-			Console.Write("*");
-			Console.ResetColor();
-			Console.WriteLine("] " + message);
+			Log.DebugMsg(message, _types[type]);
 		}
 	}
 }

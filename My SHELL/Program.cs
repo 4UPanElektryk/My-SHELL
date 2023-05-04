@@ -243,7 +243,7 @@ namespace MyShell
             }
             catch (Exception ex)
             {
-                Log.AddEvent(new Event("Aplication Crashed Message: " + ex.Message, EType.Critical_Error, DateTime.Now));
+                Log.Write("Aplication Crashed Message: " + ex.Message, EType.Error);
                 Console.ForegroundColor = ConsoleColor.Red;
                 string[] strings =
                 {

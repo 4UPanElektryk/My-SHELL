@@ -20,7 +20,7 @@ namespace MyShell.Commands.SubCmds.Logs
                     Essentials.Config._LogsConfig.Enabled = result;
                     Essentials.Config.Save();
                     Essentials.Config.Load();
-                    Log.ChangeOutputStream(Essentials.Config._LogsConfig.Enabled ? OutputStream.File : OutputStream.None);
+                    LogConfiguration.ChangeStream(Essentials.Config._LogsConfig.Enabled ? OutputStream.File : OutputStream.None);
                     if (Essentials.Config._LogsConfig.Enabled)
                     {
                         Dual.Msg("Logs are now enabled", ConsoleColor.Yellow);
@@ -35,7 +35,7 @@ namespace MyShell.Commands.SubCmds.Logs
             {
                 if (user._State == User.Type.SysAdmin)
                 {
-                    Log.ChangeOutputStream(Essentials.Config._LogsConfig.Enabled ? OutputStream.File : OutputStream.None);
+                    LogConfiguration.ChangeStream(Essentials.Config._LogsConfig.Enabled ? OutputStream.File : OutputStream.None);
                     if (Essentials.Config._LogsConfig.Enabled)
                     {
                         Dual.Msg("Logs are enabled", ConsoleColor.Yellow);
