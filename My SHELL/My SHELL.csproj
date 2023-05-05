@@ -189,6 +189,10 @@
       <Project>{9CD6F790-D5F2-4527-89B6-3AB8D5C99D48}</Project>
       <Name>My SHELL User Menager</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\SimplePkgMgr\SimplePkgMgr.csproj">
+      <Project>{5dba31ea-43b2-4f84-b7bd-837cfe2cc8e0}</Project>
+      <Name>SimplePkgMgr</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MyShellUpdater\My SHELL Updater.csproj">
       <Project>{6AA49F0B-9614-4E8F-B5D5-8CB450E05957}</Project>
       <Name>My SHELL Updater</Name>
@@ -196,4 +200,8 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
 </Project>
