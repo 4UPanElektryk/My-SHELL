@@ -55,7 +55,6 @@ namespace MyShell
                     ex.StackTrace,
                     "Something went wrong"
                 };
-                Dual.ShowMsg(strings, ConsoleColor.White, ConsoleColor.Red);
 				MakeCrashLog.WriteLog(ex.Message,ex.Source,ex.StackTrace,inputs);
                 if (Config._AppConfig.DevMode)
 				{

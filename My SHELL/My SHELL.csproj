@@ -109,9 +109,10 @@
     <Compile Include="Commands\Cmds\CmdStart.cs" />
     <Compile Include="Commands\Cmds\CmdTest.cs" />
     <Compile Include="Commands\Cmds\CmdInfo.cs" />
+    <Compile Include="Commands\ModLoader.cs" />
     <Compile Include="Commands\SubCmds\Binds\CmdBinds_Add.cs" />
     <Compile Include="Commands\SubCmds\Binds\CmdBinds_List.cs" />
-    <Compile Include="Commands\SubCmds\Config\CmdConfig_RawEdit.cs" />
+    <Compile Include="Commands\SubCmds\CConfig\CmdConfig_RawEdit.cs" />
     <Compile Include="Commands\SubCmds\Del\CmdDel_Dir.cs" />
     <Compile Include="Commands\SubCmds\Del\CmdDel_File.cs" />
     <Compile Include="Commands\SubCmds\Logs\CmdLogs_Default.cs" />
@@ -141,7 +142,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Commands\Cmds\CmdConfig.cs" />
-    <Compile Include="Commands\SubCmds\Config\CmdConfig_Menu.cs" />
+    <Compile Include="Commands\SubCmds\CConfig\CmdConfig_Menu.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.editorconfig">
@@ -170,9 +171,7 @@
   <ItemGroup>
     <Content Include="Images\document-console-icon.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Commands\SubCmds\SPM\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\SimplePkgMgr\SimplePkgMgr.csproj">
       <Project>{5dba31ea-43b2-4f84-b7bd-837cfe2cc8e0}</Project>

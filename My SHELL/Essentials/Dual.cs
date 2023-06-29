@@ -134,60 +134,6 @@ namespace MyShell.Essentials
             Console.ForegroundColor = BeforeColor;
             Console.BackgroundColor = BeforeBgColor;
         }
-        public static void ShowMsg(string[] text, ConsoleColor Color, ConsoleColor BGColor = ConsoleColor.Black)
-        {
-            Console.ForegroundColor = Color;
-            Console.BackgroundColor = BGColor;
-            int x = Console.CursorLeft;
-            int y = Console.CursorTop;
-            int l = 0;
-            List<string> ntext = new List<string>(text);
-            for (int i = 0; i < text.Length; i++)
-            {
-                if (l < text[i].Length)
-                {
-                    l = text[i].Length;
-                }
-            }
-            int m = (Console.WindowWidth / 2) - ((l + 2) / 2);
-            if (m < 0)
-            {
-                Console.WindowWidth = (l + 4);
-            }
-            m = (Console.WindowWidth / 2) - ((l + 2) / 2);
-            int line = (Console.WindowHeight / 2) - ((text.Length + 2) / 2);
-            Console.SetCursorPosition(m, line);
-            Console.Write("+");
-            for (int i = 0; i < l + 2; i++)
-            {
-                Console.Write("-");
-            }
-            Console.WriteLine("+");
-            line++;
-            Console.SetCursorPosition(m, line);
-            foreach (string item in text)
-            {
-                Console.Write("| " + item);
-                for (int i = item.Length; i < l; i++)
-                {
-                    Console.Write(" ");
-                }
-                Console.WriteLine(" |");
-                line++;
-                Console.SetCursorPosition(m, line);
-            }
-            Console.Write("+");
-            for (int i = 0; i < l + 2; i++)
-            {
-                Console.Write("-");
-            }
-            Console.WriteLine("+");
-            line++;
-            Console.SetCursorPosition(m, line);
-            Console.ResetColor();
-            Console.SetCursorPosition(x, y);
-            Console.ReadKey(true);
-        }
         #endregion
         #region Colors
         public static ConsoleColor IntToColor(int n)

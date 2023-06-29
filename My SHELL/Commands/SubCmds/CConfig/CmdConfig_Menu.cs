@@ -3,7 +3,7 @@ using CoolConsole;
 using CoolConsole.MenuItems;
 using MyShell.Essentials;
 
-namespace MyShell.Commands.SubCmds.Config
+namespace MyShell.Commands.SubCmds.CConfig
 {
     public class CmdConfig_Menu : SubCmd
     {

@@ -1,4 +1,5 @@
-﻿using MyShell.Commands;
+﻿
+using MyShell.Commands;
 using MyShell.Essentials;
 using SimpleLogs4Net;
 using System;

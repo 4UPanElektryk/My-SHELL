@@ -2,7 +2,7 @@
 
 namespace MyShell.Commands
 {
-    class Cmd
+    public class Cmd
     {
         public string _Name = null;
         public List<SubCmd> _Subs;

@@ -26,6 +26,7 @@ namespace MyShell.Commands
                 new CmdNeofetch("neofetch"),
                 new CmdConfig("config"),
             };
+            CmdList.AddRange(ModLoader.ImportCommands());
             if (Config._AppConfig.DevMode)
             {
                 CmdList.Add(new CmdTest("test"));

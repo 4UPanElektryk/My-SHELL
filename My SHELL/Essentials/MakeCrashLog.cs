@@ -71,7 +71,6 @@ namespace MyShell.Essentials
                     ex.Message.Replace("\n"," "),
                     ex.Source
                 };
-                Dual.ShowMsg(fail,ConsoleColor.White,ConsoleColor.Red);
             }
 		}
 	}
