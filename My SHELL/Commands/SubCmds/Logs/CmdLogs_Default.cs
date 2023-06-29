@@ -1,6 +1,4 @@
-﻿using MyShell.Essentials;
-using MyShell.Integrations.User_Manager;
-using System;
+﻿using System;
 using System.IO;
 
 namespace MyShell.Commands.SubCmds.Logs
@@ -11,7 +9,7 @@ namespace MyShell.Commands.SubCmds.Logs
         {
             _IsDefault = true;
         }
-        public override bool Execute(string[] args, string input, User user)
+        public override bool Execute(string[] args, string input)
         {
             if (args.Length == 1)
             {

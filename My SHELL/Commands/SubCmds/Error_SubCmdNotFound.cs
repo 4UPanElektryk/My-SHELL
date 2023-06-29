@@ -1,5 +1,4 @@
-﻿using MyShell.Integrations.User_Manager;
-using System;
+﻿using System;
 
 namespace MyShell.Commands.SubCmds
 {
@@ -9,7 +8,7 @@ namespace MyShell.Commands.SubCmds
         {
             _IsDefault = true;
         }
-        public override bool Execute(string[] args, string input, User user)
+        public override bool Execute(string[] args, string input)
         {
             Console.ForegroundColor = ConsoleColor.Red;
             if (args.Length > 1)

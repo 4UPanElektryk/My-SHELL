@@ -1,5 +1,4 @@
 ﻿using MyShell.Binds;
-using MyShell.Integrations.User_Manager;
 using SimpleLogs4Net;
 using System;
 
@@ -10,7 +9,7 @@ namespace MyShell.Commands.SubCmds.Binds
         public CmdBinds_List(string name) : base(name)
         {
         }
-        public override bool Execute(string[] args, string input, User user)
+        public override bool Execute(string[] args, string input)
         {
             Log.Write("Listing binds");
             foreach (Bind item in BindManager.Binds)

@@ -7,7 +7,6 @@ namespace MyShell.Essentials
     public class OutputAndInput
     {
         public AppConfig Application { get; set; }
-        public UserConfig UserController { get; set; }
         public LogsConfig Logs { get; set; }
     }
     class Config
@@ -15,10 +14,6 @@ namespace MyShell.Essentials
         public static string path = AppDomain.CurrentDomain.BaseDirectory + "config.json";
 
         public static AppConfig _AppConfig;
-        /// <summary>
-		/// Stores the data for User Menager integration
-		/// </summary>
-		public static UserConfig _UserConfig;
         /// <summary>
         /// Stores the data for SimpleLogs4Net
         /// </summary>
@@ -37,7 +32,6 @@ namespace MyShell.Essentials
                 if (re != null)
                 {
                     _AppConfig = re.Application;
-                    _UserConfig = re.UserController;
                     _LogsConfig = re.Logs;
                 }
                 else
@@ -58,7 +52,6 @@ namespace MyShell.Essentials
             OutputAndInput outputAndInput = new OutputAndInput()
             {
                 Application = _AppConfig,
-                UserController = _UserConfig,
                 Logs = _LogsConfig
             };
             string file = JsonConvert.SerializeObject(outputAndInput, Formatting.Indented);
@@ -71,11 +64,9 @@ namespace MyShell.Essentials
         public static void Reset()
         {
             _AppConfig = new AppConfig();
-            _UserConfig = new UserConfig();
             _LogsConfig = new LogsConfig();
             _AppConfig.Reset();
             _LogsConfig.Reset();
-            _UserConfig.Reset();
         }
     }
 }

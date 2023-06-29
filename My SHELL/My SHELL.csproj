@@ -92,9 +92,6 @@
     <Reference Include="ConsoleDraw">
       <HintPath>..\ConsoleDraw.dll</HintPath>
     </Reference>
-    <Reference Include="TEXT">
-      <HintPath>..\TEXT.exe</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Binds\Bind.cs" />
@@ -105,14 +102,12 @@
     <Compile Include="Commands\Cmds\CmdDel.cs" />
     <Compile Include="Commands\Cmds\CmdHelp.cs" />
     <Compile Include="Commands\Cmds\CmdLs.cs" />
-    <Compile Include="Commands\Cmds\CmdLogoff.cs" />
+    <Compile Include="Commands\Cmds\CmdExit.cs" />
     <Compile Include="Commands\Cmds\CmdLogs.cs" />
     <Compile Include="Commands\Cmds\CmdMKDir.cs" />
     <Compile Include="Commands\Cmds\CmdNeofetch.cs" />
-    <Compile Include="Commands\Cmds\CmdSPM.cs" />
     <Compile Include="Commands\Cmds\CmdStart.cs" />
     <Compile Include="Commands\Cmds\CmdTest.cs" />
-    <Compile Include="Commands\Cmds\CmdText.cs" />
     <Compile Include="Commands\Cmds\CmdInfo.cs" />
     <Compile Include="Commands\SubCmds\Binds\CmdBinds_Add.cs" />
     <Compile Include="Commands\SubCmds\Binds\CmdBinds_List.cs" />
@@ -126,12 +121,6 @@
     <Compile Include="Commands\SubCmds\Info\CmdInfo_Live.cs" />
     <Compile Include="Commands\SubCmds\Error_SubCmdNotFound.cs" />
     <Compile Include="Commands\SubCmds\Logs\CmdLogs_Clear.cs" />
-    <Compile Include="Commands\SubCmds\Users\CmdUsers_Add.cs" />
-    <Compile Include="Commands\SubCmds\Users\CmdUsers_CP.cs" />
-    <Compile Include="Commands\SubCmds\Users\CmdUsers_Del.cs" />
-    <Compile Include="Commands\SubCmds\Users\CmdUsers_Info.cs" />
-    <Compile Include="Commands\SubCmds\Users\CmdUsers_List.cs" />
-    <Compile Include="Commands\Cmds\CmdUsers.cs" />
     <Compile Include="Commands\CommandMenager.cs" />
     <Compile Include="Commands\SubCmd.cs" />
     <Compile Include="Commands\Cmd.cs" />
@@ -185,10 +174,6 @@
     <Folder Include="Commands\SubCmds\SPM\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MySH-User-Manager\My SHELL User Menager\My SHELL User Menager.csproj">
-      <Project>{9CD6F790-D5F2-4527-89B6-3AB8D5C99D48}</Project>
-      <Name>My SHELL User Menager</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\SimplePkgMgr\SimplePkgMgr.csproj">
       <Project>{5dba31ea-43b2-4f84-b7bd-837cfe2cc8e0}</Project>
       <Name>SimplePkgMgr</Name>

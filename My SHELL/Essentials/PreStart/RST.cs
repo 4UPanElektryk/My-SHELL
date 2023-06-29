@@ -1,5 +1,4 @@
 ﻿using MyShell.Binds;
-using MyShell.Integrations.User_Manager;
 using SimpleLogs4Net;
 using System;
 using System.IO;
@@ -119,39 +118,6 @@ namespace MyShell.Essentials
 			catch (Exception ex)
 			{
 				TestMsg("Log initialization Failed", MsgType.Error);
-				TestMsg(ex.Message, MsgType.Error);
-				error_encounterd = true;
-			}
-			#endregion
-			#region User Controller initialization
-			if (File.Exists(Config._UserConfig.File))
-			{
-				TestMsg("Found User File", MsgType.OK);
-			}
-			else
-			{
-				TestMsg("User File is Missing", MsgType.Warning);
-				if (File.Exists(Config._UserConfig.FileBackup))
-				{
-					TestMsg("Found Backup User File", MsgType.OK);
-					TestMsg("Restoring File From Backup", MsgType.Warning);
-					File.Copy(Config._UserConfig.FileBackup, Config._UserConfig.File);
-				}
-				else
-				{
-					TestMsg("Backup User File is Missing", MsgType.Warning);
-				}
-			}
-			try
-			{
-				TestMsg("Atempting User Controller initialization", MsgType.Normal);
-				new UserController(Config._UserConfig.File, Config._UserConfig.FileBackup);
-				TestMsg("User Controller initialization Succeded", MsgType.OK);
-			}
-			catch (Exception ex)
-			{
-				TestMsg("User Controller initialization Failed", MsgType.Error);
-				TestMsg("We Recomend to rename the User File and restart the program", MsgType.Warning);
 				TestMsg(ex.Message, MsgType.Error);
 				error_encounterd = true;
 			}

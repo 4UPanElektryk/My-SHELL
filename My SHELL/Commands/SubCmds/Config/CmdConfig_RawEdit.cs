@@ -1,9 +1,4 @@
-﻿using MyShell.Integrations.User_Manager;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using MyShell.Essentials;
 
 namespace MyShell.Commands.SubCmds.Config
@@ -14,7 +9,7 @@ namespace MyShell.Commands.SubCmds.Config
         {
 
         }
-        public override bool Execute(string[] args, string input, User user)
+        public override bool Execute(string[] args, string input)
         {
             try
             {
@@ -44,24 +39,6 @@ namespace MyShell.Commands.SubCmds.Config
                             break;
                     }
                     Essentials.Config._AppConfig = localApp;
-                    return true;
-                }
-                if (firsthalf == "UserController")
-                {
-                    UserConfig localUser = Essentials.Config._UserConfig;
-                    switch (secoundhalf)
-                    {
-                        case "File":
-                            localUser.File = args[1];
-                            break;
-                        case "FileBackup":
-                            localUser.FileBackup = args[1];
-                            break;
-                        default:
-                            Console.WriteLine(secoundhalf + " Not Found in configuration");
-                            break;
-                    }
-                    Essentials.Config._UserConfig = localUser;
                     return true;
                 }
                 if (firsthalf == "Logs")

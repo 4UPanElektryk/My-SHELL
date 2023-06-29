@@ -1,6 +1,5 @@
 ﻿using MyShell.Commands;
 using MyShell.Essentials;
-using MyShell.Integrations.User_Manager;
 using Newtonsoft.Json;
 using SimpleLogs4Net;
 using System;
@@ -62,7 +61,7 @@ namespace MyShell.Binds
             }
             return null;
         }
-        public static bool ExecuteBind(string input, User user)
+        public static bool ExecuteBind(string input)
         {
             CommandMenager commandMenager = new CommandMenager();
             string[] args = input.Split(' ');
@@ -100,7 +99,7 @@ namespace MyShell.Binds
                 {
                     string command = item;
                     command = argsDict.Aggregate(command, (result, s) => result.Replace(s.Key, s.Value));
-                    commandMenager.ExecuteCommandForBind(command, user);
+                    commandMenager.ExecuteCommandForBind(command);
                     lastline++;
                 }
                 stopwatch.Stop();

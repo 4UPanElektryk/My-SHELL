@@ -1,5 +1,4 @@
-﻿using MyShell.Integrations.User_Manager;
-using System;
+﻿using System;
 
 namespace MyShell.Commands.Cmds
 {
@@ -9,7 +8,7 @@ namespace MyShell.Commands.Cmds
         {
             description = "Clears the screen";
         }
-        public override bool Execute(string[] args, string input, User user)
+        public override bool Execute(string[] args, string input)
         {
             Console.Clear();
             return true;

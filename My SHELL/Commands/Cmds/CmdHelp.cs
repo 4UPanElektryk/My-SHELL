@@ -1,5 +1,4 @@
-﻿using MyShell.Integrations.User_Manager;
-using System;
+﻿using System;
 
 namespace MyShell.Commands.Cmds
 {
@@ -11,7 +10,7 @@ namespace MyShell.Commands.Cmds
             args = "<Command Name>";
         }
 
-        public override bool Execute(string[] args, string input, User user)
+        public override bool Execute(string[] args, string input)
         {
             if (args.Length > 2)
             {

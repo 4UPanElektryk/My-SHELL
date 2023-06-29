@@ -2,7 +2,6 @@
 using CoolConsole;
 using CoolConsole.MenuItems;
 using MyShell.Essentials;
-using MyShell.Integrations.User_Manager;
 
 namespace MyShell.Commands.SubCmds.Config
 {
@@ -12,11 +11,10 @@ namespace MyShell.Commands.SubCmds.Config
         {
 
         }
-        public override bool Execute(string[] args, string input, User user)
+        public override bool Execute(string[] args, string input)
         {
             bool save = false;
             AppConfig appConfig = Essentials.Config._AppConfig;
-            UserConfig userConfig = Essentials.Config._UserConfig;
             LogsConfig logsConfig = Essentials.Config._LogsConfig;
             bool loop = true;
             do
@@ -24,7 +22,6 @@ namespace MyShell.Commands.SubCmds.Config
                 List<MenuItem> menus = new List<MenuItem>
                 {
                     new MenuItem("App Config"),
-                    new MenuItem("User Manager Config"),
                     new MenuItem("Logs Config"),
                     new MenuItem("Save & Exit"),
                     new MenuItem("Exit Without Saving"),
@@ -32,32 +29,16 @@ namespace MyShell.Commands.SubCmds.Config
                 ReturnCode returnCode = Menu.Show(menus);
                 if (returnCode.SelectedMenuItem > 2){ loop = false; }
                 if (returnCode.SelectedMenuItem == 0){ appConfig = GetAppConfig(appConfig); }
-                if (returnCode.SelectedMenuItem == 1){ userConfig = GetUserManagerConfig(userConfig); }
                 if (returnCode.SelectedMenuItem == 2){ logsConfig = GetLogsConfig(logsConfig); }
                 save = returnCode.SelectedMenuItem == 3;
             } while (loop);
             if (save)
             {
                 Essentials.Config._AppConfig = appConfig;
-                Essentials.Config._UserConfig = userConfig;
                 Essentials.Config._LogsConfig = logsConfig;
                 Essentials.Config.Save();
             }
             return true;
-        }
-
-        public UserConfig GetUserManagerConfig(UserConfig user)
-        {
-            List<MenuItem> items = new List<MenuItem>
-            {
-                new TextboxMenuItem("File",user.File),
-                new TextboxMenuItem("File_Backup",user.FileBackup),
-                new MenuItem("Continue")
-            };
-            ReturnCode returnCode = Menu.Show(items);
-            user.File = returnCode.Textboxes[0];
-            user.FileBackup = returnCode.Textboxes[1];
-            return user;
         }
         public AppConfig GetAppConfig(AppConfig app)
         {

@@ -1,6 +1,4 @@
-﻿using MyShell.Integrations.User_Manager;
-
-namespace MyShell.Commands
+﻿namespace MyShell.Commands
 {
     public class SubCmd
     {
@@ -16,7 +14,7 @@ namespace MyShell.Commands
             _Name = name;
             _IsDefault = isDefault;
         }
-        public virtual bool Execute(string[] args, string input, User user)
+        public virtual bool Execute(string[] args, string input)
         {
             int nbt = args.Length;
             bool action = false;

@@ -1,5 +1,4 @@
 ﻿using MyShell.Essentials;
-using MyShell.Integrations.User_Manager;
 using System;
 using CoolConsole.Aditonal;
 
@@ -11,7 +10,7 @@ namespace MyShell.Commands.Cmds
         {
             description = "Tests Basic Functions of SHELL";
         }
-        public override bool Execute(string[] args, string input, User user)
+        public override bool Execute(string[] args, string input)
         {
             if (Dual.YesOrNO("Run The TEST?"))
             {

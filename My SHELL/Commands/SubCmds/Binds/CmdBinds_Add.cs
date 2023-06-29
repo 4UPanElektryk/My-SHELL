@@ -1,6 +1,5 @@
 ﻿using MyShell.Binds;
 using MyShell.Essentials;
-using MyShell.Integrations.User_Manager;
 using SimpleLogs4Net;
 using System;
 using System.IO;
@@ -10,7 +9,7 @@ namespace MyShell.Commands.SubCmds.Binds
     class CmdBinds_Add : SubCmd
     {
         public CmdBinds_Add(string name) : base(name) { }
-        public override bool Execute(string[] args, string input, User user)
+        public override bool Execute(string[] args, string input)
         {
             Console.WriteLine("Name: ");
             string name = Console.ReadLine();
@@ -33,18 +32,23 @@ namespace MyShell.Commands.SubCmds.Binds
                 Dual.Msg("File Not Found", ConsoleColor.Red);
                 return true;
             }
-            int i = 0;
-            Console.WriteLine("Number of Arguments: ");
-            int.TryParse(Console.ReadLine(), out i);
-            Bind bind = new Bind()
+			Console.WriteLine("Number of Arguments: ");
+            if (int.TryParse(Console.ReadLine(), out int i))
             {
-                Name = name,
-                Description = description,
-                Path = path,
-                Args = i
-            };
-            Log.Write("Added bind by User " + user._Id, EType.Informtion);
-            BindManager.AddBind(bind);
+				Bind bind = new Bind()
+				{
+					Name = name,
+					Description = description,
+					Path = path,
+					Args = i
+				};
+				Log.Write("Added bind: " + name, EType.Informtion);
+				BindManager.AddBind(bind);
+			}
+            else
+            {
+                Console.WriteLine("Not a number");
+            }
             return true;
         }
     }

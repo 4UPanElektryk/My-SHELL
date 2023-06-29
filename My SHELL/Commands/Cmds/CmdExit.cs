@@ -1,22 +1,20 @@
 ﻿using MyShell.Essentials;
-using MyShell.Integrations.User_Manager;
 using SimpleLogs4Net;
 using System;
 
 namespace MyShell.Commands.Cmds
 {
-    class CmdLogoff : Cmd
+    class CmdExit : Cmd
     {
-        public CmdLogoff(string name) : base(name)
+        public CmdExit(string name) : base(name)
         {
-            description = "Loggs off currently logged user";
+            description = "Closes the program";
         }
-        public override bool Execute(string[] args, string input, User user)
+        public override bool Execute(string[] args, string input)
         {
-            if (Dual.YesOrNO("Do You want to Logoff?"))
+            if (Dual.YesOrNO("Do You want to Exit?"))
             {
                 Console.WriteLine("");
-                Log.Write("User logged of ID: " + user._Id);
                 LoggedProgram.loop = false;
             }
             else

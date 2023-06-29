@@ -1,11 +1,8 @@
 ﻿using MyShell.Essentials;
-using MyShell.Integrations.User_Manager;
 using MyShell.Properties;
 using System;
 using System.Threading;
 using CoolConsole.Aditonal;
-using System.Security.Cryptography.X509Certificates;
-using ConsoleDraw;
 
 namespace MyShell.Commands.SubCmds.Info
 {
@@ -57,7 +54,7 @@ namespace MyShell.Commands.SubCmds.Info
             #endregion
         }
 
-        public override bool Execute(string[] args, string input, User user)
+        public override bool Execute(string[] args, string input)
         {
             Console.CursorVisible = false;
             x = Console.CursorLeft;

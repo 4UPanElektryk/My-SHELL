@@ -1,9 +1,7 @@
 ﻿using MyShell.Binds;
 using MyShell.Commands.Cmds;
 using MyShell.Essentials;
-using MyShell.Integrations.User_Manager;
 using System.Collections.Generic;
-using System;
 
 namespace MyShell.Commands
 {
@@ -19,14 +17,12 @@ namespace MyShell.Commands
                 new CmdDel("del"),
                 new CmdHelp("help"),
                 new CmdLs("ls"),
-                new CmdLogoff("logoff"),
+                new CmdExit("exit"),
                 new CmdLogs("logs"),
                 new CmdMKDir("mkdir"),
-                new CmdUsers("user"),
                 new CmdStart("start"),
                 new CmdInfo("info"),
                 new CmdBinds("binds"),
-                new CmdText("text"),
                 new CmdNeofetch("neofetch"),
                 new CmdConfig("config"),
             };
@@ -35,7 +31,7 @@ namespace MyShell.Commands
                 CmdList.Add(new CmdTest("test"));
             }
         }
-        public bool ExecuteCommand(string input, User user)
+        public bool ExecuteCommand(string input)
         {
             string[] args = input.Split(' ');
             args = Dual.DeleteNullAndEmptyItems(args);
@@ -43,23 +39,23 @@ namespace MyShell.Commands
             {
                 if (item._Name == args[0].ToLower())
                 {
-                    return item.Execute(args, input, user);
+                    return item.Execute(args, input);
                 }
             }
             if (input == "")
             {
                 return true;
             }
-            return BindManager.ExecuteBind(input, user);
+            return BindManager.ExecuteBind(input);
         }
-        public bool ExecuteCommandForBind(string input, User user)
+        public bool ExecuteCommandForBind(string input)
         {
             string[] args = input.Split(' ');
             foreach (Cmd item in CmdList)
             {
                 if (item._Name == args[0].ToLower())
                 {
-                    return item.Execute(args, input, user);
+                    return item.Execute(args, input);
                 }
             }
             if (input == "")

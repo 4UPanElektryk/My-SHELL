@@ -1,5 +1,4 @@
 ﻿using MyShell.Essentials;
-using MyShell.Integrations.User_Manager;
 using SimpleLogs4Net;
 using System;
 using System.IO;
@@ -13,42 +12,35 @@ namespace MyShell.Commands.SubCmds.Logs
             _Help = "Deletes the logs";
         }
 
-        public override bool Execute(string[] args, string input, User user)
+        public override bool Execute(string[] args, string input)
         {
-            if (user._State == User.Type.SysAdmin)
+            Console.Clear();
+            Dual.LogWatermark();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            if (Dual.YesOrNO("Do you want to delete logs?"))
             {
-                Console.Clear();
-                Dual.LogWatermark();
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                if (Dual.YesOrNO("Do you want to delete logs?"))
+                Console.WriteLine();
+                foreach (string item in Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + Essentials.Config._LogsConfig.Path))
                 {
-                    Console.WriteLine();
-                    foreach (string item in Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + Essentials.Config._LogsConfig.Path))
+                    if (item.EndsWith(".log"))
                     {
-                        if (item.EndsWith(".log"))
-                        {
-                            Dual.Msg("Log File Deleted: '" + item + "'", ConsoleColor.Red);
-                        }
-                        else
-                        {
-                            Dual.Msg("File Skipped: '" + item + "'", ConsoleColor.Yellow);
-                        }
+                        Dual.Msg("Log File Deleted: '" + item + "'", ConsoleColor.Red);
                     }
-                    Log.ClearLogs();
+                    else
+                    {
+                        Dual.Msg("File Skipped: '" + item + "'", ConsoleColor.Yellow);
+                    }
                 }
-                else
-                {
-                    Console.WriteLine();
-                    Dual.Msg("Deletion of logs has been canceled", ConsoleColor.Green);
-                }
-                Console.ReadKey(true);
-                Console.Clear();
-                Dual.Watermark();
+                Log.ClearLogs();
             }
             else
             {
-                Dual.Msg("Not enough previlage level you need SysAdmin account", ConsoleColor.Red);
+                Console.WriteLine();
+                Dual.Msg("Deletion of logs has been canceled", ConsoleColor.Green);
             }
+            Console.ReadKey(true);
+            Console.Clear();
+            Dual.Watermark();
             return true;
         }
     }

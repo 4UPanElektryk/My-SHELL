@@ -1,5 +1,4 @@
 ﻿using MyShell.Essentials;
-using MyShell.Integrations.User_Manager;
 using System;
 using System.IO;
 
@@ -11,7 +10,7 @@ namespace MyShell.Commands.Cmds
         {
             description = "Lists Stuff in current directory";
         }
-        public override bool Execute(string[] args, string input, User user)
+        public override bool Execute(string[] args, string input)
         {
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine("Files In Directory: " + LoggedProgram.DIR);

@@ -1,7 +1,5 @@
-﻿using System;
-using MyShell.Commands.SubCmds;
+﻿using MyShell.Commands.SubCmds;
 using MyShell.Commands.SubCmds.Config;
-using MyShell.Integrations.User_Manager;
 namespace MyShell.Commands.Cmds
 {
     class CmdConfig : Cmd

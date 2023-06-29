@@ -1,6 +1,4 @@
 ﻿using CoolConsole.Aditonal;
-using MyShell.Essentials;
-using MyShell.Integrations.User_Manager;
 using MyShell.Properties;
 using SimpleLogs4Net;
 using System;
@@ -13,7 +11,7 @@ namespace MyShell.Commands.SubCmds.Info
         {
             _IsDefault = true;
         }
-        public override bool Execute(string[] args, string input, User user)
+        public override bool Execute(string[] args, string input)
         {
             Console.WriteLine("Maciek Shell");
             Console.WriteLine("Version: " + Settings.Default["Version"].ToString());

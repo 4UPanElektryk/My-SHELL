@@ -1,5 +1,4 @@
-﻿using MyShell.Integrations.User_Manager;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace MyShell.Commands
 {
@@ -15,7 +14,7 @@ namespace MyShell.Commands
             _Subs = new List<SubCmd>();
             _Name = name;
         }
-        public virtual bool Execute(string[] args, string input, User user)
+        public virtual bool Execute(string[] args, string input)
         {
             int nbt = args.Length;
             if (nbt > 1)
@@ -29,7 +28,7 @@ namespace MyShell.Commands
                         {
                             new_args[i - 2] = args[i];
                         }
-                        return item.Execute(new_args, input, user);
+                        return item.Execute(new_args, input);
                     }
                 }
             }
@@ -37,7 +36,7 @@ namespace MyShell.Commands
             {
                 if (item._IsDefault)
                 {
-                    return item.Execute(args, input, user);
+                    return item.Execute(args, input);
                 }
             }
             return false;

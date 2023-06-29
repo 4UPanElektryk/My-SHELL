@@ -1,5 +1,4 @@
 ﻿using MyShell.Essentials;
-using MyShell.Integrations.User_Manager;
 using SimpleLogs4Net;
 using System;
 using System.IO;
@@ -12,7 +11,7 @@ namespace MyShell.Commands.Cmds
         {
             description = "Creates directory";
         }
-        public override bool Execute(string[] args, string input, User user)
+        public override bool Execute(string[] args, string input)
         {
             bool action = false;
             string path = input.Substring(_Name.Length+1);

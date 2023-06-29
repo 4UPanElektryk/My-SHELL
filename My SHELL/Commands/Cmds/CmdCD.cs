@@ -1,6 +1,4 @@
-﻿using MyShell.Essentials;
-using MyShell.Integrations.User_Manager;
-using SimpleLogs4Net;
+﻿using SimpleLogs4Net;
 using System;
 using System.IO;
 using System.Linq;
@@ -13,7 +11,7 @@ namespace MyShell.Commands.Cmds
         {
             description = "changes active directory";
         }
-        public override bool Execute(string[] args, string input, User user)
+        public override bool Execute(string[] args, string input)
         {
             bool action = true;
             string path = input.Substring(_Name.Length+1);

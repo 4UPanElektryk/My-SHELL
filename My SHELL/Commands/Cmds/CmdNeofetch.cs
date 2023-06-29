@@ -1,5 +1,4 @@
 ﻿using MyShell.Essentials;
-using MyShell.Integrations.User_Manager;
 using MyShell.Properties;
 using System;
 
@@ -11,7 +10,7 @@ namespace MyShell.Commands.Cmds
         {
             description = "Neofetch";
         }
-        public override bool Execute(string[] args, string input, User user)
+        public override bool Execute(string[] args, string input)
         {
             #region Logo
             Console.ForegroundColor = ConsoleColor.White;
