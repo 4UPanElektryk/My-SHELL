@@ -1,6 +1,7 @@
 ﻿using MyShell.Binds;
 using SimpleLogs4Net;
 using System;
+using MyShell.Modules.Base;
 
 namespace MyShell.Commands.SubCmds.Binds
 {

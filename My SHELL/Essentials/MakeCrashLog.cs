@@ -16,7 +16,7 @@ namespace MyShell.Essentials
 		{
 			Path = path;
 		}
-		public static void WriteLog(string exeption, string sender, string trace,List<string> commands)
+		public static void WriteLog(Exception exception,List<string> commands)
 		{
             try
             {
@@ -27,9 +27,9 @@ namespace MyShell.Essentials
                 CrasshLog log = new CrasshLog()
                 {
                     UTCDateAndTime = DateTime.UtcNow,
-                    Exeption = exeption,
-                    Sender = sender,
-                    Trace = trace,
+                    Exeption = exception.Message,
+                    Sender = exception.Source,
+                    Trace = exception.StackTrace,
                     CommandsLeadingToCrash = commands
                 };
                 log.Config = new OutputAndInput() { Application = Config._AppConfig, Logs = Config._LogsConfig };

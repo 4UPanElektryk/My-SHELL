@@ -2,27 +2,57 @@
 using System.Reflection;
 using System.IO;
 using System;
-using Newtonsoft.Json;
+using MyShell.Modules.Base;
 
 namespace MyShell.Commands
 {
-	public class ModLoader
+	public static class ModLoader
 	{
-		public ModLoader() { }
-		public static List<Cmd> ImportCommands()
-		{
-			foreach (Assembly assembly in LoadModules("Modules\\"))
+		public static Type[] types;
+		public static Dictionary<string,bool> InitModules(string directory) 
+		{ 
+			Dictionary<string,bool> InitLog = new Dictionary<string,bool>();
+			List<Type> mains = new List<Type>();
+			foreach (Assembly assembly in LoadModules(directory))
 			{
-				Console.WriteLine("x");
-				/*Type type = assembly.GetType("SPMModule.SPMModule");
-				object c = Activator.CreateInstance(type);
-				type.GetMethod("OnLoad").Invoke(c, new object[] { });
-				Console.WriteLine(JsonConvert.SerializeObject(type));*/
+				foreach (Type type in assembly.GetTypes())
+				{
+					if (type.FullName.EndsWith(".Main"))
+					{
+						object c = Activator.CreateInstance(type);
+						bool ok;
+						try
+						{
+							ok = (bool)type.GetMethod("Load").Invoke(c, null);
+						}
+						catch
+						{
+							ok = false;
+						}
+                        if (ok)
+						{
+							mains.Add(type);
+						}
+						InitLog.Add(assembly.GetName().Name, ok);
+					}
+				}
 			}
-			return new List<Cmd>();
-		}
-		private static List<Assembly> LoadModules(string dir)
+			types = mains.ToArray();
+			return InitLog;
+		} 
+		public static Cmd[] ImportCommands()
 		{
+			List<Cmd> cmds = new List<Cmd>();
+			foreach (Type type in types) 
+			{
+				object c = Activator.CreateInstance(type);
+				cmds.AddRange((Cmd[])type.GetMethod("ExportCommands").Invoke(c, null));
+			}
+			return cmds.ToArray();
+		}
+		private static Assembly[] LoadModules(string dir)
+		{
+			//return new List<Assembly> { Assembly.LoadFile(AppDomain.CurrentDomain.BaseDirectory + "Modules\\SPMModule.dll") };
 			var modules = new List<Assembly>();
 			foreach (string item in Directory.GetFiles(dir))
 			{
@@ -31,7 +61,7 @@ namespace MyShell.Commands
 					modules.Add(Assembly.LoadFile(item));
 				}
 			}
-			return modules;
+			return modules.ToArray();
 		}
 	}
 }

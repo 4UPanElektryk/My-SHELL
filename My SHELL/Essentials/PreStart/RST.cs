@@ -4,6 +4,8 @@ using System;
 using System.IO;
 using MyShell.Essentials.PreStart;
 using System.Collections.Generic;
+using MyShell.Commands;
+using System.Threading;
 
 namespace MyShell.Essentials
 {
@@ -49,23 +51,6 @@ namespace MyShell.Essentials
 				error_encounterd = true;
 			}
 			#endregion
-			#region System Test
-			SysDetect.Sys info = SysDetect.Check();
-			if (info == SysDetect.Sys.NotSupported)
-			{
-				TestMsg("Unsuported System",MsgType.Error);
-				return false;
-			}
-			Program.IsUnix = info == SysDetect.Sys.Unix;
-			if (Program.IsUnix)
-			{
-                TestMsg("Unix based System", MsgType.OK);
-            }
-			else
-			{
-                TestMsg("Windows based System", MsgType.OK);
-            }
-            #endregion
             #region Connection Test
             TestMsg("Checking Internet Connection", MsgType.Normal);
 			string[] PingDestinations =
@@ -97,19 +82,24 @@ namespace MyShell.Essentials
 				TestMsg("Updater.exe not found", MsgType.Error);
 				error_encounterd = true;
 			}
-			if (File.Exists("SPM.exe"))
-            {
-                TestMsg("SPM.exe found", MsgType.OK);
-                Program.FoundUpdater = true;
-            }
-            else
-            {
-                TestMsg("SPM.exe not found", MsgType.Error);
-                error_encounterd = true;
-            }
-            #endregion
-            #region Log Initializaion
-            try
+			#endregion
+			#region Modules Test
+			Directory.CreateDirectory(AppContext.BaseDirectory + "Modules\\");
+			if (Directory.GetFiles(AppContext.BaseDirectory + "Modules\\","*.dll").Length != 0)
+			{
+				TestMsg("Initializing Modules", MsgType.Normal);
+				foreach (var item in ModLoader.InitModules(AppContext.BaseDirectory + "Modules\\"))
+				{
+					TestMsg($" - {item.Key} ",item.Value ? MsgType.OK : MsgType.Error);
+					if (!item.Value)
+					{
+						error_encounterd = true;
+					}
+				}
+			}
+			#endregion
+			#region Log Initializaion
+			try
 			{
 				TestMsg("Atempting Log initialization", MsgType.Normal);
 				new LogConfiguration(Config._LogsConfig.Path, Config._LogsConfig.Enabled ? OutputStream.File : OutputStream.None, Config._LogsConfig.Prefix);
@@ -151,7 +141,6 @@ namespace MyShell.Essentials
 				BindManager.Load();
 			}
 			#endregion
-
 			#region End Data
 			if (Config._AppConfig.DevMode)
 			{

@@ -1,5 +1,7 @@
 ﻿using MyShell.Commands.SubCmds;
 using MyShell.Commands.SubCmds.CConfig;
+using MyShell.Modules.Base;
+
 namespace MyShell.Commands.Cmds
 {
     class CmdConfig : Cmd

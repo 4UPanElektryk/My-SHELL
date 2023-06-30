@@ -2,6 +2,7 @@
 using MyShell.Properties;
 using SimpleLogs4Net;
 using System;
+using MyShell.Modules.Base;
 
 namespace MyShell.Commands.SubCmds.Info
 {

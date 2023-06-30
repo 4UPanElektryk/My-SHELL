@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SPMModule
+namespace MyShell.Modules.Base
 {
 	public class Cmd
 	{

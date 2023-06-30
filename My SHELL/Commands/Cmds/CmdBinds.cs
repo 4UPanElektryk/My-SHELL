@@ -1,5 +1,6 @@
 ﻿using MyShell.Commands.SubCmds.Binds;
 using MyShell.Commands.SubCmds;
+using MyShell.Modules.Base;
 
 namespace MyShell.Commands.Cmds
 {

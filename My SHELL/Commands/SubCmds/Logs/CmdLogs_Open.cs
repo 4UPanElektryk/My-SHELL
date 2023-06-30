@@ -1,6 +1,7 @@
 ﻿using MyShell.Essentials;
 using System;
 using System.IO;
+using MyShell.Modules.Base;
 
 namespace MyShell.Commands.SubCmds.Logs
 {

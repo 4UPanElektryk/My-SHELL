@@ -1,4 +1,4 @@
-﻿namespace SPMModule
+﻿namespace MyShell.Modules.Base
 {
 	public class SubCmd
 	{

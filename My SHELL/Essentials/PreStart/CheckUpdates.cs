@@ -19,7 +19,7 @@ namespace MyShell.Essentials
             PingOptions options = new PingOptions();
             options.DontFragment = true;
             string data = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-            int timeout = 200;
+            int timeout = 500;
             byte[] buffer = Encoding.ASCII.GetBytes(data);
             try
             {

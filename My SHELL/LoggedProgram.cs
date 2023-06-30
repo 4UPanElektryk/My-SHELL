@@ -1,5 +1,4 @@
-﻿
-using MyShell.Commands;
+﻿using MyShell.Commands;
 using MyShell.Essentials;
 using SimpleLogs4Net;
 using System;
@@ -18,13 +17,13 @@ namespace MyShell
 			CommandMenager commandMenager = new CommandMenager();
 			loop = true;
 			Program.inputs = new List<string>();
-			do
+			while (loop)
 			{
 				string ShowDIR = DIR.Replace(AppDomain.CurrentDomain.BaseDirectory, "~\\");
 				bool action = false;
 				string input = Prompt.ShowPropt(ShowDIR);
                 Program.inputs.Add(input);
-				Log.AddEvent(new Event("User Action - Input: " + input, EType.Normal));
+				Log.Write("User Action - Input: " + input, EType.Normal);
 				action = commandMenager.ExecuteCommand(input);
 				if (!action)
 				{
@@ -33,7 +32,7 @@ namespace MyShell
 					Console.WriteLine("Type 'Help' or '?' for help");
 					Console.ForegroundColor = ConsoleColor.White;
 				}
-			} while (loop);
+			}
 			Console.Clear();
 			Console.WriteLine("You have been logged off");
 			Dual.AwaitingEnter();

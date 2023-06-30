@@ -89,9 +89,6 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="ConsoleDraw">
-      <HintPath>..\ConsoleDraw.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Binds\Bind.cs" />
@@ -123,8 +120,6 @@
     <Compile Include="Commands\SubCmds\Error_SubCmdNotFound.cs" />
     <Compile Include="Commands\SubCmds\Logs\CmdLogs_Clear.cs" />
     <Compile Include="Commands\CommandMenager.cs" />
-    <Compile Include="Commands\SubCmd.cs" />
-    <Compile Include="Commands\Cmd.cs" />
     <Compile Include="Essentials\MakeCrashLog.cs" />
     <Compile Include="Essentials\PreStart\CheckUpdates.cs" />
     <Compile Include="Essentials\Config.cs" />
@@ -176,6 +171,10 @@
     <ProjectReference Include="..\..\SimplePkgMgr\SimplePkgMgr.csproj">
       <Project>{5dba31ea-43b2-4f84-b7bd-837cfe2cc8e0}</Project>
       <Name>SimplePkgMgr</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ModuleBase\MySH.ModuleBase.csproj">
+      <Project>{fbfc7fe7-0acc-431c-9e22-626ff048d968}</Project>
+      <Name>MySH.ModuleBase</Name>
     </ProjectReference>
     <ProjectReference Include="..\MyShellUpdater\My SHELL Updater.csproj">
       <Project>{6AA49F0B-9614-4E8F-B5D5-8CB450E05957}</Project>

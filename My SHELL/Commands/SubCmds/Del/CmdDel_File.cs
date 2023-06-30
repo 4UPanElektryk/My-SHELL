@@ -2,6 +2,8 @@
 using System.IO;
 using SimpleLogs4Net;
 using MyShell.Essentials;
+using MyShell.Modules.Base;
+
 namespace MyShell.Commands.SubCmds.Del
 {
     class CmdDel_File : SubCmd

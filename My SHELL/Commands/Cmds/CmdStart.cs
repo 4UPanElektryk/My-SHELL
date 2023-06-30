@@ -4,6 +4,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using MyShell.Modules.Base;
 
 namespace MyShell.Commands.Cmds
 {

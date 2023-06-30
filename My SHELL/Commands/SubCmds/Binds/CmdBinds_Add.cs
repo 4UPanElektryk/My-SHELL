@@ -3,6 +3,7 @@ using MyShell.Essentials;
 using SimpleLogs4Net;
 using System;
 using System.IO;
+using MyShell.Modules.Base;
 
 namespace MyShell.Commands.SubCmds.Binds
 {

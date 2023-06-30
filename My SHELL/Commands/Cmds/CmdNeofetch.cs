@@ -1,5 +1,6 @@
 ﻿using MyShell.Essentials;
 using MyShell.Properties;
+using MyShell.Modules.Base;
 using System;
 
 namespace MyShell.Commands.Cmds

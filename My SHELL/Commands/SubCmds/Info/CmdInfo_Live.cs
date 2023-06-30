@@ -3,6 +3,7 @@ using MyShell.Properties;
 using System;
 using System.Threading;
 using CoolConsole.Aditonal;
+using MyShell.Modules.Base;
 
 namespace MyShell.Commands.SubCmds.Info
 {

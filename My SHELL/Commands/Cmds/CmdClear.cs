@@ -1,4 +1,5 @@
 ﻿using System;
+using MyShell.Modules.Base;
 
 namespace MyShell.Commands.Cmds
 {

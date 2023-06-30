@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MyShell.Modules.Base;
 using MyShell.Commands.SubCmds;
 using MyShell.Commands.SubCmds.Del;
 

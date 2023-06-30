@@ -2,6 +2,7 @@
 using MyShell.Commands.Cmds;
 using MyShell.Essentials;
 using System.Collections.Generic;
+using MyShell.Modules.Base;
 
 namespace MyShell.Commands
 {

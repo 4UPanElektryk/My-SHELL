@@ -2,6 +2,7 @@
 using CoolConsole;
 using CoolConsole.MenuItems;
 using MyShell.Essentials;
+using MyShell.Modules.Base;
 
 namespace MyShell.Commands.SubCmds.CConfig
 {

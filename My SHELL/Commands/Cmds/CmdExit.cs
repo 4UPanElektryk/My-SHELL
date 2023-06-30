@@ -1,5 +1,5 @@
 ﻿using MyShell.Essentials;
-using SimpleLogs4Net;
+using MyShell.Modules.Base;
 using System;
 
 namespace MyShell.Commands.Cmds

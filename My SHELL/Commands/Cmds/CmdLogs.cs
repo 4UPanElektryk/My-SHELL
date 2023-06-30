@@ -1,4 +1,6 @@
 ﻿using MyShell.Commands.SubCmds.Logs;
+using MyShell.Modules.Base;
+
 namespace MyShell.Commands.Cmds
 {
     class CmdLogs : Cmd
