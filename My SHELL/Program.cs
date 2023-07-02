@@ -40,9 +40,9 @@ namespace MyShell
 			Console.Clear();
 			new MakeCrashLog(Config._LogsConfig.Path + "crash.log");
 			#endregion
-			try {
+			//try {
 				LoggedProgram.LoggedMain();
-			}
+			/*}
 			#region Exception handeling
 			catch (Exception ex)
 			{
@@ -72,7 +72,7 @@ namespace MyShell
 				Console.ReadKey();
 				Console.ResetColor();
 			}
-			#endregion
+			#endregion*/
 
 		}
 	}

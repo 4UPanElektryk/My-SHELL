@@ -51,26 +51,6 @@ namespace MyShell.Essentials
 				error_encounterd = true;
 			}
 			#endregion
-            #region Connection Test
-            TestMsg("Checking Internet Connection", MsgType.Normal);
-			string[] PingDestinations =
-			{
-				"google.com",
-				"github.com"
-			};
-			foreach (string item in PingDestinations)
-			{
-				if (CheckUpdates.CheckConnection(item))
-				{
-					TestMsg("Ping Succesful: " + item, MsgType.OK);
-				}
-				else
-				{
-					TestMsg("Ping Failed: " + item, MsgType.Warning);
-					error_encounterd = true;
-				}
-			}
-			#endregion
 			#region Dependecies Test
 			if (File.Exists("Updater.exe"))
 			{

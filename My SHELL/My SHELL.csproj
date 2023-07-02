@@ -102,10 +102,9 @@
     <Compile Include="Commands\Cmds\CmdExit.cs" />
     <Compile Include="Commands\Cmds\CmdLogs.cs" />
     <Compile Include="Commands\Cmds\CmdMKDir.cs" />
-    <Compile Include="Commands\Cmds\CmdNeofetch.cs" />
+    <Compile Include="Commands\Cmds\CmdInfo.cs" />
     <Compile Include="Commands\Cmds\CmdStart.cs" />
     <Compile Include="Commands\Cmds\CmdTest.cs" />
-    <Compile Include="Commands\Cmds\CmdInfo.cs" />
     <Compile Include="Commands\ModLoader.cs" />
     <Compile Include="Commands\SubCmds\Binds\CmdBinds_Add.cs" />
     <Compile Include="Commands\SubCmds\Binds\CmdBinds_List.cs" />
@@ -166,12 +165,10 @@
   <ItemGroup>
     <Content Include="Images\document-console-icon.ico" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\..\SimplePkgMgr\SimplePkgMgr.csproj">
-      <Project>{5dba31ea-43b2-4f84-b7bd-837cfe2cc8e0}</Project>
-      <Name>SimplePkgMgr</Name>
-    </ProjectReference>
+    <Folder Include="Modules\" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\ModuleBase\MySH.ModuleBase.csproj">
       <Project>{fbfc7fe7-0acc-431c-9e22-626ff048d968}</Project>
       <Name>MySH.ModuleBase</Name>

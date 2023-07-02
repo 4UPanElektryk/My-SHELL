@@ -43,10 +43,13 @@ namespace MyShell.Commands
 		public static Cmd[] ImportCommands()
 		{
 			List<Cmd> cmds = new List<Cmd>();
-			foreach (Type type in types) 
+			if (types != null)
 			{
-				object c = Activator.CreateInstance(type);
-				cmds.AddRange((Cmd[])type.GetMethod("ExportCommands").Invoke(c, null));
+				foreach (Type type in types)
+				{
+					object c = Activator.CreateInstance(type);
+					cmds.AddRange((Cmd[])type.GetMethod("ExportCommands").Invoke(c, null));
+				}
 			}
 			return cmds.ToArray();
 		}

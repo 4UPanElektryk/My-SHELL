@@ -24,7 +24,6 @@ namespace MyShell.Commands
                 new CmdStart("start"),
                 new CmdInfo("info"),
                 new CmdBinds("binds"),
-                new CmdNeofetch("neofetch"),
                 new CmdConfig("config"),
             };
             CmdList.AddRange(ModLoader.ImportCommands());

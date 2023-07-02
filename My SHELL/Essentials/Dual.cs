@@ -138,70 +138,11 @@ namespace MyShell.Essentials
 		#region Colors
 		public static ConsoleColor IntToColor(int n)
 		{
-			ConsoleColor color;
-			switch (n)
-			{
-				//Black
-				case 0: color = ConsoleColor.Black; break;
-				//Blue
-				case 1: color = ConsoleColor.DarkBlue; break;
-				//Green
-				case 2: color = ConsoleColor.DarkGreen; break;
-				//Aqua
-				case 3: color = ConsoleColor.DarkCyan; break;
-				//Red
-				case 4: color = ConsoleColor.DarkRed; break;
-				//Purple
-				case 5: color = ConsoleColor.DarkMagenta; break;
-				//Yellow
-				case 6: color = ConsoleColor.DarkYellow; break;
-				//White
-				case 7: color = ConsoleColor.Gray; break;
-				//Gray
-				case 8: color = ConsoleColor.DarkGray; break;
-				//Light Blue
-				case 9: color = ConsoleColor.Blue; break;
-				//Light Green
-				case 10: color = ConsoleColor.Green; break;
-				//Light Aqua
-				case 11: color = ConsoleColor.Cyan; break;
-				//Light Red
-				case 12: color = ConsoleColor.Red; break;
-				//Light Purple
-				case 13: color = ConsoleColor.Magenta; break;
-				//Light Yellow
-				case 14: color = ConsoleColor.Yellow; break;
-				//Bright White
-				case 15: color = ConsoleColor.White; break;
-				default:
-					color = ConsoleColor.White;
-					break;
-			}
-			return color;
+			return (ConsoleColor)n;
 		}
 		public static int ColorToInt(ConsoleColor c)
 		{
-			int color = 0;
-			switch (c)
-			{
-				case ConsoleColor.Black: color = 0; break;
-				case ConsoleColor.DarkBlue: color = 1; break;
-				case ConsoleColor.DarkGreen: color = 2; break;
-				case ConsoleColor.DarkCyan: color = 3; break;
-				case ConsoleColor.DarkRed: color = 4; break;
-				case ConsoleColor.DarkMagenta: color = 5; break;
-				case ConsoleColor.DarkYellow: color = 6; break;
-				case ConsoleColor.Gray: color = 7; break;
-				case ConsoleColor.DarkGray: color = 8; break;
-				case ConsoleColor.Blue: color = 9; break;
-				case ConsoleColor.Green: color = 10; break;
-				case ConsoleColor.Cyan: color = 11; break;
-				case ConsoleColor.Red: color = 12; break;
-				case ConsoleColor.Magenta: color = 13; break;
-				case ConsoleColor.Yellow: color = 14; break;
-				case ConsoleColor.White: color = 15; break;
-			}
-			return color;
+			return (int)c;
 		}
 		#endregion
 		#region Compilation Time
@@ -244,50 +185,6 @@ namespace MyShell.Essentials
 			}
 		}
 		#endregion
-		/*public static void ProgressBar(float percent, ConsoleColor color, bool normal = true, int width = 50)
-		{
-			int g = 100 / width;
-			int i = (int)Math.Floor(percent / g);
-			Console.Write("[");
-			string prog = "";
-			Console.ForegroundColor = color;
-			for (int j = 0; j < width; j++)
-			{
-				if (normal)
-				{
-					if (j < i)
-					{
-						prog = prog + "=";
-					}
-					else if (j == i)
-					{
-						prog = prog + ">";
-					}
-					else
-					{
-						prog = prog + " ";
-					}
-				}
-				else
-				{
-					if (j <= i)
-					{
-						prog = prog + "#";
-					}
-					else
-					{
-						prog = prog + " ";
-					}
-				}
-			}
-			Console.Write(prog);
-			Console.ResetColor();
-			Console.Write("]");
-			Console.ForegroundColor = color;
-			Console.Write(Math.Round(percent));
-			Console.WriteLine("%");
-			Console.ResetColor();
-		}*/
 		public static string[] DeleteNullAndEmptyItems(string[] inputstring)
 		{
 			List<string> strings = new List<string>();

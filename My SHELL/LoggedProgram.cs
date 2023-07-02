@@ -21,8 +21,9 @@ namespace MyShell
 			{
 				string ShowDIR = DIR.Replace(AppDomain.CurrentDomain.BaseDirectory, "~\\");
 				bool action = false;
-				string input = Prompt.ShowPropt(ShowDIR);
-                Program.inputs.Add(input);
+				Prompt.ShowPrompt(ShowDIR);
+				string input = Console.ReadLine();
+				Program.inputs.Add(input);
 				Log.Write("User Action - Input: " + input, EType.Normal);
 				action = commandMenager.ExecuteCommand(input);
 				if (!action)
