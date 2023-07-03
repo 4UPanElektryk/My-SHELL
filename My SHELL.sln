@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplePkgMgr", "..\SimplePk
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SPMModule", "SPMModule\SPMModule.csproj", "{39B05B0F-148E-499C-9427-D8B9B29327C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySH.ModuleBase", "ModuleBase\MySH.ModuleBase.csproj", "{FBFC7FE7-0ACC-431C-9E22-626FF048D968}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{39B05B0F-148E-499C-9427-D8B9B29327C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39B05B0F-148E-499C-9427-D8B9B29327C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39B05B0F-148E-499C-9427-D8B9B29327C3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FBFC7FE7-0ACC-431C-9E22-626FF048D968}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FBFC7FE7-0ACC-431C-9E22-626FF048D968}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FBFC7FE7-0ACC-431C-9E22-626FF048D968}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FBFC7FE7-0ACC-431C-9E22-626FF048D968}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

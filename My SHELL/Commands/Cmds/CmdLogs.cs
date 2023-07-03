@@ -1,5 +1,5 @@
 ﻿using MyShell.Commands.SubCmds.Logs;
-using MyShell.Modules.Base;
+using MyShell.Commands.Base;
 
 namespace MyShell.Commands.Cmds
 {

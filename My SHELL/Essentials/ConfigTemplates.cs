@@ -20,20 +20,6 @@
 
         }
     }
-    public class UserConfig
-    {
-        public string File { get; set; }
-        public string FileBackup { get; set; }
-        public void Reset()
-        {
-            File = "Users.dat";
-            FileBackup = "Backup_Users.dat";
-        }
-        public UserConfig()
-        {
-
-        }
-    }
     public class LogsConfig
     {
         public string Prefix { get; set; }

@@ -1,6 +1,6 @@
 ﻿using System;
 using MyShell.Essentials;
-using MyShell.Modules.Base;
+using MyShell.Commands.Base;
 
 namespace MyShell.Commands.SubCmds.CConfig
 {

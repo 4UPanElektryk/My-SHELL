@@ -1,6 +1,6 @@
 ﻿using MyShell.Commands.SubCmds.Binds;
 using MyShell.Commands.SubCmds;
-using MyShell.Modules.Base;
+using MyShell.Commands.Base;
 
 namespace MyShell.Commands.Cmds
 {
@@ -11,7 +11,7 @@ namespace MyShell.Commands.Cmds
             description = "allows manipulaion of binds";
             _Subs.Add(new CmdBinds_Add("add"));
             _Subs.Add(new CmdBinds_List("list"));
-            _Subs.Add(new Error_SubCmdNotFound(null) { _IsDefault = true });
+            _Subs.Add(new Error_SubCmdNotFound(null));
         }
     }
 }

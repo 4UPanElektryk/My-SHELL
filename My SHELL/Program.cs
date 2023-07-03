@@ -1,6 +1,5 @@
 ﻿using MyShell.Essentials;
 using MyShell.Properties;
-using SimpleLogs4Net;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System;
@@ -24,12 +23,13 @@ namespace MyShell
 #else
 			Experimental = false;
 #endif
+			inputs = new List<string>();
 			FoundUpdater = false;
 			currentProc = Process.GetCurrentProcess();
 			cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
 			ramCounter = new PerformanceCounter("Memory", "Available MBytes");
 			cpuCounter.NextValue();
-			Console.Title = Experimental ? $"My Shell {Settings.Default["Version"]}" : $"My Shell {Settings.Default["Version"]} Experimental";
+			Console.Title = !Experimental ? $"My Shell {Settings.Default["Version"]}" : $"My Shell {Settings.Default["Version"]} Experimental";
 			Console.ResetColor();
 			if (!RST.RunTest())
 			{

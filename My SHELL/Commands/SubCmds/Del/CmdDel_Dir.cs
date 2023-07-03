@@ -2,7 +2,7 @@
 using MyShell.Essentials;
 using System.IO;
 using SimpleLogs4Net;
-using MyShell.Modules.Base;
+using MyShell.Commands.Base;
 
 namespace MyShell.Commands.SubCmds.Del
 {

@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ModuleBase\MySH.ModuleBase.csproj" />
+    <ProjectReference Include="..\My SHELL\My SHELL.csproj" />
   </ItemGroup>
 
 </Project>

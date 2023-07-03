@@ -93,6 +93,7 @@
   <ItemGroup>
     <Compile Include="Binds\Bind.cs" />
     <Compile Include="Binds\BindManager.cs" />
+    <Compile Include="Commands\Base\Cmd.cs" />
     <Compile Include="Commands\Cmds\CmdBinds.cs" />
     <Compile Include="Commands\Cmds\CmdCD.cs" />
     <Compile Include="Commands\Cmds\CmdClear.cs" />
@@ -106,6 +107,7 @@
     <Compile Include="Commands\Cmds\CmdStart.cs" />
     <Compile Include="Commands\Cmds\CmdTest.cs" />
     <Compile Include="Commands\ModLoader.cs" />
+    <Compile Include="Commands\Base\SubCmd.cs" />
     <Compile Include="Commands\SubCmds\Binds\CmdBinds_Add.cs" />
     <Compile Include="Commands\SubCmds\Binds\CmdBinds_List.cs" />
     <Compile Include="Commands\SubCmds\CConfig\CmdConfig_RawEdit.cs" />
@@ -169,10 +171,6 @@
     <Folder Include="Modules\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ModuleBase\MySH.ModuleBase.csproj">
-      <Project>{fbfc7fe7-0acc-431c-9e22-626ff048d968}</Project>
-      <Name>MySH.ModuleBase</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MyShellUpdater\My SHELL Updater.csproj">
       <Project>{6AA49F0B-9614-4E8F-B5D5-8CB450E05957}</Project>
       <Name>My SHELL Updater</Name>

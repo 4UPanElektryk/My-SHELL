@@ -1,4 +1,4 @@
-﻿using MyShell.Modules.Base;
+﻿using MyShell.Commands.Base;
 using MyShell.Commands.SubCmds;
 using MyShell.Commands.SubCmds.Del;
 
