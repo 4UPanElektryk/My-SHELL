@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplePkgMgr", "..\SimplePk
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SPMModule", "SPMModule\SPMModule.csproj", "{39B05B0F-148E-499C-9427-D8B9B29327C3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eXtraStyles", "eXtraStyles\eXtraStyles.csproj", "{89999901-CE30-4CA5-AB87-B3A4AA378590}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{39B05B0F-148E-499C-9427-D8B9B29327C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39B05B0F-148E-499C-9427-D8B9B29327C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39B05B0F-148E-499C-9427-D8B9B29327C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89999901-CE30-4CA5-AB87-B3A4AA378590}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89999901-CE30-4CA5-AB87-B3A4AA378590}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89999901-CE30-4CA5-AB87-B3A4AA378590}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89999901-CE30-4CA5-AB87-B3A4AA378590}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

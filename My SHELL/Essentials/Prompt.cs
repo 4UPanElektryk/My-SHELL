@@ -2,7 +2,7 @@
 
 namespace MyShell.Essentials
 {
-	class Prompt
+	public class Prompt
 	{
 		public static string PromptTemplate = "*f┏[*b%dir%*f]\n┗>";
 		public static void ShowPrompt(string activedir)
@@ -24,7 +24,7 @@ namespace MyShell.Essentials
 				{
 					bool inversed = item.StartsWith("!");
 					ConsoleColor color = (ConsoleColor)Convert.ToInt32((inversed ? item[1] : item[0]).ToString(), 16);
-					string text = item.Substring(inversed ? 2 : 1).Replace("%dir%", activedir);
+					string text = item.Substring(inversed ? 2 : 1).Replace("%dir%", activedir).Replace("%time%", DateTime.Now.ToString("HH:mm:ss"));
 					if (inversed)
 					{
 						Console.BackgroundColor = color;

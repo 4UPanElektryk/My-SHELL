@@ -26,7 +26,7 @@ namespace MyShell.Commands
                 new CmdBinds("binds"),
                 new CmdConfig("config"),
             };
-            CmdList.AddRange(ModLoader.ImportCommands());
+            CmdList.AddRange(ModuleLoader.ImportCommands());
             if (Config._AppConfig.DevMode)
             {
                 CmdList.Add(new CmdTest("test"));
@@ -38,7 +38,7 @@ namespace MyShell.Commands
             args = Dual.DeleteNullAndEmptyItems(args);
             foreach (Cmd item in CmdList)
             {
-                if (item._Name == args[0].ToLower())
+                if (item.Name == args[0].ToLower())
                 {
                     return item.Execute(args, input);
                 }
@@ -54,7 +54,7 @@ namespace MyShell.Commands
             string[] args = input.Split(' ');
             foreach (Cmd item in CmdList)
             {
-                if (item._Name == args[0].ToLower())
+                if (item.Name == args[0].ToLower())
                 {
                     return item.Execute(args, input);
                 }

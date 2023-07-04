@@ -8,10 +8,10 @@ namespace MyShell.Commands.Cmds
         public CmdLogs(string name) : base(name)
         {
             description = "Manipulation of Logs";
-            _Subs.Add(new CmdLogs_Open("open"));
-            _Subs.Add(new CmdLogs_Clear("clear"));
-            _Subs.Add(new CmdLogs_State("state"));
-            _Subs.Add(new CmdLogs_Default(null));
+            Subs.Add(new CmdLogs_Open("open"));
+            Subs.Add(new CmdLogs_Clear("clear"));
+            Subs.Add(new CmdLogs_State("state"));
+            Subs.Add(new CmdLogs_Default(null));
         }
     }
 }

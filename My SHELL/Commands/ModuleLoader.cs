@@ -6,7 +6,7 @@ using MyShell.Commands.Base;
 
 namespace MyShell.Commands
 {
-	public static class ModLoader
+	public static class ModuleLoader
 	{
 		public static Type[] types;
 		public static Dictionary<string,bool> InitModules(string directory) 
@@ -48,7 +48,12 @@ namespace MyShell.Commands
 				foreach (Type type in types)
 				{
 					object c = Activator.CreateInstance(type);
-					cmds.AddRange((Cmd[])type.GetMethod("ExportCommands").Invoke(c, null));
+					foreach (Cmd item in (Cmd[])type.GetMethod("ExportCommands").Invoke(c, null))
+					{
+						Cmd f = item;
+						f.CommandSource = type.Assembly.FullName;
+						cmds.Add(f);
+					}
 				}
 			}
 			return cmds.ToArray();

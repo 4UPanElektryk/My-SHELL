@@ -1,18 +1,19 @@
 ﻿using MyShell.Commands.Base;
+using eXtraStyles.Commands;
 
-namespace SPMModule
+namespace eXtraStyles
 {
 	public class Main
 	{
 		public static bool Load()
 		{
-            return false;
-        }
+			return true;
+		}
 		public static Cmd[] ExportCommands()
 		{
 			return new Cmd[]
 			{
-				new TestCmd("f")
+				new CmdPrompt("prompt"),
 			};
 		}
 	}

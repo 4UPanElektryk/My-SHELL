@@ -106,7 +106,7 @@
     <Compile Include="Commands\Cmds\CmdInfo.cs" />
     <Compile Include="Commands\Cmds\CmdStart.cs" />
     <Compile Include="Commands\Cmds\CmdTest.cs" />
-    <Compile Include="Commands\ModLoader.cs" />
+    <Compile Include="Commands\ModuleLoader.cs" />
     <Compile Include="Commands\Base\SubCmd.cs" />
     <Compile Include="Commands\SubCmds\Binds\CmdBinds_Add.cs" />
     <Compile Include="Commands\SubCmds\Binds\CmdBinds_List.cs" />
@@ -116,8 +116,6 @@
     <Compile Include="Commands\SubCmds\Logs\CmdLogs_Default.cs" />
     <Compile Include="Commands\SubCmds\Logs\CmdLogs_Open.cs" />
     <Compile Include="Commands\SubCmds\Logs\CmdLogs_State.cs" />
-    <Compile Include="Commands\SubCmds\Info\CmdInfo_Default.cs" />
-    <Compile Include="Commands\SubCmds\Info\CmdInfo_Live.cs" />
     <Compile Include="Commands\SubCmds\Error_SubCmdNotFound.cs" />
     <Compile Include="Commands\SubCmds\Logs\CmdLogs_Clear.cs" />
     <Compile Include="Commands\CommandMenager.cs" />
@@ -126,7 +124,6 @@
     <Compile Include="Essentials\Config.cs" />
     <Compile Include="Essentials\ConfigTemplates.cs" />
     <Compile Include="Essentials\Dual.cs" />
-    <Compile Include="Essentials\PreStart\SysDetect.cs" />
     <Compile Include="Essentials\Prompt.cs" />
     <Compile Include="Essentials\PreStart\RST.cs" />
     <Compile Include="LoggedProgram.cs" />

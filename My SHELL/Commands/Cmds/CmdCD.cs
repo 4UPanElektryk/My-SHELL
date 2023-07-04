@@ -15,9 +15,8 @@ namespace MyShell.Commands.Cmds
 		public override bool Execute(string[] args, string input)
 		{
 			bool action = true;
-			string path = input.Substring(_Name.Length+1);
+			string path = input.Substring(Name.Length+1);
 			path = path.Replace("~\\", AppDomain.CurrentDomain.BaseDirectory);
-			Console.WriteLine(path);
 			if (path != "..")
 			{
 				if (path.Contains(':'))
@@ -45,7 +44,7 @@ namespace MyShell.Commands.Cmds
 							}
 						}
 						LoggedProgram.DIR = LoggedProgram.DIR + paths + "\\";
-						Log.AddEvent(new Event("User action: Directory Change - " + LoggedProgram.DIR, EType.Informtion, DateTime.Now));
+						Log.Write("User action: Directory Change - " + LoggedProgram.DIR, EType.Informtion);
 					}
 					else
 					{

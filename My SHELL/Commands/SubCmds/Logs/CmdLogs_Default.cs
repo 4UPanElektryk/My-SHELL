@@ -8,7 +8,7 @@ namespace MyShell.Commands.SubCmds.Logs
     {
         public CmdLogs_Default(string name) : base(name)
         {
-            _IsDefault = true;
+            IsDefault = true;
         }
         public override bool Execute(string[] args, string input)
         {

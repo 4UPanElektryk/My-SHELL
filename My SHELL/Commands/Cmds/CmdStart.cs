@@ -16,7 +16,7 @@ namespace MyShell.Commands.Cmds
         }
         public override bool Execute(string[] args, string input)
         {
-            string path = input.Substring(_Name.Length+1);
+            string path = input.Substring(Name.Length+1);
             bool action = false;
             if (path.Contains(':'))
             {

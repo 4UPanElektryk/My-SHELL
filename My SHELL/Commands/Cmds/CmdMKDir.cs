@@ -15,7 +15,7 @@ namespace MyShell.Commands.Cmds
         public override bool Execute(string[] args, string input)
         {
             bool action = false;
-            string path = input.Substring(_Name.Length+1);
+            string path = input.Substring(Name.Length+1);
             if (!Directory.Exists(LoggedProgram.DIR + path))
             {
                 Directory.CreateDirectory(LoggedProgram.DIR + path);

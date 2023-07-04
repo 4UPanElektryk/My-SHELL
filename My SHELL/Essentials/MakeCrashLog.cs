@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
-using SimpleLogs4Net;
 using Newtonsoft.Json;
 
 namespace MyShell.Essentials
@@ -71,6 +68,12 @@ namespace MyShell.Essentials
                     ex.Message.Replace("\n"," "),
                     ex.Source
                 };
+                Console.CursorLeft = 0;
+                Console.CursorTop = 0;
+                foreach (var item in fail)
+                {
+                    Console.WriteLine(fail);
+                }
             }
 		}
 	}

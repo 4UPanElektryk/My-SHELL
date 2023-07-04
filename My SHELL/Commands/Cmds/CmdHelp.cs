@@ -23,7 +23,7 @@ namespace MyShell.Commands.Cmds
                 Console.WriteLine("Command List:");
                 foreach (Cmd cmd in CommandMenager.CmdList)
                 {
-                    Console.WriteLine(cmd._Name + " - " + cmd.description);
+                    Console.WriteLine(cmd.Name + " - " + cmd.description);
                 }
                 return true;
             }
@@ -31,19 +31,21 @@ namespace MyShell.Commands.Cmds
             {
                 foreach (Cmd item in CommandMenager.CmdList)
                 {
-                    if (item._Name == args[1])
+                    if (item.Name == args[1])
                     {
-                        Console.WriteLine("Listing information about command:");
-                        Console.WriteLine(item._Name + " - " + item.description);
-                        foreach (SubCmd item2 in item._Subs)
+                        Console.WriteLine($"Listing information about command:");
+                        Console.WriteLine($"{item.Name} - {item.description}");
+                        Console.WriteLine($"Usage: {item.Name} {item.args}");
+                        Console.WriteLine($"Command Source: {item.CommandSource}");
+                        foreach (SubCmd item2 in item.Subs)
                         {
-                            if (item2._IsDefault)
+                            if (item2.IsDefault)
                             {
-                                Console.WriteLine("!> " + "Default");
+                                Console.WriteLine($"!> Default");
                             }
-                            if (item2._Name != null)
+                            if (item2.Name != null)
                             {
-                                Console.WriteLine(" > " + item2._Name);
+                                Console.WriteLine($" > {item2.Name}");
                             }
                         }
                     }

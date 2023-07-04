@@ -4,24 +4,25 @@ namespace MyShell.Commands.Base
 {
 	public class Cmd
 	{
-		public string _Name = null;
-		public List<SubCmd> _Subs;
+		public string Name = null;
+		public List<SubCmd> Subs;
 		public string description = null;
 		public string args = null;
+		public string CommandSource = "MyShell.exe";
 
 		public Cmd(string name)
 		{
-			_Subs = new List<SubCmd>();
-			_Name = name;
+			Subs = new List<SubCmd>();
+			Name = name;
 		}
 		public virtual bool Execute(string[] args, string input)
 		{
 			int nbt = args.Length;
 			if (nbt > 1)
 			{
-				foreach (SubCmd item in _Subs)
+				foreach (SubCmd item in Subs)
 				{
-					if (item._Name == args[1].ToLower())
+					if (item.Name == args[1].ToLower())
 					{
 						string[] new_args = new string[args.Length - 2];
 						for (int i = 2; i < args.Length; i++)
@@ -32,9 +33,9 @@ namespace MyShell.Commands.Base
 					}
 				}
 			}
-			foreach (SubCmd item in _Subs)
+			foreach (SubCmd item in Subs)
 			{
-				if (item._IsDefault)
+				if (item.IsDefault)
 				{
 					return item.Execute(args, input);
 				}

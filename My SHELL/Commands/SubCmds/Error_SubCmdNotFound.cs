@@ -7,7 +7,7 @@ namespace MyShell.Commands.SubCmds
     {
         public Error_SubCmdNotFound(string name) : base(name)
         {
-            _IsDefault = true;
+            IsDefault = true;
         }
         public override bool Execute(string[] args, string input)
         {

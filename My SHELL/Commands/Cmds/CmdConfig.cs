@@ -8,9 +8,9 @@ namespace MyShell.Commands.Cmds
     {
         public CmdConfig(string name) : base(name)
         {
-            _Subs.Add(new CmdConfig_Menu("menu"));
-            _Subs.Add(new CmdConfig_RawEdit("setraw"));
-            _Subs.Add(new Error_SubCmdNotFound(null));
+            Subs.Add(new CmdConfig_Menu("menu"));
+            Subs.Add(new CmdConfig_RawEdit("setraw"));
+            Subs.Add(new Error_SubCmdNotFound(null));
         }
     }
 }

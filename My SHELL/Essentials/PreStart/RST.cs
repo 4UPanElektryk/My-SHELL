@@ -2,10 +2,8 @@
 using SimpleLogs4Net;
 using System;
 using System.IO;
-using MyShell.Essentials.PreStart;
 using System.Collections.Generic;
 using MyShell.Commands;
-using System.Threading;
 
 namespace MyShell.Essentials
 {
@@ -68,7 +66,7 @@ namespace MyShell.Essentials
 			if (Directory.GetFiles(AppContext.BaseDirectory + "Modules\\","*.dll").Length != 0)
 			{
 				TestMsg("Initializing Modules", MsgType.Normal);
-				foreach (var item in ModLoader.InitModules(AppContext.BaseDirectory + "Modules\\"))
+				foreach (var item in ModuleLoader.InitModules(AppContext.BaseDirectory + "Modules\\"))
 				{
 					TestMsg($" - {item.Key} ",item.Value ? MsgType.OK : MsgType.Error);
 					if (!item.Value)

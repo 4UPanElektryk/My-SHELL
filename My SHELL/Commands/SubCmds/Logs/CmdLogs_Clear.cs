@@ -10,7 +10,7 @@ namespace MyShell.Commands.SubCmds.Logs
     {
         public CmdLogs_Clear(string name) : base(name)
         {
-            _Help = "Deletes the logs";
+            Help = "Deletes the logs";
         }
 
         public override bool Execute(string[] args, string input)
